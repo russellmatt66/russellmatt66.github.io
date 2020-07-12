@@ -1,9 +1,0 @@
-<footer>
-  <div>
-    <hr>
-    <ul>
-      <li><a href="mailto:russellmatt66@gmail.com">russellmatt66@gmail.com</a></li>
-      <li><a href="https://github.com/russellmatt66">github.com/russellmatt66</a></li>
-    </ul>
-  </div>
-</footer>
