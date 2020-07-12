@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Blog - Morgan Gillis
+title: Blog - Matt Russell
 permalink: /blog/
 ---
 
