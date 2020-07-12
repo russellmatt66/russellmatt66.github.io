@@ -1,8 +1,0 @@
-<nav>
-  <ul>
-    <li class="navhome"><a href="/">{{ site.title }}</a></li>
-    {% for page in site.data.menu %}
-    <li><a href="{{ page.href }}">{{ page.title }}</a>
-    {% endfor %}
-  </ul>
-</nav>
