@@ -1,0 +1,25 @@
+title: Matt Russell
+tagline: Test tagline.
+email: russellmatt66@gmail.com
+
+description: 'test'
+
+url: 'https://russellmatt66.github.io'
+baseurl: ''
+
+permalink: blog/:title
+
+markdown: kramdown
+
+# Syntax highlighting
+highlighter: rouge
+# Or this if not on GitHub (?):
+# kramdown:
+  # input: GFM
+  # syntax_highlighter: rouge
+
+sass:
+  style: :compressed
+
+gems:
+  - jekyll-sitemap
