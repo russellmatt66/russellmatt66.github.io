@@ -1,6 +1,6 @@
 ---
 layout: default
-title: About - Morgan Gillis
+title: About - Matt Russell
 permalink: /about/
 ---
 
