@@ -1,8 +1,0 @@
----
-layout: default
-title: About - Matt Russell
-permalink: /about/
----
-
-![portrait alt <>]({{ site.url }}/assets/killerwhaleph.jpg){:height="480px" width="360px" class="img-responsive"}
-This is a killer whale. I am not a killer whale so it is not me. Instead it is a test of functionality using the animal that currently sits at the top of the ocean food chain
