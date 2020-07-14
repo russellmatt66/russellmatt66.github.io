@@ -2,11 +2,12 @@
 
 // Import some fonts
 @import url('https://fonts.googleapis.com/css?family=Spectral:700');
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans+Caption:wght@700');
 @import url('https://rsms.me/inter/inter-ui.css');
 
 // Headers
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Spectral', 'Georgia', serif;
+  font-family: 'PT Sans Caption', sans-serif;
   font-weight: bold;
   text-rendering: geometricPrecision; // or optimizeLegibility
   color: #2a3a4b;
