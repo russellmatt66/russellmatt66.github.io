@@ -1,8 +1,14 @@
 - title: "Physics"
   href: "/phys/"
-  
+
 - title: "Mathematics"
   href: "/math/"
+
+- title: "Weightlifting"
+  href: "/weight/"
+
+- title: "HPC"
+  href: "/hpc/"
 
 - title: "Blog"
   href: "/blog/"
