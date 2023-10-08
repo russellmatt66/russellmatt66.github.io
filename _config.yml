@@ -7,7 +7,14 @@ description: 'test'
 url: 'https://russellmatt66.github.io'
 baseurl: ''
 
-permalink: blog/:title
+collections:
+  phys:
+    output: true
+    permalink: /phys/:title
+
+  blog:
+    output: true
+    permalink: blog/:title
 
 markdown: kramdown
 
