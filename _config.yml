@@ -14,7 +14,11 @@ collections:
 
   blog:
     output: true
-    permalink: blog/:title
+    permalink: /blog/:title
+
+  math:
+    output: true
+    permalink: /math/:title
 
 markdown: kramdown
 

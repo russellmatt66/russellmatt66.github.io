@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Fusion Alphas and Relativistic Electrons
+collection: phys
 ---
 First-generation fusion reactors will almost certainly be based on the Deuterium-Tritium (DT) reaction. Why is this? Fundamentally, the reasons have to do with what's the easiest to engineer, but that is not the subject of this post. This post is about working through a calculation using the Lienard-Wiechert potentials to demonstrate the acceleration of electrons to relativistic speeds in a DT fusion reactor. Before we get to the main content, let's first describe the DT reaction[^1],
 
