@@ -12,13 +12,21 @@ collections:
     output: true
     permalink: /phys/:title
 
-  blog:
+  compsci:
     output: true
-    permalink: /blog/:title
+    permalink: /compsci/:title
 
   math:
     output: true
     permalink: /math/:title
+
+  hpc:
+    output: true
+    permalink: /hpc/:title
+
+  weightlifting:
+    output: true
+    permalink: /weightlifting/:title
 
 markdown: kramdown
 

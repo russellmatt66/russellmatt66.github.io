@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Blog - Matt Russell
-permalink: /blog/
+title: Computer Science - Matt Russell
+permalink: /compsci/
 ---
 
-{% for post in site.posts %}
+{% for post in site.compsci %}
 <div style="display:flex; justify-content:space-between; align-items:baseline;">
   <h4><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></h4>
   <p>{{ post.date | date_to_string }}</p>
