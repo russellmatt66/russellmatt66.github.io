@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <!-- Enable responsiveness on mobile devices -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-  <title>The Key Lifts</title>
+  <title>Astronautics Exam Problem</title>
   <link rel="stylesheet" href="/css/main.css">
   <link rel="shortcut icon" type="image/png" href="/assets/killerwhaleph.png">
 </head>
@@ -257,19 +257,51 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function() {
 </header>
 
     <div class="container">
-      <h1>The Key Lifts</h1>
-<p class="meta" style="color:#888">14 Oct 2023</p>
+      <h1>Astronautics Exam Problem</h1>
+<p class="meta" style="color:#888">17 Oct 2023</p>
 <div class="post">
-  <h3 id="what-is-lifting">What is Lifting?</h3>
-<p>“Lifting” means different things depending on who you ask.</p>
+  <p>Inspired by a problem in Zangwill<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>, I came up with an exam problem based on it. Here is the original problem:</p>
 
-<p>To a powerlifter, it means the Squat, Bench, and Deadlift, as heavy as you can go while still getting white lights for your form from the majority of the judges.</p>
+<p>2.1 [\textbf{Measuring B}]</p>
 
-<p>To an olympic weightlifter, it means the graceful elegance and raw power of the Clean&amp;Jerk, and Snatch, with a nod towards the Squat and Deadlift as useful assistance movements.</p>
+<p>Let [\vec{F}_{1}] and [\vec{F}_{2}] be the instantaneous forces that act on a particle with charge $q$ when it moves through a magnetic field $\vec{B}(\vec{r})$ with velocities $\vec{v}_{1}$ and $\vec{v}_{2}$, respectively.</p>
 
-<p>To a bodybuilder, it means machines that possess a fixed tension curve, dumbbells, and partial reps so that you can pump up exactly the muscles that you want to in order to create the most aesthetic package for display on stage (if you’re a smart bodybuilder, it also means heavy barbell movements like the Squat, Bench, and Deadlift to build strength and power so that you can move more weight, and get a greater pump, on the machines and dumbbells).</p>
+<p>Without choosing a coordinate system, show that $\vec{B}(\vec{r})$ can be determined from the observables $\vec{v}_{1} \times \vec{F}_{1}$ and $\vec{v}_{2} \times \vec{F}_{2}$ if $\vec{v}_{1}$ and $\vec{v}_{2}$ are appropriately oriented.</p>
 
-<p>To a physicist, it means doing work on an extended massive body in order to move it through space against a gravitational field, thereby changing its potential energy at the cost of the expenditure of your own chemical energy.</p>
+<p>Here is the problem I developed:</p>
+<blockquote>
+  <p>You are an engineer for a fusion rocket company that is launching a mission to test their interstellar propulsion technology, and acquire valuable scientific data on the magnetic fields of outer space.</p>
+</blockquote>
+
+<blockquote>
+  <p>The system that will be performing this task consists of two autonomous probes, each equipped with an array of sensors for accurately measuring their trajectories’. Once immersed in the interstellar plasma, the probes will become charged, and begin to experience a Lorentz force.</p>
+</blockquote>
+
+<blockquote>
+  <p>(20 pts) (a)  By measuring their velocity, and acceleration, and maintaining a specific orientation with regard to each other while moving through a given region of space, the probes can obtain a reading for the steady magnetic field there, $\vec{B}(\vec{r})$. Derive this exact expression by algebraically combining and manipulating the observables that the probes obtain: $ \vec{v}_{1},\vec{v}_{2},\vec{F}_{1},\vec{F}_{2}$.</p>
+</blockquote>
+
+<blockquote>
+  <p>(10 pts) (b) What assumptions need to hold about the probes’ characteristics and trajectories’ for the expression you derived to be valid?</p>
+</blockquote>
+
+<blockquote>
+  <p>(10 pts) (c) How would deviations in the probes’ observables, e.g., an error in the accelerometer, or speedometer, effect the result?</p>
+</blockquote>
+
+<blockquote>
+  <p>(10 pts) (d) Give some numbers, and ask them to calculate the steady magnetic field. Does it make sense? (is the divergence 0?)</p>
+</blockquote>
+
+<p>There’s a couple of places that I think the problem still needs work. One, obviously (d) needs numbers. Two, there’s no guarantee that the magnetic field in space will be steady. More likely, it will be quasi-steady, with the amplitude of these fluctuations varying dependent on the state of the sun. Based on that reason, I think this question would serve as a good second question for an exam where the first question is about calculating the conditions of the plasma at the specific location in question.</p>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>Zangwill, Andrew. “The Maxwell Equations.” Modern Electrodynamics, Cambridge University Press, Cambridge, UK, 2012. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
 
 </div>
 

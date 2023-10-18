@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <!-- Enable responsiveness on mobile devices -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-  <title>The Key Lifts</title>
+  <title>Best In Class Parallel Performance</title>
   <link rel="stylesheet" href="/css/main.css">
   <link rel="shortcut icon" type="image/png" href="/assets/killerwhaleph.png">
 </head>
@@ -257,19 +257,38 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function() {
 </header>
 
     <div class="container">
-      <h1>The Key Lifts</h1>
-<p class="meta" style="color:#888">14 Oct 2023</p>
+      <h1>Best In Class Parallel Performance</h1>
+<p class="meta" style="color:#888">17 Oct 2013</p>
 <div class="post">
-  <h3 id="what-is-lifting">What is Lifting?</h3>
-<p>“Lifting” means different things depending on who you ask.</p>
+  <h3 id="introduction">Introduction</h3>
+<p>Tensor-based algorithms are frequently encountered in computing, and are also located firmly in the category of “embarassingly-parallel”. Algorithms of this class are called as such because, once the basic concepts behind parallelism are understood, it is obvious–almost embarassingly so–how to parallelize them. That does not mean the implementation is easy, however. Like many things, the devil is in the details. First, a brief primer on parallellism and tensors, i.e., the generalization of scalars, vectors, and matrices.</p>
 
-<p>To a powerlifter, it means the Squat, Bench, and Deadlift, as heavy as you can go while still getting white lights for your form from the majority of the judges.</p>
+<h3 id="parallelism-a-first-course">Parallelism: A First Course</h3>
+<p>There are two basic kinds of parallelism:</p>
+<ol>
+  <li>Task-based parallelism</li>
+  <li>Data-based parallelism</li>
+</ol>
 
-<p>To an olympic weightlifter, it means the graceful elegance and raw power of the Clean&amp;Jerk, and Snatch, with a nod towards the Squat and Deadlift as useful assistance movements.</p>
+<p>“Task-based” parallelism occurs when there are independent tasks to be done that do not depend on each other. For a real-world example from the field of cooking, when making bacon and eggs, there’s no need to wait for the bacon to finish before beginning to cook the eggs (unless, of course, you wish to fry the eggs in the bacon grease). This analogy is imperfect, not just because of the pathological example, but also because a single chef making a meal is a sequential context. However, even with only a single chef (thread), the appearance of concurrency can be implemented provided the worker moves fast enough.</p>
 
-<p>To a bodybuilder, it means machines that possess a fixed tension curve, dumbbells, and partial reps so that you can pump up exactly the muscles that you want to in order to create the most aesthetic package for display on stage (if you’re a smart bodybuilder, it also means heavy barbell movements like the Squat, Bench, and Deadlift to build strength and power so that you can move more weight, and get a greater pump, on the machines and dumbbells).</p>
+<p>“Data-based” parallelism occurs when there is independent data that can be operated on. What’s a real world example of this? Well, how about grading an exam? Let’s say the exam has 4 questions. Each question is independent of the other questions, so there’s no real need to have graded question A before grading question B, question B before question C, etc.. Therefore, we can partition the task of grading the questions amongst a set of graders, and speed the completion of the process up.</p>
 
-<p>To a physicist, it means doing work on an extended massive body in order to move it through space against a gravitational field, thereby changing its potential energy at the cost of the expenditure of your own chemical energy.</p>
+<h3 id="tensors-the-generalization-of-a-matrix">Tensors: The Generalization of a Matrix</h3>
+<p>When you have a single piece of atomic numerical data, for example, the number $6$, that can be thought of as a scalar. Add another number to the collection, say $5$, and now you’ve got a vector,</p>
+
+\[\vec{a} = \colvec{6\\5}\]
+
+<p>In the process, you’ve increased the dimensionality of the object from 0D (just a single point), to 1D (just a single column). There’s nothing particularly special about representing our vector as a column, we could just as easily represent it as a row. The way we switch a vector between the two is by using the transposition operator,</p>
+
+\[\vec{b} = \rowvec{6 \quad 5} = \vec{a}^{T}\]
+
+<p>What happens if we increase the dimensionality of our object again? Well, we go from 1D to 2D. Now, our object has both rows and columns, and is identified by the name of “matrix”. When we constructed our vector, $\vec{a}$, we did so by specifying the elements directly. There’s nothing inherently wrong about doing it this way, but imagine if our vector was larger than just two elements, for example, if it was 10,000. It would be quite cumbersome to write down every single one of those elements. This is why we use computers.</p>
+
+<p>Vectors are rarely that long, however. Exceptions exist, of course, but macroscopic physical systems of interest to engineers and applied physicists are typically based on 3-vectors, e.g., the magnetic field of a plasma,</p>
+
+\[\vec{B} = \colvec{B_{x}\\B_{y}\\B_{z}}\]
+
 
 </div>
 
