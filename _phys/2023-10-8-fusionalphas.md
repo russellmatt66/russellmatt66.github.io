@@ -51,7 +51,7 @@ $\hspace{1cm}$ A fusion plasma is a soup of charged particles. The fast neutron 
 $$
 \begin{aligned}
 \frac{1}{2}m_{n}v_{n}^{2} &= 14.1 MeV \\
-m_{n} &= 939.565 MeV / c^{2} \\ 
+m_{n} &= 939.565 \, MeV / c^{2} \\ 
 \therefore v_{n} &= 0.173c \implies \gamma_{n} = 1.015 
 \end{aligned}
 $$
@@ -65,12 +65,13 @@ $\hspace{1cm}$ Instead, with its large amount of random kinetic energy, the $\al
 $$
 \begin{aligned}
     KE_{\alpha} &= \frac{1}{2}m_{\alpha}v_{\alpha}^{2} = 3.5 MeV \\
-    m_{\alpha} &= 3.727 GeV / c^{2} \\
+    m_{\alpha} &= 3.727 \, GeV / c^{2} \\
     \therefore v_{\alpha} &= 0.0433c \implies \gamma_{\alpha} = 1.0009  
 \end{aligned}
 $$
 
-The electromagnetic fields radiated by a charged particle in motion are given by the $\textit{Lienard-Wiechert}$ fields[^2],
+<!-- Cylindrical coordinates is not the correct basis for this, need spherical coordinates, but more importantly, need to read Zangwill. -->
+<!-- The electromagnetic fields radiated by a charged particle in motion are given by the $\textit{Lienard-Wiechert}$ fields[^2],
 
 $$
 \begin{aligned}
@@ -79,7 +80,7 @@ $$
 \end{aligned}
 $$ 
 
-However, before we can determine, to an exact degree, the magnitude of the electromagnetic fields that the $\alpha$ is radiating away, we have to also know the rate at which its velocity is changing, $\dot{u}$.    
+However, before we can determine, to an exact degree, the magnitude of the electromagnetic fields that the $\alpha$ is radiating away, we have to also know the rate at which its velocity is changing, $\dot{u}$.     -->
 
 [^1]: Freidberg, Jeffrey P. Plasma Physics and Fusion Energy. Cambridge University Press, 2007. 
-[^2]: Cooray, Vernon, et al. Lightning Electromagnetics. Volume 1, Return Stroke Modelling and Electromagnetic Radiation. The Institution of Engineering and Technology, 2022. 
+<!-- [^2]: Cooray, Vernon, et al. Lightning Electromagnetics. Volume 1, Return Stroke Modelling and Electromagnetic Radiation. The Institution of Engineering and Technology, 2022.  -->
