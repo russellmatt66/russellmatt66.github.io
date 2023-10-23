@@ -102,7 +102,8 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function() {
       derivative:["Macro","{\\frac{\\text{d}{ #1 }}{\\text{d}{ #2 }}}",2],
       dv:["Macro","{\\frac{\\text{d}{ #1 }}{\\text{d}{ #2 }}}",2],
       partialderivative:["Macro","{\\frac{\\partial{ #1 }}{\\partial{ #2 }}}",2],
-      pdv:["Macro","{\\frac{\\partial{ #1 }}{\\partial{ #2 }}}",2],
+      <!-- pdv:["Macro","{\\frac{\\partial{ #1 }}{\\partial{ #2 }}}",2], -->
+      pdv:["Macro","{\\frac{\\partial^{#2}{ #1 }}{\\partial{ #3^{#2} }}}",3],
       variation:["Macro","{\\delta}"],
       "var":["Macro","{\\delta}"],
       functionalderivative:["Macro","{\\frac{\\delta{ #1 }}{\\delta{ #2 }}}",2],
@@ -316,6 +317,8 @@ m_{n} &amp;= 939.565 \, MeV / c^{2} \\
     m_{\alpha} &amp;= 3.727 \, GeV / c^{2} \\
     \therefore v_{\alpha} &amp;= 0.0433c \implies \gamma_{\alpha} = 1.0009  
 \end{aligned}\]
+
+<p>The next step is to figure out what’s happening to the electrons.</p>
 
 <!-- Cylindrical coordinates is not the correct basis for this, need spherical coordinates, but more importantly, need to read Zangwill. -->
 <!-- The electromagnetic fields radiated by a charged particle in motion are given by the $\textit{Lienard-Wiechert}$ fields[^2],

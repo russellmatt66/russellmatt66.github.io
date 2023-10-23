@@ -70,6 +70,8 @@ $$
 \end{aligned}
 $$
 
+The next step is to figure out what's happening to the electrons. 
+
 <!-- Cylindrical coordinates is not the correct basis for this, need spherical coordinates, but more importantly, need to read Zangwill. -->
 <!-- The electromagnetic fields radiated by a charged particle in motion are given by the $\textit{Lienard-Wiechert}$ fields[^2],
 

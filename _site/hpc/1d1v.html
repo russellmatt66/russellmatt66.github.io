@@ -102,7 +102,8 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function() {
       derivative:["Macro","{\\frac{\\text{d}{ #1 }}{\\text{d}{ #2 }}}",2],
       dv:["Macro","{\\frac{\\text{d}{ #1 }}{\\text{d}{ #2 }}}",2],
       partialderivative:["Macro","{\\frac{\\partial{ #1 }}{\\partial{ #2 }}}",2],
-      pdv:["Macro","{\\frac{\\partial{ #1 }}{\\partial{ #2 }}}",2],
+      <!-- pdv:["Macro","{\\frac{\\partial{ #1 }}{\\partial{ #2 }}}",2], -->
+      pdv:["Macro","{\\frac{\\partial^{#2}{ #1 }}{\\partial{ #3^{#2} }}}",3],
       variation:["Macro","{\\delta}"],
       "var":["Macro","{\\delta}"],
       functionalderivative:["Macro","{\\frac{\\delta{ #1 }}{\\delta{ #2 }}}",2],
@@ -264,6 +265,9 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function() {
 by the equation $E=mc^2$, discovered in 1905 by Albert Einstein. The quick brown fox jumps over the lazy dog.</p>
 
 <p>\[\int_0^\infty e^{-x^2} dx=\frac{\sqrt{\pi}}{2}\]</p>
+
+<h3 id="solving-poissons-equation-in-1d-with-periodic-boundary-conditions">Solving Poisson’s Equation in 1D with Periodic Boundary Conditions</h3>
+<p>As sketched briefly</p>
 
 </div>
 

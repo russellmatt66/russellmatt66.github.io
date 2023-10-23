@@ -102,7 +102,8 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function() {
       derivative:["Macro","{\\frac{\\text{d}{ #1 }}{\\text{d}{ #2 }}}",2],
       dv:["Macro","{\\frac{\\text{d}{ #1 }}{\\text{d}{ #2 }}}",2],
       partialderivative:["Macro","{\\frac{\\partial{ #1 }}{\\partial{ #2 }}}",2],
-      pdv:["Macro","{\\frac{\\partial{ #1 }}{\\partial{ #2 }}}",2],
+      <!-- pdv:["Macro","{\\frac{\\partial{ #1 }}{\\partial{ #2 }}}",2], -->
+      pdv:["Macro","{\\frac{\\partial^{#2}{ #1 }}{\\partial{ #3^{#2} }}}",3],
       variation:["Macro","{\\delta}"],
       "var":["Macro","{\\delta}"],
       functionalderivative:["Macro","{\\frac{\\delta{ #1 }}{\\delta{ #2 }}}",2],
