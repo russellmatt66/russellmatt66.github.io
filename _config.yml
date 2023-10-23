@@ -24,9 +24,9 @@ collections:
     output: true
     permalink: /hpc/:title
 
-  weightlifting:
+  deeplearning:
     output: true
-    permalink: /weightlifting/:title
+    permalink: /deeplearning/:title
 
 markdown: kramdown
 
