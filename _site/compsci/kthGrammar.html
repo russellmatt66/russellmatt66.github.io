@@ -262,7 +262,7 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function() {
 <p class="meta" style="color:#888">29 Oct 2023</p>
 <div class="post">
   <h3 id="introduction">Introduction</h3>
-<p>Let’s imagine a table that we are constructing via an algorithm. In the first row of the table, we put the character $0$. For every row in table thereafter, from $2$ to $n$, we construct it from the preceding row using the same two rules:</p>
+<p>Let’s imagine a table that we are constructing via an algorithm. In the first row of the table, we put the character $0$. For every row in the table thereafter, from $2$ to $n$, we construct it from the preceding row using the same two rules:</p>
 
 <ol>
   <li>If there is a $0$, it is replaced with $01$.</li>
@@ -345,7 +345,7 @@ plt.show()
 <p>That’s a bit of a tangent, but hopefully you get the picture. A brute-force approach to this problem is simply a non-starter, except for a very limited span. If you’re intrigued / confused by what a “memory hierachy” is, stay tuned for a post about them. Also, yes, I know that it is silly and wasteful to store a binary digit in an entire 32-bit <code class="language-plaintext highlighter-rouge">int</code>, but ask yourself if having 32 times the space would really matter (it wouldn’t).</p>
 
 <h3 id="brute-force---time-complexity">Brute Force - Time Complexity</h3>
-<p>For the sake of completeness, let me talk a little about the time complexity of the implementation I described for the brute-force solution to this problem. If you’re not interested, then please, by all means skip down to <a href="#recurrence-relation---elegant-and-efficient">the section where 14 lines of code do what an entire server couldnt’</a>.</p>
+<p>For the sake of completeness, let me talk a little about the time complexity of the implementation I described for the brute-force solution to this problem. If you’re not interested, then please, by all means skip down to <a href="#recurrence-relation---elegant-and-efficient">the section where 14 lines of code do what an entire server couldn’t</a>.</p>
 
 <h3 id="recurrence-relation---elegant-and-efficient">Recurrence Relation - Elegant and Efficient</h3>
 <p>If you want an elegant, efficient, powerful, and recursive solution to this problem, then here it is:</p>
@@ -364,7 +364,60 @@ plt.show()
         return -1;
     }
 </code></pre></div></div>
-<p>Before we break this down, let’s talk about the mathematics of this problem. Programming is, after all, just getting the computer to do the math for us.</p>
+<p>Before we break this down, let’s talk about the mathematics of this problem. Programming is, after all, just getting the computer to do the math for us. Let’s take a look at the first six terms of the sequence again,</p>
+
+\[\begin{aligned}
+&amp;n=1: 0 \\
+&amp;n=2: 01 \\
+&amp;n=3: 0110 \\
+&amp;n=4: 01101001 \\
+&amp;n=5: 0110100110010110 \\
+&amp;n=6: 01101001100101101001011001101001
+\end{aligned}\]
+
+<p>$\hspace{1cm}$ Recall that the goal is to find an exact expression for the generating function of the sequence, $B_{n}(k)$. How are we to do this? Well, there’s something we can notice about the adjacent terms of the sequence, $n-1$, and $n$. That something is, namely, that the $n$-th term is just the $n-1$th term with its inverted self appended on the end! Fundamentally, this property arises from the rules that generate the new binary number. Since every $0$ becomes $01$ (the original binary digit + its inversion), and every $1$ becomes $10$ (the original binary digit + its inversion), and every binary number can be written as a concatenation of a sequence of these digits, this property is naturally embedded in the structure of the problem.</p>
+
+<p>$\hspace{1cm}$ Now, we just need to find a way to express this mathematically using the language of a recurrence relation, i.e., an equation that relates $B_{n}(k)$ to $B_{n-1}(k)$. The trick here is to figure out what the value of k is that separates the region where we have the digits from the previous number and the one where we have their inversion. Based on the previous paragraph we can write the relation as,</p>
+
+\[B_{n}(k) = 
+\begin{cases}
+B_{n-1}(k) &amp; \text{if $k \lt k_{bound}$} \\
+!B_{n-1}(k) &amp; \text{if $k \geq k_{bound}$}
+\end{cases}\]
+
+<p>What’s $k_{bound}$? We can figure that out by writing out the $n$-th member of this sequence,</p>
+
+\[B_{n}(k) = B_{n-1}(1)B_{n-1}(2) \ldots B_{n-1}(k_{bound}-1)!B_{n-1}(1)!B_{n-1}(2) \ldots !B_{n-1}(2^{n-1})\]
+
+<p>Apparently, it is just the size (number of digits) of the previous number + 1!</p>
+
+<p>$\hspace{1cm}$ Finally, there is one last point we need to figure out before we can implement thisin code. The mathematics of the problem, i.e., the recurrence relation embedded in it, means that a recursive solution is the correct one. The base case is clear, it’s the situation when $n=1$ and $k=1$, returning a value of 0 as the problem specified. We also know what to do in the case when $k \lt k_{bound}$, we just return $B_{n-1}(k)$. But what do we return when $k \geq k_{bound}$? We need to return a value using $k \in [1,2^{n-2}]$, because that’s where the previous digit is defined, while the value we are working with is in the range $k \in [2^{n-2}+1,2^{n-1}]$. If we subtract $2^{n-2}$ from our current value of k, then we bring it into exactly the range that we need ($2^{n-1} = 2 * 2^{n-2} = 2^{n-2} + 2^{n-2}$)!</p>
+
+<p>$\hspace{1cm}$ Putting these pieces together, we obtain the code at the beginning of this section</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>int kthGrammar(int n, int k) {
+        // base case
+        if (n == 1 &amp;&amp; k == 1){
+            return 0;
+        }
+        // Recurrence relation
+        else if (k &lt; pow(2, n-2) + 1) {
+            return kthGrammar(n-1, k);
+        }
+        else if (k &gt;= pow(2, n-2) + 1){
+            return !(kthGrammar(n-1, k - pow(2,n-2)));
+        }
+        return -1;
+    }
+</code></pre></div></div>
+
+<h3 id="recurrence-relation---time-complexity">Recurrence Relation - Time Complexity</h3>
+<p>So, how fast does this code run? Obviously, the space complexity is <em>vastly</em> superior to the brute-force approach: $O(1)$ compared to $O(2^{n})$.</p>
+
+<h3 id="conclusion">Conclusion</h3>
+<p>$\hspace{1cm}$ Thank you for getting to the end of this post. I hope that what I wrote was instructive and helped you to learn something, or at the very last was an entertaining walk-through of an interesting problem.</p>
+
+<p>$\hspace{1cm}$ As a final takeaway, I want to note how this problem illustrates the importance of elegant, powerful algorithms to writing high-performing code. Powerful machines are only one part of the equation to high-performance computing, and as any computer scientist will tell you, the truth is that even the most powerful machines are little more than a space heater when running a poorly-designed algorithm.</p>
 
 </div>
 

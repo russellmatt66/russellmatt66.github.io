@@ -4,7 +4,7 @@ title: K-th Symbol in Grammar - Leetcode 779
 collection: compsci
 ---
 ### Introduction
-Let's imagine a table that we are constructing via an algorithm. In the first row of the table, we put the character $0$. For every row in table thereafter, from $2$ to $n$, we construct it from the preceding row using the same two rules:
+Let's imagine a table that we are constructing via an algorithm. In the first row of the table, we put the character $0$. For every row in the table thereafter, from $2$ to $n$, we construct it from the preceding row using the same two rules:
 
 1. If there is a $0$, it is replaced with $01$.
 2. If there is a $1$, it is replaced with $10$.
@@ -90,7 +90,7 @@ Installing a 1 TB hard drive (or SSD if you want to break the bank) in our works
 That's a bit of a tangent, but hopefully you get the picture. A brute-force approach to this problem is simply a non-starter, except for a very limited span. If you're intrigued / confused by what a "memory hierachy" is, stay tuned for a post about them. Also, yes, I know that it is silly and wasteful to store a binary digit in an entire 32-bit `int`, but ask yourself if having 32 times the space would really matter (it wouldn't).
 
 ### Brute Force - Time Complexity
-For the sake of completeness, let me talk a little about the time complexity of the implementation I described for the brute-force solution to this problem. If you're not interested, then please, by all means skip down to [the section where 14 lines of code do what an entire server couldnt'](#recurrence-relation---elegant-and-efficient).
+For the sake of completeness, let me talk a little about the time complexity of the implementation I described for the brute-force solution to this problem. If you're not interested, then please, by all means skip down to [the section where 14 lines of code do what an entire server couldn't](#recurrence-relation---elegant-and-efficient).
 
 ### Recurrence Relation - Elegant and Efficient
 If you want an elegant, efficient, powerful, and recursive solution to this problem, then here it is:
@@ -110,4 +110,64 @@ int kthGrammar(int n, int k) {
         return -1;
     }
 ```
-Before we break this down, let's talk about the mathematics of this problem. Programming is, after all, just getting the computer to do the math for us. 
+Before we break this down, let's talk about the mathematics of this problem. Programming is, after all, just getting the computer to do the math for us. Let's take a look at the first six terms of the sequence again,
+
+$$
+\begin{aligned}
+&n=1: 0 \\
+&n=2: 01 \\
+&n=3: 0110 \\
+&n=4: 01101001 \\
+&n=5: 0110100110010110 \\
+&n=6: 01101001100101101001011001101001
+\end{aligned}
+$$
+
+$\hspace{1cm}$ Recall that the goal is to find an exact expression for the generating function of the sequence, $B_{n}(k)$. How are we to do this? Well, there's something we can notice about the adjacent terms of the sequence, $n-1$, and $n$. That something is, namely, that the $n$-th term is just the $n-1$th term with its inverted self appended on the end! Fundamentally, this property arises from the rules that generate the new binary number. Since every $0$ becomes $01$ (the original binary digit + its inversion), and every $1$ becomes $10$ (the original binary digit + its inversion), and every binary number can be written as a concatenation of a sequence of these digits, this property is naturally embedded in the structure of the problem. 
+
+$\hspace{1cm}$ Now, we just need to find a way to express this mathematically using the language of a recurrence relation, i.e., an equation that relates $B_{n}(k)$ to $B_{n-1}(k)$. The trick here is to figure out what the value of k is that separates the region where we have the digits from the previous number and the one where we have their inversion. Based on the previous paragraph we can write the relation as,
+
+$$
+B_{n}(k) = 
+\begin{cases}
+B_{n-1}(k) & \text{if $k \lt k_{bound}$} \\
+!B_{n-1}(k) & \text{if $k \geq k_{bound}$}
+\end{cases}
+$$
+
+What's $k_{bound}$? We can figure that out by writing out the $n$-th member of this sequence,
+
+$$
+B_{n}(k) = B_{n-1}(1)B_{n-1}(2) \ldots B_{n-1}(k_{bound}-1)!B_{n-1}(1)!B_{n-1}(2) \ldots !B_{n-1}(2^{n-1})
+$$
+
+Apparently, it is just the size (number of digits) of the previous number + 1!
+
+$\hspace{1cm}$ Finally, there is one last point we need to figure out before we can implement thisin code. The mathematics of the problem, i.e., the recurrence relation embedded in it, means that a recursive solution is the correct one. The base case is clear, it's the situation when $n=1$ and $k=1$, returning a value of 0 as the problem specified. We also know what to do in the case when $k \lt k_{bound}$, we just return $B_{n-1}(k)$. But what do we return when $k \geq k_{bound}$? We need to return a value using $k \in \[1,2^{n-2}]$, because that's where the previous digit is defined, while the value we are working with is in the range $k \in \[2^{n-2}+1,2^{n-1}\]$. If we subtract $2^{n-2}$ from our current value of k, then we bring it into exactly the range that we need ($2^{n-1} = 2 * 2^{n-2} = 2^{n-2} + 2^{n-2}$)! 
+
+$\hspace{1cm}$ Putting these pieces together, we obtain the code at the beginning of this section
+
+```
+int kthGrammar(int n, int k) {
+        // base case
+        if (n == 1 && k == 1){
+            return 0;
+        }
+        // Recurrence relation
+        else if (k < pow(2, n-2) + 1) {
+            return kthGrammar(n-1, k);
+        }
+        else if (k >= pow(2, n-2) + 1){
+            return !(kthGrammar(n-1, k - pow(2,n-2)));
+        }
+        return -1;
+    }
+```
+
+### Recurrence Relation - Time Complexity
+So, how fast does this code run? Obviously, the space complexity is *vastly* superior to the brute-force approach: $O(1)$ compared to $O(2^{n})$. 
+
+### Conclusion
+$\hspace{1cm}$ Thank you for getting to the end of this post. I hope that what I wrote was instructive and helped you to learn something, or at the very last was an entertaining walk-through of an interesting problem. 
+
+$\hspace{1cm}$ As a final takeaway, I want to note how this problem illustrates the importance of elegant, powerful algorithms to writing high-performing code. Powerful machines are only one part of the equation to high-performance computing, and as any computer scientist will tell you, the truth is that even the most powerful machines are little more than a space heater when running a poorly-designed algorithm.    
