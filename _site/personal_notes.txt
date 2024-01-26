@@ -1,3 +1,5 @@
+# Add this to every .html file
+# Add right after <head>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-RT0E6XZ74J"></script>
   <script>
