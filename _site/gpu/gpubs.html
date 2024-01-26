@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <!-- Enable responsiveness on mobile devices -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-  <title>Physics - Matt Russell</title>
+  <title>Benchmarking CUDA Binary Search</title>
   <link rel="stylesheet" href="/css/main.css">
   <link rel="shortcut icon" type="image/png" href="/assets/killerwhaleph.png">
 </head>
@@ -258,12 +258,27 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function() {
 </header>
 
     <div class="container">
-      
-<div style="display:flex; justify-content:space-between; align-items:baseline;">
-  <h4><a href="/phys/examprob" title="Astronautics Exam Problem">Astronautics Exam Problem</a></h4>
-  <p>17 Oct 2023</p>
-</div>
+      <h1>Benchmarking CUDA Binary Search</h1>
+<p class="meta" style="color:#888">25 Jan 2024</p>
+<div class="post">
+  <h3 id="introduction---gpus-vs-cpus">Introduction - GPUs vs CPUs</h3>
+<p>$\hspace{1cm}$ GPUs are becoming a popular topic in modern computing. AI trends have created commercial pressures which in turn have adapted these devices away from their heritage as the workhorse behind the latest and greatest video games, and towards that of a massively-parallel processor capable of blazingly fast feats of numerical calculation. The question must be asked, just how fast are these feats, and how do they compare to the speed of a CPU?</p>
 
+<p>$\hspace{1cm}$ Unfortunately, there is not a simple, cut-and-dry answer to this question. There is no mathematical theory that you can point to and say “given ‘x’, ‘y’, and ‘z’, the GPU will be ‘N’ times faster than a CPU”. The truth is: it depends. First, like most things in computing, we have to be specific. What are we asking the hardware to do, i.e., what problem are we solving? Before continuing, there is a specific meaning to what a ‘problem’ is, that we must be on the same page about. Colloquially, one might characterize a problem as “something to be solved” (circular), or “a challenge” (begs the question), or perhaps in some other inexact way. When venturing into computer science, we must do away with these informal notions.</p>
+
+<p>$\hspace{1cm}$ Formally, a problem is a mapping between a set of inputs, and a set of outputs. For a very simple example,</p>
+
+<h3 id="binary-search---the-fastest-search-algorithm-around">Binary Search - The Fastest Search Algorithm Around</h3>
+
+<h3 id="cuda-binary-search">CUDA Binary Search</h3>
+
+<h3 id="gtx-960-vs-i5-10400f">GTX 960 vs. i5-10400F</h3>
+
+<h3 id="rtx-2060-vs-i5-10400f">RTX 2060 vs i5-10400F</h3>
+
+<h3 id="conclusion">Conclusion</h3>
+
+</div>
 
     </div>
     <footer>

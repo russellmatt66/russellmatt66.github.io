@@ -24,9 +24,9 @@ collections:
     output: true
     permalink: /hpc/:title
 
-  deeplearning:
+  gpu:
     output: true
-    permalink: /deeplearning/:title
+    permalink: /gpu/:title
 
 markdown: kramdown
 

@@ -4,8 +4,8 @@
 - title: "Mathematics"
   href: "/math/"
 
-- title: "Deep Learning"
-  href: "/deeplearning/"
+- title: "GPU"
+  href: "/gpu/"
 
 - title: "HPC"
   href: "/hpc/"
