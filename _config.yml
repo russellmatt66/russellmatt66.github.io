@@ -1,4 +1,4 @@
-title: Matt Russell
+title: Powerlifting And Physics
 tagline: Test tagline.
 email: russellmatt66@gmail.com
 
@@ -20,9 +20,13 @@ collections:
     output: true
     permalink: /math/:title
 
-  hpc:
+  fusion:
     output: true
-    permalink: /hpc/:title
+    permalink: /fusion/:title
+
+  # hpc:
+  #   output: true
+  #   permalink: /hpc/:title
 
   gpu:
     output: true

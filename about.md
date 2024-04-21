@@ -1,6 +1,6 @@
 ---
 layout: default
-title: About - Matt Russell
+title: About
 permalink: /about/
 ---
 

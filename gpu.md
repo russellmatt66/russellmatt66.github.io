@@ -1,6 +1,6 @@
 ---
 layout: default
-title: GPU - Matt Russell
+title: GPU
 permalink: /gpu/
 ---
 

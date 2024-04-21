@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Computer Science - Matt Russell
+title: Computer Science
 permalink: /compsci/
 ---
 

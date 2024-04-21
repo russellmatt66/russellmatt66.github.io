@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Mathematics - Matt Russell
+title: Mathematics
 permalink: /math/
 ---
 

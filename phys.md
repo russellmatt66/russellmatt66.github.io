@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Physics - Matt Russell
+title: Physics
 permalink: /phys/
 ---
 
