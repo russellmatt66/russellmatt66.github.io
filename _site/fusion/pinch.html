@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <!-- Enable responsiveness on mobile devices -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-  <title>Deuterium-Tritium Fusion Alphas and Relativistic Electrons</title>
+  <title>A Primer on Plasma Pinches</title>
   <link rel="stylesheet" href="/css/main.css">
   <link rel="shortcut icon" type="image/png" href="/assets/killerwhaleph.png">
 </head>
@@ -256,88 +256,26 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function() {
 </header>
 
     <div class="container">
-      <h1>Deuterium-Tritium Fusion Alphas and Relativistic Electrons</h1>
-<p class="meta" style="color:#888"></p>
+      <h1>A Primer on Plasma Pinches</h1>
+<p class="meta" style="color:#888">22 Apr 2024</p>
 <div class="post">
-  <p>$\hspace{1cm}$ This post is about working through a calculation using the Lienard-Wiechert potentials to demonstrate the acceleration of electrons to relativistic speeds in a Deuterium-Tritium (DT) fusion reactor. Before we get to the main content, let’s first describe the DT reaction<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>,</p>
+  <p>CFD, or Computational Fluid Dynamics, as the joke goes, actually stands for “Colors For Directors”. Jokes aside, what differentiates a pretty picture of a cylinder from a serious work of scientific computing that adds value to an engineering team, is an understanding of the physics being represented by the visualization, and their importance. This colorful cylinder represents the initial state of the axial current density for a kind of magnetic confinement fusion (MCF) configuration known as a “screw-pinch”.</p>
 
-\[_{1}^{2}H^{+} + \, _{1}^{3}H^{+} \longrightarrow \, _{2}^{4}He^{++} + \, _{0}^{1}n + 17.6 MeV\]
+<p>Screw-pinches require arrays of superconducting magnets to produce the magnetic fields which confine the fusion plasma for a long enough timescale that more power can be obtained, for example by heating water to create steam that then drives a turbine, than was required to initiate the system, for example, the current and voltage that went into breaking the plasma down, and supporting any external control protocols.</p>
 
-<p>$\hspace{1cm}$ The above nuclear reaction may look imposing, but the bit we care about is the very last term, representing the energy that is liberated when a Deuterium ion, $D = \, _{1}^{2}H^{+}$, overcomes the Coulomb barrier and fuses with a Tritium ion, $T = \, _{1}^{3}H^{+}$, producing an alpha particle, $\alpha = \, _{2}^{4}He^{++}$ and a fast neutron, $\, _{0}^{1}n$. Together, these reaction products have a combined energy of 17.6 million electronvolts. Assuming the momentum and energy of the reactants is negligible, how does this energy get divvied up between the two?</p>
+<p>These kinds of magnets are expensive, sensitive, need to be cooled to very low temperatures, and require teams of brilliant, highly-skilled, scientists and engineers to install, maintain, develop, and implement the various moving parts that are required to operate these arrays of superconducting coils. This represents significant cost, and engineering complexity, and is one of the main challenges that the fusion community faces in producing a reactor that serves as the backbone of an electrical power grid.</p>
 
-<p>$\hspace{1cm}$ By conservation of momentum, and energy, we can write the following from the perspective of the center-of-mass (COM) frame for the two particles in the instant after the reaction occurs,</p>
+<p>However, there is an alternative MCF configuration which produces the confinement field based instead on the fusion plasma current, and therefore does not require an external array of superconducting magnets, nor their expense. This is known as a “Z-pinch”, called as such because the plasma current flows down the cylindrical axis (the z-direction), and creates a magnetic field which wraps around the plasma and compresses it radially (“pinches” it).</p>
 
-\[\begin{aligned}
-KE &amp;= \frac{1}{2}m_{\alpha}v_{\alpha}^{2} + \frac{1}{2}m_{n}v_{n}^{2} = E = 17.6 MeV \\
-p &amp;= m_{n}v_{n} + m_{\alpha}v_{\alpha} = 0
-\end{aligned}\]
+<p>When the UK, Soviet Union, and US, declassified their fusion programs in the 50s, it was the simplicity of this idea that led scientists to believe they would have a fusion-powered power plant within a decade. Unfortunately, Z-pinches are plagued by natural instabilities which cause any perturbation in the magnetic field structure to create a positive feedback loop that ends in the decoherence of the fusion plasma on a timescale that is too short to be practical.</p>
 
-<p>The above (fairly simple) nonlinear system of equations can be solved for to obtain exact expressions for the partitioning of energy amongst the end-products,</p>
+<p>By the 80s, the fusion community had largely abandoned the Z-pinch because of this. Decades of searching for a way of stabilizing the device had only produced two approaches: (1) Use external magnetic fields (2) Locate the wall close enough to the plasma so that currents induced in the wall by the growth of an instability generate a stabilizing magnetic field in return.</p>
 
-\[\begin{aligned}
-p = m_{n}v_{n} + m_{\alpha}v_{\alpha} &amp;= 0 \\
-\implies v_{n} &amp;= -\frac{m_{\alpha}}{m_{n}}v_{\alpha} \\
-\therefore \frac{1}{2}m_{\alpha}v_{\alpha}^{2}(1 + \frac{m_{\alpha}}{m_{n}}) &amp;= E \\
-\implies \frac{1}{2}m_{\alpha}v_{\alpha}^{2} &amp;= E \left(\frac{m_{n}}{m_{n} + m_{\alpha}}\right) \\
-\therefore \frac{1}{2}m_{n}v_{n}^{2} &amp;= E \left(\frac{m_{\alpha}}{m_{\alpha} + m_{n}}\right)
-\end{aligned}\]
+<p>The problem with this second approach, and one of the other primary challenges that the fusion community faces, is that the intense flux of heat, and material, coming off of the fusion plasma causes the container walls to melt. Placing the walls of the device closer to the fusion plasma only makes this worse, so wall stabilization does not serve as a practical solution to stabilizing the Z-pinch. Does one even exist?</p>
 
-<!-- $\hspace{1cm}$ Unless you are a fusion scientist, you might feel overwhelmed by the above paragraph and the concepts and notation it introduces. $\textit{Coulomb barrier}$? $\textit{Electronvolt}$? If you are a fusion scientist, then you might be beginning to wonder why you're reading a basic primer on nuclear fusion that seems aimed at the educated public, in a post that seeks to describe a relativistic aspect of alpha heating. Please, forgive me for trying to have it both ways. I merely want to be approachable to a wide audience. It is my intention to write posts explaining the Coulomb barrier, the concept of an electronvolt, the engineering that goes into a fusion reactor, and more, so that there will be a 'trail of breadcrumbs' for someone to follow who wishes to learn about nuclear fusion. -->
+<p>As it turns out, the answer is yes! Ironically, it only took a decade after the community had moved on from the Z-pinch for a plasma scientist by the name of Uri Shumlak to propose a practical method for stabilizing one. This approach, coined “shear-flow stabilization”, and the basis for the Shear-Flow Stabilized (SFS) Z-pinch being developed at Zap Energy, uses a radial shear in the axial plasma velocity to cause the phase of the perturbations to mix, and destructively interfere, in a way that allows the overall fusion plasma to remain stable for thousands of cycles of the magnetic field. In exchange for using its self-generated field to confine the plasma, the SFS Z-pinch does away with the expensive problem of superconductors altogether, at the cost of requiring a pulsed power system which is capable of generating over a Mega-Ampere (MA) of current (= 1,000,000 Amperes = A LOT), at a rate of around 10 times per second, in order to reach breakeven.</p>
 
-<!-- $\hspace{1cm}$ However, what I want to do now is describe what is known as the $\textit{Lienard-Wiechert}$ fields, analytical solutions to the electromagnetic fields radiated by an accelerating charge[^2]. 
-
-$$
-\begin{aligned}
-    \vec{E} &= \frac{q}{4\pi\epsilon_{0}r^{2}}\frac{1}{(1 - \frac{v}{c}\cos(\theta))^{3}}\left(\hat{\textbf{e}}_{r} - \frac{v}{c}\hat{\textbf{e}}_{z}\right)(1 - \frac{v^{2}}{c^{2}}) + \frac{q\sin(\theta)}{4\pi\epsilon_{0}c^{2}r}\frac{\dot{u}}{\left(1 - \frac{v}{c}\cos(\theta)\right)^{2}}\hat{\textbf{e}}_{\theta} \\
-    \vec{B} &= \frac{q}{4\pi\epsilon_{0}c^{2}r^{2}}\frac{v\sin(\theta)}{\left(1 - \frac{v}{c}\cos(\theta)\right)^{3}}\left(1 - \frac{v^{2}}{c^{2}}\right)\hat{\textbf{e}}_{\phi} + \frac{q\sin(\theta)}{4\pi\epsilon_{0}c^{3}r}\frac{\dot{u}}{\left(1 - \frac{v}{c}\cos(\theta)\right)^{2}}\hat{\textbf{e}}_{\phi}
-\end{aligned}
-$$ -->
-
-<!-- These fields have two components, the velocity field, and the acceleration field
-It can be shown by a straightforward conservation of momentum and energy analysis, the bread and butter of a physicist, that the \(\alpha\)-particle is born with 3.5 MeV of kinetic energy, and the fast neutron is created with 14.1 MeV of kinetic energy. -->
-
-<p>$\hspace{1cm}$ A fusion plasma is a soup of charged particles. The fast neutron borne in the DT reaction, having no electric charge, and travelling extremely fast,</p>
-
-\[\begin{aligned}
-\frac{1}{2}m_{n}v_{n}^{2} &amp;= 14.1 MeV \\
-m_{n} &amp;= 939.565 \, MeV / c^{2} \\ 
-\therefore v_{n} &amp;= 0.173c \implies \gamma_{n} = 1.015 
-\end{aligned}\]
-
-<p>therefore possesses a vanishingly-small chance of colliding with other particles in the fully-ionized medium. As a consequence of these facts, it leaves the domain almost immediately.</p>
-
-<p>$\hspace{1cm}$ Exiting stage right as it does, this player is nonetheless critical to the operation of an economic fusion reactor since it carries away most of the energy of the reaction, where it can be caught in a wall of molten metal, typically Lithium (Li), and potentially used to breed new Tritium in a DT reactor. The $\alpha$ has no such luck. In the turbulent environment of the magnetically-confined fusion plasma, this charged particle is unable to escape the magnetic confines.</p>
-
-<p>$\hspace{1cm}$ Instead, with its large amount of random kinetic energy, the $\alpha$ heats the plasma. Given our knowledge of how much energy it has to begin with, energy that will quickly begin radiating away to interact with the electrons in its shielding cloud, we can determine how fast the $\alpha$ is initially going.</p>
-
-\[\begin{aligned}
-    KE_{\alpha} &amp;= \frac{1}{2}m_{\alpha}v_{\alpha}^{2} = 3.5 MeV \\
-    m_{\alpha} &amp;= 3.727 \, GeV / c^{2} \\
-    \therefore v_{\alpha} &amp;= 0.0433c \implies \gamma_{\alpha} = 1.0009  
-\end{aligned}\]
-
-<p>The next step is to figure out what’s happening to the electrons.</p>
-
-<!-- Cylindrical coordinates is not the correct basis for this, need spherical coordinates, but more importantly, need to read Zangwill. -->
-<!-- The electromagnetic fields radiated by a charged particle in motion are given by the $\textit{Lienard-Wiechert}$ fields[^2],
-
-$$
-\begin{aligned}
-    \vec{E} &= \frac{q}{4\pi\epsilon_{0}r^{2}}\frac{1}{(1 - \frac{v}{c}\cos(\theta))^{3}}\left(\hat{\textbf{e}}_{r} - \frac{v}{c}\hat{\textbf{e}}_{z}\right)(1 - \frac{v^{2}}{c^{2}}) + \frac{q\sin(\theta)}{4\pi\epsilon_{0}c^{2}r}\frac{\dot{u}}{\left(1 - \frac{v}{c}\cos(\theta)\right)^{2}}\hat{\textbf{e}}_{\theta} \\
-    \vec{B} &= \frac{q}{4\pi\epsilon_{0}c^{2}r^{2}}\frac{v\sin(\theta)}{\left(1 - \frac{v}{c}\cos(\theta)\right)^{3}}\left(1 - \frac{v^{2}}{c^{2}}\right)\hat{\textbf{e}}_{\phi} + \frac{q\sin(\theta)}{4\pi\epsilon_{0}c^{3}r}\frac{\dot{u}}{\left(1 - \frac{v}{c}\cos(\theta)\right)^{2}}\hat{\textbf{e}}_{\phi}
-\end{aligned}
-$$ 
-
-However, before we can determine, to an exact degree, the magnitude of the electromagnetic fields that the $\alpha$ is radiating away, we have to also know the rate at which its velocity is changing, $\dot{u}$.     -->
-
-<!-- [^2]: Cooray, Vernon, et al. Lightning Electromagnetics. Volume 1, Return Stroke Modelling and Electromagnetic Radiation. The Institution of Engineering and Technology, 2022.  -->
-<div class="footnotes" role="doc-endnotes">
-  <ol>
-    <li id="fn:1" role="doc-endnote">
-      <p>Freidberg, Jeffrey P. Plasma Physics and Fusion Energy. Cambridge University Press, 2007. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
+<p>Why am I telling you about the SFS Z-pinch if what I’m showing is a different configuration altogether? Besides the fact that the SFS Z-pinch is potentially one of the most exciting, and powerful, innovations to have happened in technology, it also requires a HUGE amount of current when pulsing the device. The Kruskal-Shafranov limit is a piece of plasma physics which describes a limitation on the amount of current a given fusion plasma can support stably. Fortunately, the SFS Z-pinch does not appear to need more current than the KS limit permits, but the purpose of this screw-pinch simulation is two-fold: (1) Demonstrate the Kruskal-Shafranov limit computationally (2) Develop a performant GPU simulation of the system using NVIDIA hardware.</p>
 
 </div>
 
