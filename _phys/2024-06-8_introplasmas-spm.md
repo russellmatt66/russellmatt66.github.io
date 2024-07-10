@@ -110,7 +110,7 @@ $$
 \end{align}
 $$
 
-the **Simple Harmonic Oscillator** (SHM). Specifically, these are examples of **homogeneous** differential equations, ones equal to zero, and are generally easier to solve than **heterogeneous** differential equations, where the RHS is non-trivial. In the case of an SHM where there is a forcing function being applied, e.g., a child in a swing being pushed by their parent, we would have a heterogeneous ODE. The analytical solution in that case, if there even *is* one, would depend on the exact force being applied. Fortunately, the SHM is homogeneous, and has an analytical solution, namely a sinusoid!
+the **Simple Harmonic Oscillator** (SHM). Specifically, these are examples of **homogeneous** differential equations, ones that are equal to zero, and which are generally easier to solve than **heterogeneous** differential equations, where the RHS is non-trivial. In the case of an SHM where there is a forcing function being applied, e.g., a child in a swing being pushed by their parent, we would have a heterogeneous ODE. The analytical solution in that case, if there even *is* one, would depend on the exact force being applied. Fortunately, the SHM is homogeneous, and has an analytical solution, namely a sinusoid!
 
 $$
 \begin{align}

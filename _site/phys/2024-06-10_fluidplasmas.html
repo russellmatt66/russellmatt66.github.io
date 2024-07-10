@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <!-- Enable responsiveness on mobile devices -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-  <title>Introduction to Plasmas - Single Particle Motion</title>
+  <title>Introduction to Plasmas - Fluid Plasmas</title>
   <link rel="stylesheet" href="/css/main.css">
   <link rel="shortcut icon" type="image/png" href="/assets/killerwhaleph.png">
 </head>
@@ -256,102 +256,10 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function() {
 </header>
 
     <div class="container">
-      <h1>Introduction to Plasmas - Single Particle Motion</h1>
+      <h1>Introduction to Plasmas - Fluid Plasmas</h1>
 <p class="meta" style="color:#888">10 Jul 2024</p>
 <div class="post">
-  <h3 id="single-particle-motion">Single Particle Motion</h3>
-<p>    Plasma physics is the study of the behavior of plasmas. This study frequently begins with the question “What is a plasma?” Roughly-speaking, it is a gas of charged particles. These particles interact primarily through long-range electromagnetic forces, and all-together, can exhibit a wide spectrum of behavior across multiple scales. As a collection of charged particles, understanding of a plasma’s behavior can be gleaned by studying the motion of charged particles in an electromagnetic field. In the majority of interesting plasmas, this motion is governed by Newtonian mechanics subject to the impact of the Lorentz Force,</p>
-
-\[\vec{F} = q_{s}(\vec{E} + \vec{v} \times \vec{B})\]
-
-<p>    The above equation represents a system of three coupled ordinary differential equations (ODEs) that describe the forces which a charged particle of species, $s$, feels</p>
-
-\[\begin{align}
-F_{x} &amp;= m_{s}\ddot{x} = q_{s}E_{x} + q_{s}(v_{y}B_{z} - v_{z}B_{y}) \\
-F_{y} &amp;= m_{s}\ddot{y} = q_{s}E_{y} + q_{s}(v_{z}B_{x} - v_{x}B_{z}) \\
-F_{z} &amp;= m_{s}\ddot{z} = q_{s}E_{z} + q_{s}(v_{x}B_{y} - v_{y}B_{x})
-\end{align}\]
-
-<p>In a textbook on plasma physics, this is the point where the author would begin to assume various forms for the $\vec{E}$, and $\vec{B}$, fields, and demonstrate the corresponding solution.</p>
-
-<h4 id="case-1-uniform-b">Case 1: Uniform B</h4>
-<p>The simplest case is when the magnetic field is steady, and uniform, in a single direction. Convention in plasma physics is to take this to be in the z-direction. <a href="./2024-06-9_maxwell">Maxwell’s Equations</a> completely describe the behavior of an electromagnetic system, one which is characterized by charges, currents, and associated electric, and magnetic fields. Using Faraday’s Law, we can see that a uniform, steady, magnetic field implies an irrotational electric field,</p>
-
-\[\begin{align}
-\vec{B} &amp;= B_{0}\hat{z} \\
-\rightarrow \pdv{\vec{B}}{}{t} &amp;= 0 = \curl \vec{E} \\
-\end{align}\]
-
-\[\begin{align}
-\therefore \partial_{y}E_{z} - \partial_{z}E_{y} &amp;= 0 \\
-\partial_{z}E_{x} - \partial_{x}E_{z} &amp;= 0 \\
-\partial_{x}E_{y} - \partial_{y}E_{x} &amp;= 0 
-\end{align}\]
-
-<p>It is a common, and unfortunate, misconception that physics, and more broadly, mathematics, is an unimaginative, rote discipline. We have the freedom, and therefore the creativity, to specify the components of the electric field to be whatever we wish them to be, so long as they satisfy the above linear system of PDEs.</p>
-
-<p>    There is another equation of Maxwell’s that relates the electric and magnetic field directly, it is Ampere’s Law,</p>
-
-\[\begin{align}
-&amp;\curl \vec{B} = \mu_{0}\vec{J} + \frac{1}{c^{2}}\pdv{\vec{E}}{}{t} \\
-&amp;\vec{B} = B_{0}\hat{z} \rightarrow \mu_{0}\vec{J} + \frac{1}{c^{2}}\pdv{\vec{E}}{}{t} = 0 \\
-&amp;\rightarrow \vec{J} = -\epsilon_{0}\pdv{\vec{E}}{}{t}
-\end{align}\]
-
-<p>however, it takes more than a single particle to make up a current, so we treat the problem of single particle motion under the assumption that there are no currents or charge densities. Considering how small charged particles are, this is a good assumption.</p>
-
-\[\begin{align}
-\therefore \pdv{\vec{E}}{}{t} = 0 \rightarrow \vec{E} = \vec{E}(\vec{x})
-\end{align}\]
-
-<p>We can choose $\vec{E}$ to be anything which satisfies the basic laws of electromagnetics, i.e., Maxwell’s Equations, but the art of physics is all in selecting examples which lucidly demonstrate an aspect of how nature behaves.</p>
-
-<h4 id="case-1a-vece--0">Case 1a: $\vec{E} = 0$</h4>
-<p>    As it turns out, we can do this without having to churn through pages of algebra by selecting the “trivial case” where the electric field is zero. The governing equations then become,</p>
-
-\[\begin{align}
-\dot{v_{x}} &amp;= \frac{q_{s}}{m_{s}}B_{0}v_{y} \\
-\dot{v_{y}} &amp;= -\frac{q_{s}}{m_{s}}B_{0}v_{x} \\
-\dot{v_{z}} &amp;= 0
-\end{align}\]
-
-<p>where it was helpful to recast the second-order ODEs in position as first-order ODEs in velocity because this leaves us with a system of coupled, first-order, linear ODEs with the simplifications that we input. Furthermore, we can observe there is a factor that has appeared which is common to both differential equations. You might recognize this factor as the <strong>cyclotron frequency</strong>, the number of radians that a particle in a magnetic field rotates through in one second,</p>
-
-\[\begin{align}
-\omega_{cs} \equiv \frac{\abs{q_{s}}B_{0}}{m_{s}}
-\end{align}\]
-
-<p>    To solve the motion of a single charged particle in the fields we’ve specified, we take another time derivative of each of the differential equations that we have. Before proceeding with this, note that $\dot{v_{z}} = 0$ implies that $z = z_{0} + ct$, which you can prove by integrating twice. Wherever the particle was along the magnetic field line, and however fast it was moving in the local direction of the field line, it will maintain that motion without the influence of an electric field. For motion perpendicular to the field line this situation is different, because the particle feels the Lorentz force of the magnetic field bending it around in a circle. Oops! I just asserted the punchline, so let’s prove it.</p>
-
-\[\begin{align}
-\ddot{v_{x}} &amp;= \pm\omega_{cs}\dot{v_{y}} \\ 
-\ddot{v_{y}} &amp;= \mp\omega_{cs}\dot{v_{x}}
-\end{align}\]
-
-<p>When I was first learning about single particle motion, I found the addition of the sign factors, $\pm$, and $\mp$, to be confusing. The reason for their inclusion has to do with our definition of the cyclotron frequency being in terms of the magnitude of the particle charge, instead of its value, which is what shows up in our equations. We choose to define $\omega_{cs}$ in this way because it precludes the quantity from being negative, as a negative cyclotron frequency makes no sense. However, since our equations are in terms of $q_{s}$, we must add the aforementioned sign factors to maintain consistency.</p>
-
-\[\begin{align}
-q_{s} &amp;= \pm \abs{q_{s}} \\
--q_{s} &amp;= \mp \abs{q_{s}}
-\end{align}\]
-
-<p>where it should be understood that the top sign is chosen when the particle charge is positive, and the bottom chosen when it is negative.</p>
-
-<p>    Substituting $\dot{v_{x}}$, and $\dot{v_{y}}$, into the above, we obtain one of the most well-known equations in physics,</p>
-
-\[\begin{align}
-\ddot{v_{x}} + \omega_{cs}^{2}v_{x} &amp;= 0 \\
-\ddot{v_{y}} + \omega_{cs}^{2}v_{y} &amp;= 0 
-\end{align}\]
-
-<p>the <strong>Simple Harmonic Oscillator</strong> (SHM). Specifically, these are examples of <strong>homogeneous</strong> differential equations, ones equal to zero, and are generally easier to solve than <strong>heterogeneous</strong> differential equations, where the RHS is non-trivial. In the case of an SHM where there is a forcing function being applied, e.g., a child in a swing being pushed by their parent, we would have a heterogeneous ODE. The analytical solution in that case, if there even <em>is</em> one, would depend on the exact force being applied. Fortunately, the SHM is homogeneous, and has an analytical solution, namely a sinusoid!</p>
-
-\[\begin{align}
-v_{x} &amp;= v_{\perp}cos(\omega_{cs}t + \phi) \\
-v_{y} &amp;= \mp v_{\perp}sin(\omega_{cs}t + \phi) 
-\end{align}\]
-
-<p><em>Hold on</em>, you may be thinking, <em>why does $v_{y}$ have a $\mp$ attached to it?</em></p>
+  
 
 </div>
 

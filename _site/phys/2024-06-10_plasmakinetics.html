@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <!-- Enable responsiveness on mobile devices -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-  <title>Physics</title>
+  <title>Introduction to Plasmas - Plasma Kinetics</title>
   <link rel="stylesheet" href="/css/main.css">
   <link rel="shortcut icon" type="image/png" href="/assets/killerwhaleph.png">
 </head>
@@ -256,32 +256,24 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function() {
 </header>
 
     <div class="container">
-      
-<div style="display:flex; justify-content:space-between; align-items:baseline;">
-  <h4><a href="/phys/2024-06-10_fluidplasmas" title="Introduction to Plasmas - Fluid Plasmas">Introduction to Plasmas - Fluid Plasmas</a></h4>
-  <p>10 Jul 2024</p>
-</div>
+      <h1>Introduction to Plasmas - Plasma Kinetics</h1>
+<p class="meta" style="color:#888">10 Jul 2024</p>
+<div class="post">
+  <h3 id="plasmas---they-are-cool">Plasmas - They are Cool</h3>
+<p>    If you’re anything like me, what attracted you to plasmas, besides nuclear fusion, was the name. Coined by Irving Langmuir, one of the pioneers of plasma physics, during his study of electric discharges in the ’20s, he imagined the positive and negative charges under his study to be entrained in a fluid medium, like the red and white blood cells in a human body are entrained in blood plasma. This idea has turned out to be false, although the name has stuck. In a plasma, there are only positive and negative charges. Oftentimes, the conditions are right for a plasma to behave like a fluid, but that is a subject for a <a href="./2024-06-10_fluidplasmas">different post</a>.</p>
 
-<div style="display:flex; justify-content:space-between; align-items:baseline;">
-  <h4><a href="/phys/2024-06-10_plasmakinetics" title="Introduction to Plasmas - Plasma Kinetics">Introduction to Plasmas - Plasma Kinetics</a></h4>
-  <p>10 Jul 2024</p>
-</div>
+<p>    The pressing issue that remains is <em>how</em> do you analyze such a system? <a href="./2024-06-9_introplasmas-multi">Plasmas can span many scales</a>, and one of the requirements for a collection of charged particles to behave as a plasma is that there be a very large number of particles in a Debye sphere. <a href="./2024-06-8_introplasmas-spm">Each of these single particles moves according to the electromagnetic field it experiences</a>, so, for a meter-long plasma with density $n = 10^{19}$ $m^{-3}$, this gives approximately $10^{19}$ coupled ODEs to solve!</p>
 
-<div style="display:flex; justify-content:space-between; align-items:baseline;">
-  <h4><a href="/phys/2024-06-8_introplasmas-spm" title="Introduction to Plasmas - Single Particle Motion">Introduction to Plasmas - Single Particle Motion</a></h4>
-  <p>10 Jul 2024</p>
-</div>
+<h4 id="statistical-mechanics">Statistical Mechanics</h4>
+<p>    This issue of very large numbers is a classic problem in dynamics that lead to the development of statistical mechanics. “Stat mech”, as its known, comes up with measurable predictions about the behavior of physical systems by taking moments of a distribution function which is defined on a phasespace, $(\vec{r}, \vec{v})$.</p>
 
-<div style="display:flex; justify-content:space-between; align-items:baseline;">
-  <h4><a href="/phys/2024-06-9_introplasmas-multi" title="Introduction to Plasmas - Multiscale Phenomena">Introduction to Plasmas - Multiscale Phenomena</a></h4>
-  <p>10 Jul 2024</p>
-</div>
+<p>This distribution function, $f(\vec{r}, \vec{v}, t)$, is the density of particles in an infinitesimal volume of phase space centered at $(\vec{r}, \vec{v})$. By integrating over velocity-space we can obtain a value for the number density of particles,</p>
 
-<div style="display:flex; justify-content:space-between; align-items:baseline;">
-  <h4><a href="/phys/2024-06-9_maxwell" title="Maxwell's Equations">Maxwell's Equations</a></h4>
-  <p>10 Jul 2024</p>
-</div>
+\[\begin{equation}
+n(\vec{r}, t) = \int f(\vec{r}, \vec{v}, t)d\vec{v}
+\end{equation}\]
 
+</div>
 
     </div>
     <footer>
