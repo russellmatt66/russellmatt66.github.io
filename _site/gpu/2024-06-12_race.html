@@ -257,15 +257,15 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function() {
 
     <div class="container">
       <h1>Race Conditions</h1>
-<p class="meta" style="color:#888">12 Jul 2024</p>
+<p class="meta" style="color:#888">13 Jul 2024</p>
 <div class="post">
-  <p>Race conditions are one of the fundamental differences between writing sequential programs, and parallel ones. The canonical illustration of what they are is based on a parallel computation of pi by numerically integrating the expression,</p>
+  <p>    Race conditions are one of the fundamental differences between writing sequential programs, and parallel ones. The canonical illustration of what they are is based on a parallel computation of pi by numerically integrating the expression,</p>
 
 \[\begin{equation}
 \int_{-1}^{1} \sqrt{1 - x^{2}} dx
 \end{equation}\]
 
-<p>the function $y = \sqrt{1 - x^{2}}$ over the domain $[-1, 1]$ describes the upper semi-circle of the unit circle, so integrating it accumulates an area of $\frac{\pi}{2}$.</p>
+<p>The function $y = \sqrt{1 - x^{2}}$ over the domain $[-1, 1]$ describes the upper semi-circle of the unit circle, so integrating it accumulates an area of $\frac{\pi}{2}$.</p>
 
 </div>
 
