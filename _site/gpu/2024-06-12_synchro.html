@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <!-- Enable responsiveness on mobile devices -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-  <title>GPU</title>
+  <title>Synchronization Barriers</title>
   <link rel="stylesheet" href="/css/main.css">
   <link rel="shortcut icon" type="image/png" href="/assets/killerwhaleph.png">
 </head>
@@ -256,17 +256,15 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function() {
 </header>
 
     <div class="container">
-      
-<div style="display:flex; justify-content:space-between; align-items:baseline;">
-  <h4><a href="/gpu/2024-06-12_race" title="Race Conditions">Race Conditions</a></h4>
-  <p>12 Jul 2024</p>
-</div>
+      <h1>Synchronization Barriers</h1>
+<p class="meta" style="color:#888">12 Jul 2024</p>
+<div class="post">
+  <h3 id="setting-the-scene">Setting the Scene</h3>
+<p>I LOVE parallel programming. Short of expensive, and inflexible, custom hardware tailored to parallelize a given algorithm, GPUs are the fastest device you can ask for performing a numerical task. Numerical tasks abound in the fields of scientific computing, AI, machine learning, data science, and technology in general. GPUs do not operate alone; not everything that needs to be done are the numerical tasks they are specialialized for. The reason for this powerful specialization is the large number of cores that are located on the device. Individually, each of these cores is weak, typically operating at a rate of just 100s of MHz or into the low GHz, but like apes, together they are strong. However, sometimes, there are tasks which do not benefit from having thousands of cores implementing a SIMD / SIMT model of parallelism. In these situations, for example, if we were trying to run a program which requires a variety of tasks beyond just raw, numerical calculation of vectors, matrices, and tensors, then we would rather have only a handful of much more powerful cores, operating at much higher clock frequencies, and each of which is adapted to efficiently processing these general instructions. I am of course, talking about a CPU. Modern CPUs are incredible examples of parallel technology in their own right, but they lack the volume to compete with a GPU, and their flexibility and general-purpose instruction processing ability comes at the cost of a non-trivial amount of overhead, when it comes to numerical computation.</p>
 
-<div style="display:flex; justify-content:space-between; align-items:baseline;">
-  <h4><a href="/gpu/2024-06-12_synchro" title="Synchronization Barriers">Synchronization Barriers</a></h4>
-  <p>12 Jul 2024</p>
-</div>
+<p>Together, a CPU and a GPU form the minimal configuration for a distributed system.</p>
 
+</div>
 
     </div>
     <footer>
