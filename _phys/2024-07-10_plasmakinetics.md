@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Introduction to Plasmas - Plasma Kinetics
+date: 2024-07-10
 collection: phys
 ---
 ### Plasmas - They are Cool

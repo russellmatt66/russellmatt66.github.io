@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Introduction to Plasmas - Multiscale Phenomena
+date: 2024-07-09
 collection: phys
 ---
 # Plasma Parameters

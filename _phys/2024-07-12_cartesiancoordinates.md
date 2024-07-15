@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Coordinate Systems in Physics - Cartesian Coordinates
+date: 2024-07-12
 collection: phys
 ---
 ### Some Introductory Musings
