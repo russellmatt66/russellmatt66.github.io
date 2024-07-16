@@ -4,14 +4,14 @@ title: Ideal MHD
 date: 2024-07-08
 collection: fusion
 ---
-### Introduction   
+### The Conservative Form
 &nbsp;&nbsp;&nbsp;&nbsp;Ideal Magnetohydrodynamics (MHD) is the simplest model for describing the behavior of a fluid plasma. Due to this simplicity there are some restrictions on when we, strictly-speaking, can apply it. Funnily enough, in practice Ideal MHD applies more than it should. The reason why plasma scientists care so much about Ideal MHD is that it describes the equilibrium of magnetic fusion reactors. Although it is the simplest fluid model of a plasma, it is still quite complicated. In the absence of source terms, this is what it looks like,
 
 $$
 \pdv{\vec{Q}}{}{t} + \div \textbf{T} = 0
 $$ 
 
-If source terms were present, then they would show up on the right-hand side (RHS) of this expression, instead of 0. Without source terms, the above is what's known as a $\textit{homogeneous}$ partial differential equation (PDE), i.e., one that is zero everywhere. Homogeneous PDEs are by no means easy to solve, but $\textit{heterogeneous}$ PDEs, ones that are not zero everywhere, are even harder. PDEs are ubiquitous in science, and engineering. 
+If source terms were present, then they would show up on the right-hand side (RHS) of this expression, instead of 0. Without source terms, the above is what's known as a $\textit{homogeneous}$ partial differential equation (PDE), i.e., one that is zero everywhere. When a system of PDEs is written in the above fashion, it is referred to as being in "conservative form", as the above can be seen to be in the form of a conservation law. Homogeneous PDEs are by no means easy to solve, but $\textit{heterogeneous}$ PDEs, ones that are not zero everywhere, are even harder. PDEs are ubiquitous in science, and engineering, so the existence and uniqueness of solutions to them is a crucial matter. 
 
 &nbsp;&nbsp;&nbsp;&nbsp;$\vec{Q}$ is the vector of Ideal MHD variables. These are the physical quantities which characterize the state of the plasma being studied by the Ideal MHD model. There are eight of them,
 
@@ -29,4 +29,7 @@ $$
 \textbf{T} = \rowvec{\vec{F} \\ \vec{G} \\ \vec{H}}
 $$
 
-&nbsp;&nbsp;&nbsp;&nbsp;Lastly, $\nabla$ is the gradient. The gradient is a special kind of vector that points in the direction of a function's maximum possible change. If you are familiar with vector calculus, then you are familiar with $\nabla$. There are all kinds of mathematical tricks that we can play with $\nabla$, and these tricks are the sleight of hand that makes up the shell game which is classical physics.  
+&nbsp;&nbsp;&nbsp;&nbsp;Lastly, $\nabla$ is the [gradient](../_math/2024-07-16_gradients). The gradient is a special kind of vector that points in the direction of a function's maximum possible change. If you are familiar with vector calculus, then you are familiar with $\nabla$. There are all kinds of mathematical tricks that we can play with $\nabla$, and these tricks are the sleight of hand that makes up the shell game which is classical physics. People that like to memorize things study medicine, not physics, so the best way to play these tricks is to write them in [index notation](../_math/2024-07-15_indexnotation) as this allows one to derive them just from a basic understanding of a [few mathematical tools](../_math/2024-07-15_indexnotation/#deriving-vector-identities).  
+
+#### Deriving Ideal MHD
+All MHD models begin from a set of fluid equations, and all fluid equations begin by taking a set of moments of a kinetic equation, with a suitable means of closing this infinite process. The two most popular schemes for creating these fluid equations are the **5N-moment** model, and **13N-moment** model. The *N* in these names refers to the number of kinetic equations at the basis of this procedure, i.e., the number of species of particle your fluid is considered to be composed of, and the numeric literal refers to the number of fluid variables the model results in. 5N models are the most basic kind, describing the flux of mass, momentum, and energy in the medium using variables for the density, velocity, and energy. 13N models go a step further to model the flux of heat.       
