@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Introduction to Plasmas - Single Particle Motion
+title: Single Particle Motion
 date: 2024-07-08
 collection: phys
 ---

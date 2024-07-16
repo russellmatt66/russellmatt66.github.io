@@ -2,7 +2,7 @@
 layout: post
 title: Coordinate Systems in Physics - Cartesian Coordinates
 date: 2024-07-12
-collection: phys
+collection: math
 ---
 ### Some Introductory Musings
 &nbsp;&nbsp;&nbsp;&nbsp;In Algebra I, we learn about the variable, $x$. After this introduction, we learn about some basic mathematical rules and structures that help us to determine what it is in certain situations, giving us the ability to study a variety of equations. In college-level physics, we start to apply the concept of $x$ by studying motion in one dimension. The range of physical behavior we can meaningfully study is very limited if we are restricted purely to the tools of algebra so, in order to expand our horizons, we loop in calculus, differential equations, and linear algebra. This point represents a great filter in the education of many students as many unfortunately don't have the interest in acquiring these skills, or labor under the yoke of negative attitudes from their peers, or instructors. 

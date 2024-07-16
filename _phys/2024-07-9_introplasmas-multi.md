@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Introduction to Plasmas - Multiscale Phenomena
+title: Multiscale Phenomena in Plasmas
 date: 2024-07-09
 collection: phys
 ---
