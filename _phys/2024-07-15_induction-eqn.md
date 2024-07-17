@@ -68,6 +68,36 @@ where $\bar{\eta} = \frac{c^{2}\eta}{4\pi}$.
 $$
 \begin{align}
 \partial_{t}B_{i} - \epsilon_{ijk}\epsilon_{klm}\partial_{j}u_{l}B_{m} &= -\bar{\eta} \epsilon_{ijk}\epsilon_{klm}\partial_{j}\partial_{l}B_{m} \\
-\implies \partial_{t}B_{i} - \left[\delta_{il}\delta_{jm} - \delta_{jl}\delta_{jm}\right]\partial_{j}u_{l}B_{m} &= - \bar{\eta} \left[\delta_{il}\delta_{jm} - \delta_{jl}\delta_{jm}\right]\partial_{j}\partial_{l}B_{m}
+\implies \partial_{t}B_{i} - \left[\delta_{il}\delta_{jm} - \delta_{jl}\delta_{im}\right]\partial_{j}u_{l}B_{m} &= - \bar{\eta} \left[\delta_{il}\delta_{jm} - \delta_{jl}\delta_{im}\right]\partial_{j}\partial_{l}B_{m}
+\end{align}
+$$
+
+Due to the definition of the Kronecker delta, any index expression that, for example, $\delta_{il}$, multiplies, will be 0 unless $i = l$. We utilize this fact appropriately, along with the [product rule](../math/2024-07-17_calculus#multi-variable-product-rule), to simplify the above, 
+
+$$
+\begin{align}
+\therefore \partial_{t}B_{i} - \partial_{j}(u_{i}B_{j}) + \partial_{j}(u_{j}B_{i}) &= \bar{\eta} \left[\partial_{j}\partial_{j}B_{i} - \partial_{j}\partial_{i}B_{j}\right] \\
+\implies \partial_{t}B_{i} - B_{j}\partial_{j}u_{i} - u_{i}\partial_{j}B_{j} + B_{i}\partial_{j}u_{j} + u_{j}\partial_{j}B_{i} &= RHS
+\end{align}
+$$
+
+Now, we can just readily convert from index notation back to the more compact symbolic notation, assume incompressible flow, and use Maxwell's Equations to simplify further, while noting in the process that we also implicitly assume our magnetic field is sufficiently smooth, 
+
+$$
+\begin{align}
+\pdv{\vec{B}}{}{t} - (\vec{B} \cdot \nabla)\vec{u} - \vec{u}(\div \vec{B}) + \vec{B} (\div \vec{u}) + (\vec{u} \cdot \nabla)\vec{B} &= \bar{\eta}\left[\laplacian \vec{B} - \nabla(\div \vec{B})\right] 
+\end{align}
+$$
+
+$$
+\begin{align}
+\div \vec{B} & = 0 \\
+\div \vec{u} &= 0
+\end{align}
+$$
+
+$$
+\begin{align}
+\therefore \pdv{\vec{B}}{}{t} - (\vec{B} \cdot \nabla)\vec{u} + (\vec{u} \cdot \nabla)\vec{B} &= \bar{\eta}\laplacian \vec{B} \quad \text{QED}
 \end{align}
 $$
