@@ -5,7 +5,7 @@ email: russellmatt66@gmail.com
 description: 'test'
 
 url: 'https://russellmatt66.github.io'
-baseurl: '/physicsinparallel'
+baseurl: ''
 
 collections:
   phys:

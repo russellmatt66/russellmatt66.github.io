@@ -42,7 +42,7 @@ To keep the scope of this post appropriate, that is all I will say on relativity
 &nbsp;&nbsp;&nbsp;&nbsp; For indices $i$, $j$, $k$ $\in \\{ 1,2,3 \\}$, there are $3^3 = 27$ different permutations that can be chosen without replacement. For example, $ijk = 123$, being one of them. Reading this example from left to right, we can see that the indices are in numerical order, so this is an example of a cyclic permutation. Now, consider $ijk = 321$. Reading this example from left to right, we can see that the indices are in reverse numerical order, a.k.a, numerical order when read from right to left, so this is an example of an anti-cyclic permutation. There is another element to the loose definition that I gave, and this is that the reading occurs in a modular fashion. For example, if $ijk = 312$, then we consider this a cyclic permutation as starting from 1, we read left to right, wrapping around to the beginning once we reach the end of the tuple, and find that it is in numerical order. Hopefully, by applying the same logic, it is evident why $ijk = 213$ is an anti-cyclic permutation. Another way of capturing these notions is with the idea of *even* and *odd* permutations.
 
 #### Kronecker Delta
-&nbsp;&nbsp;&nbsp;&nbsp; By itself, the Levi-Civita symbol is a mathematical curiosity, what makes it so powerful to the practice of vector calculus is its connection to the *Kronecker Delta*. If you have studied math, physics, or engineering to an intermediate degree, then you have certainly encountered the concept of a delta function (or perhaps distribution). For example, in physics and engineering there is the [*Dirac delta*](./2024-07-16_diracdelta), $\delta(\vec{x} - \vec{x}_{0})$, defined in the following manner,
+&nbsp;&nbsp;&nbsp;&nbsp; By itself, the Levi-Civita symbol is a mathematical curiosity, what makes it so powerful to the practice of vector calculus is its connection to the *Kronecker Delta*. If you have studied math, physics, or engineering to an intermediate degree, then you have certainly encountered the concept of a delta function (or perhaps distribution). For example, in physics and engineering, there is the [*Dirac delta*](./2024-07-16_diracdelta), $\delta(\vec{x} - \vec{x}_{0})$, defined in the following manner,
 
 $$
 \delta(\vec{x} - \vec{x}_{0}) = \begin{cases}
@@ -70,8 +70,18 @@ $$
 \end{pmatrix}
 $$
 
+&nbsp;&nbsp;&nbsp;&nbsp; There is a powerful relationship between the LV tensor, and the Kronecker delta. When you have a sum over a product of LV symbols that occurs in a very particular way, you can rewrite the product of LV symbols as a difference of a product of Kronecker deltas, like so,
+
+$$
+\begin{equation}
+\epsilon_{ijk}\epsilon_{klm} = \delta_{il}\delta_{jm} - \delta_{jl}\delta_{jm}
+\end{equation}
+$$
+
+What makes this relationship so powerful in the practice of vector calculus, is the ability it gives us to work with expressions which are the [curl of a curl](../math/2024-07-16_gradients#the-curl). These sorts of expressions arise frequently when working with electromagnetism, fluid dynamics, and other domains of classical physics which deal with systems that are sometimes not irrotational. Specifically, the role that the Kronecker delta plays in this fashion is to equate pairs of indices to each other.         
+
 #### The Vector (Cross) Product
-Besides the inner product, previously described, which maps two vectors to a scalar, there are other products which can be formed from a binary operation on vectors. A scalar is a rank-0 tensor, so the natural progression is to come up with an operation that forms a vector (rank-1 tensor). You might know this as the *cross product*. 
+&nbsp;&nbsp;&nbsp;&nbsp; Besides the inner product, previously described, which maps two vectors to a scalar, there are other products which can be formed from a binary operation on vectors. A scalar is a rank-0 tensor, so the natural progression is to come up with an operation that forms a vector (rank-1 tensor). You might know this as the *cross product*. 
 
 $$
 \begin{equation}

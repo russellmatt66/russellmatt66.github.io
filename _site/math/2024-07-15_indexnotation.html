@@ -127,110 +127,11 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function() {
 });
 </script>
 
-<!-- Need to fix the macros - write script that parses the old line and translates it into the new structure -->
-<!-- <script type="text/x-mathjax-config"  >
-MathJax.Hub.Register.StartupHook("TeX Jax Ready",function() {
-  var TEX = MathJax.InputJax.TeX;
-  TEX.Definitions.Add({
-    macros: {
-      colvec: ["Macro","{\\begin{bmatrix} #1 \\end{bmatrix}}", 1],
-      quantity:["Macro","{\\left\\{ #1 \\right\\}}",1],
-      qty:["Macro","{\\left\\{ #1 \\right\\}}",1],
-      pqty:["Macro","{\\left( #1 \\right)}",1],
-      bqty:["Macro","{\\left[ #1 \\right]}",1],
-      vqty:["Macro","{\\left\\vert #1 \\right\\vert}",1],
-      Bqty:["Macro","{\\left\\{ #1 \\right\\}}",1],
-      absolutevalue:["Macro","{\\left\\vert #1 \\right\\vert}",1],
-      abs:["Macro","{\\left\\vert #1 \\right\\vert}",1],
-      norm:["Macro","{\\left\\Vert #1 \\right\\Vert}",1],
-      evaluated:["Macro","{#1 \\vert}",1],
-      eval:["Macro","{#1 \\vert}",1],
-      order:["Macro","{\\mathcal{O} \\left( #1 \\right)}",1],
-      commutator:["Macro","{\\left[ #1 , #2 \\right]}",2],
-      comm:["Macro","{\\left[ #1 , #2 \\right]}",2],
-      anticommutator:["Macro","{\\left\\{ #1 , #2 \\right\\}}",2],
-      acomm:["Macro","{\\left\\{ #1 , #2 \\right\\}}",2],
-      poissonbracket:["Macro","{\\left\\{ #1 , #2 \\right\\}}",2],
-      pb:["Macro","{\\left\\{ #1 , #2 \\right\\}}",2],
-      vectorbold:["Macro","{\\boldsymbol{ #1 }}",1],
-      vb:["Macro","{\\boldsymbol{ #1 }}",1],
-      vectorarrow:["Macro","{\\vec{\\boldsymbol{ #1 }}}",1],
-      va:["Macro","{\\vec{\\boldsymbol{ #1 }}}",1],
-      vectorunit:["Macro","}}",1],
-      vu:["Macro","}}",1],
-      dotproduct:["Macro","{\\boldsymbol\\cdot}"],
-      vdot:["Macro","{\\boldsymbol\\cdot}"],
-      crossproduct:["Macro","{\\boldsymbol\\times}"],
-      cross:["Macro","{\\boldsymbol\\times}"],
-      cp:["Macro","{\\boldsymbol\\times}"],
-      gradient:["Macro","{\\boldsymbol\\nabla}"],
-      grad:["Macro","{\\boldsymbol\\nabla}"],
-      divergence:["Macro","{\\grad\\vdot}"],
-      div:["Macro","{\\grad\\vdot}"],
-      curl:["Macro","{\\grad\\cross}"],
-      laplacian:["Macro","{\\nabla^2}"],
-      tr:["Macro","{\\operatorname{tr}}"],
-      Tr:["Macro","{\\operatorname{Tr}}"],
-      rank:["Macro","{\\operatorname{rank}}"],
-      erf:["Macro","{\\operatorname{erf}}"],
-      Res:["Macro","{\\operatorname{Res}}"],
-      principalvalue:["Macro","{\\mathcal{P}}"],
-      pv:["Macro","{\\mathcal{P}}"],
-      PV:["Macro","{\\operatorname{P.V.}}"],
-      Re:["Macro","{\\operatorname{Re} \\left\\{ #1 \\right\\}}",1],
-      Im:["Macro","{\\operatorname{Im} \\left\\{ #1 \\right\\}}",1],
-      qqtext:["Macro","{\\quad\\text{ #1 }\\quad}",1],
-      qq:["Macro","{\\quad\\text{ #1 }\\quad}",1],
-      qcomma:["Macro","{\\text{,}\\quad}"],
-      qc:["Macro","{\\text{,}\\quad}"],
-      qcc:["Macro","{\\quad\\text{c.c.}\\quad}"],
-      qif:["Macro","{\\quad\\text{if}\\quad}"],
-      qthen:["Macro","{\\quad\\text{then}\\quad}"],
-      qelse:["Macro","{\\quad\\text{else}\\quad}"],
-      qotherwise:["Macro","{\\quad\\text{otherwise}\\quad}"],
-      qunless:["Macro","{\\quad\\text{unless}\\quad}"],
-      qgiven:["Macro","{\\quad\\text{given}\\quad}"],
-      qusing:["Macro","{\\quad\\text{using}\\quad}"],
-      qassume:["Macro","{\\quad\\text{assume}\\quad}"],
-      qsince:["Macro","{\\quad\\text{since}\\quad}"],
-      qlet:["Macro","{\\quad\\text{let}\\quad}"],
-      qfor:["Macro","{\\quad\\text{for}\\quad}"],
-      qall:["Macro","{\\quad\\text{all}\\quad}"],
-      qeven:["Macro","{\\quad\\text{even}\\quad}"],
-      qodd:["Macro","{\\quad\\text{odd}\\quad}"],
-      qinteger:["Macro","{\\quad\\text{integer}\\quad}"],
-      qand:["Macro","{\\quad\\text{and}\\quad}"],
-      qor:["Macro","{\\quad\\text{or}\\quad}"],
-      qas:["Macro","{\\quad\\text{as}\\quad}"],
-      qin:["Macro","{\\quad\\text{in}\\quad}"],
-      differential:["Macro","{\\text{d}}"],
-      dd:["Macro","{\\text{d}}"],
-      derivative:["Macro","{\\frac{\\text{d}{ #1 }}{\\text{d}{ #2 }}}",2],
-      dv:["Macro","{\\frac{\\text{d}{ #1 }}{\\text{d}{ #2 }}}",2],
-      partialderivative:["Macro","{\\frac{\\partial{ #1 }}{\\partial{ #2 }}}",2],
-      pdv:["Macro","{\\frac{\\partial{ #1 }}{\\partial{ #2 }}}",2],
-      variation:["Macro","{\\delta}"],
-      "var":["Macro","{\\delta}"],
-      functionalderivative:["Macro","{\\frac{\\delta{ #1 }}{\\delta{ #2 }}}",2],
-      fdv:["Macro","{\\frac{\\delta{ #1 }}{\\delta{ #2 }}}",2],
-      ket:["Macro","{\\left\\vert { #1 } \\right\\rangle}",1],
-      bra:["Macro","{\\left\\langle { #1} \\right\\vert}",1],
-      innerproduct:["Macro","{\\left\\langle {#1} \\mid { #2} \\right\\rangle}",2],
-      braket:["Macro","{\\left\\langle {#1} \\mid { #2} \\right\\rangle}",2],
-      outerproduct:["Macro","{\\left\\vert { #1 } \\right\\rangle\\left\\langle { #2} \\right\\vert}",2],
-      dyad:["Macro","{\\left\\vert { #1 } \\right\\rangle\\left\\langle { #2} \\right\\vert}",2],
-      ketbra:["Macro","{\\left\\vert { #1 } \\right\\rangle\\left\\langle { #2} \\right\\vert}",2],
-      op:["Macro","{\\left\\vert { #1 } \\right\\rangle\\left\\langle { #2} \\right\\vert}",2],
-      expectationvalue:["Macro","{\\left\\langle {#1 } \\right\\rangle}",1],
-      expval:["Macro","{\\left\\langle {#1 } \\right\\rangle}",1],
-      ev:["Macro","{\\left\\langle {#1 } \\right\\rangle}",1],
-      matrixelement:["Macro","{\\left\\langle{ #1 }\\right\\vert{ #2 }\\left\\vert{#3}\\right\\rangle}",3],
-      matrixel:["Macro","{\\left\\langle{ #1 }\\right\\vert{ #2 }\\left\\vert{#3}\\right\\rangle}",3],
-      mel:["Macro","{\\left\\langle{ #1 }\\right\\vert{ #2 }\\left\\vert{#3}\\right\\rangle}",3]
-    }
-  });
-});
-</script> -->
+window.MathJax = {
+  tex: {
+    tags: 'ams'
+  }
+};
 
 <script 
   src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_HTMLorMML' async>
@@ -290,7 +191,7 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function() {
 <p>     For indices $i$, $j$, $k$ $\in \{ 1,2,3 \}$, there are $3^3 = 27$ different permutations that can be chosen without replacement. For example, $ijk = 123$, being one of them. Reading this example from left to right, we can see that the indices are in numerical order, so this is an example of a cyclic permutation. Now, consider $ijk = 321$. Reading this example from left to right, we can see that the indices are in reverse numerical order, a.k.a, numerical order when read from right to left, so this is an example of an anti-cyclic permutation. There is another element to the loose definition that I gave, and this is that the reading occurs in a modular fashion. For example, if $ijk = 312$, then we consider this a cyclic permutation as starting from 1, we read left to right, wrapping around to the beginning once we reach the end of the tuple, and find that it is in numerical order. Hopefully, by applying the same logic, it is evident why $ijk = 213$ is an anti-cyclic permutation. Another way of capturing these notions is with the idea of <em>even</em> and <em>odd</em> permutations.</p>
 
 <h4 id="kronecker-delta">Kronecker Delta</h4>
-<p>     By itself, the Levi-Civita symbol is a mathematical curiosity, what makes it so powerful to the practice of vector calculus is its connection to the <em>Kronecker Delta</em>. If you have studied math, physics, or engineering to an intermediate degree, then you have certainly encountered the concept of a delta function (or perhaps distribution). For example, in physics and engineering there is the <a href="./2024-07-16_diracdelta"><em>Dirac delta</em></a>, $\delta(\vec{x} - \vec{x}_{0})$, defined in the following manner,</p>
+<p>     By itself, the Levi-Civita symbol is a mathematical curiosity, what makes it so powerful to the practice of vector calculus is its connection to the <em>Kronecker Delta</em>. If you have studied math, physics, or engineering to an intermediate degree, then you have certainly encountered the concept of a delta function (or perhaps distribution). For example, in physics and engineering, there is the <a href="./2024-07-16_diracdelta"><em>Dirac delta</em></a>, $\delta(\vec{x} - \vec{x}_{0})$, defined in the following manner,</p>
 
 \[\delta(\vec{x} - \vec{x}_{0}) = \begin{cases}
     1 &amp; \text{if } \vec{x} = \vec{x}_{0} \\
@@ -312,8 +213,16 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function() {
     0 &amp; 0 &amp; 1 
 \end{pmatrix}\]
 
+<p>     There is a powerful relationship between the LV tensor, and the Kronecker delta. When you have a sum over a product of LV symbols that occurs in a very particular way, you can rewrite the product of LV symbols as a difference of a product of Kronecker deltas, like so,</p>
+
+\[\begin{equation}
+\epsilon_{ijk}\epsilon_{klm} = \delta_{il}\delta_{jm} - \delta_{jl}\delta_{jm}
+\end{equation}\]
+
+<p>What makes this relationship so powerful in the practice of vector calculus, is the ability it gives us to work with expressions which are the <a href="../math/2024-07-16_gradients#the-curl">curl of a curl</a>. These sorts of expressions arise frequently when working with electromagnetism, fluid dynamics, and other domains of classical physics which deal with systems that are sometimes not irrotational. Specifically, the role that the Kronecker delta plays in this fashion is to equate pairs of indices to each other.</p>
+
 <h4 id="the-vector-cross-product">The Vector (Cross) Product</h4>
-<p>Besides the inner product, previously described, which maps two vectors to a scalar, there are other products which can be formed from a binary operation on vectors. A scalar is a rank-0 tensor, so the natural progression is to come up with an operation that forms a vector (rank-1 tensor). You might know this as the <em>cross product</em>.</p>
+<p>     Besides the inner product, previously described, which maps two vectors to a scalar, there are other products which can be formed from a binary operation on vectors. A scalar is a rank-0 tensor, so the natural progression is to come up with an operation that forms a vector (rank-1 tensor). You might know this as the <em>cross product</em>.</p>
 
 \[\begin{equation}
 \vec{a} \cross \vec{b} = \epsilon_{ijk}a_{j}b_{k}\hat{e}_{i}
