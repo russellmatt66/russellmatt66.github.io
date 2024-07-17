@@ -116,11 +116,25 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function() {
 });
 </script>
 
-<!-- window.MathJax = {
-  tex: {
-    tags: 'ams'
-  }
-}; -->
+<!-- <script type="text/javascript">
+  window.MathJax = {
+    tex: {
+      extensions: ["TeX/AMSmath.js"],
+      // tags: 'ams'
+    }
+};
+</script> -->
+<script type="text/javascript">
+  window.MathJax = {
+    tex: {
+      extensions: ["AMSmath.js", "AMSsymbols.js"],
+      packages: {'[+]': ['mhchem']}
+    },
+    loader: {
+      load: ['[tex]/mhchem']
+    }
+  };
+</script>
 
 <script 
   src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_HTMLorMML' async>

@@ -96,8 +96,14 @@ $$
 \end{align}
 $$
 
+ultimately yielding the desirous form of the Induction Equation[^1], 
+
 $$
 \begin{align}
-\therefore \pdv{\vec{B}}{}{t} - (\vec{B} \cdot \nabla)\vec{u} + (\vec{u} \cdot \nabla)\vec{B} &= \bar{\eta}\laplacian \vec{B} \quad \text{QED}
+\therefore &\pdv{\vec{B}}{}{t} - (\vec{B} \cdot \nabla)\vec{u} + (\vec{u} \cdot \nabla)\vec{B} = \bar{\eta}\laplacian \vec{B} \\
+\implies &\pdv{\vec{B}}{}{t} + (\vec{u} \cdot \nabla)\vec{B} = (\vec{B} \cdot \nabla)\vec{u} + \bar{\eta}\laplacian \vec{B} \quad \text{QED}
 \end{align}
 $$
+
+<!-- References -->
+[^1]: https://suli.pppl.gov/2024/course/reconnection_Zhou.pdf
