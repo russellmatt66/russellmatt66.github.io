@@ -4,7 +4,6 @@ title: Single Particle Motion
 date: 2024-07-08
 collection: phys
 ---
-### Single Particle Motion  
 &nbsp;&nbsp;&nbsp;&nbsp;Plasma physics is the study of the behavior of plasmas. This study frequently begins with the question "What is a plasma?" Roughly-speaking, it is a gas of charged particles. These particles interact primarily through long-range electromagnetic forces, and all-together, can exhibit a wide spectrum of behavior across multiple scales. As a collection of charged particles, understanding of a plasma's behavior can be gleaned by studying the motion of charged particles in an electromagnetic field. In the majority of interesting plasmas, this motion is governed by Newtonian mechanics subject to the impact of the Lorentz Force,
 
 $$
@@ -23,7 +22,7 @@ $$
 
 In a textbook on plasma physics, this is the point where the author would begin to assume various forms for the $\vec{E}$, and $\vec{B}$, fields, and demonstrate the corresponding solution. 
 
-#### Case 1: Uniform B
+#### Case 1: $\vec{B} = B_{0}\hat{z}$
 The simplest case is when the magnetic field is steady, and uniform, in a single direction. Convention in plasma physics is to take this to be in the z-direction. [Maxwell's Equations](./2024-06-9_maxwell) completely describe the behavior of an electromagnetic system, one which is characterized by charges, currents, and associated electric, and magnetic fields. Using Faraday's Law, we can see that a uniform, steady, magnetic field implies an irrotational electric field,
 
 $$
@@ -120,4 +119,6 @@ v_{y} &= \mp v_{\perp}sin(\omega_{cs}t + \phi)
 \end{align}
 $$
 
-*Hold on*, you may be thinking, *why does $v_{y}$ have a $\mp$ attached to it?*
+*Hold on*, you may be thinking, *why does $v_{y}$ have a $\mp$ attached to it?* 
+
+#### Case 1b: $\vec{E} = E_{0}\hat{y}$

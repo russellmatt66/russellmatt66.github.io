@@ -108,9 +108,7 @@ $$
 as evident from the last line, it is straightforward to convert from $ijk \in \\{123\\}$ to $ijk \in \\{xyz\\}$, and see that the above is equivalent to the standard, determinant-based, formulation of the vector product (if the '+' in the middle term makes you uncomfortable for that reason, then just pull a negative sign out of the difference).   
 
 #### Deriving Vector Identities
-&nbsp;&nbsp;&nbsp;&nbsp; Vector calculus is the basis for almost every field of classical physics, e.g., electromagnetism, dynamics, fluid mechanics, etc.. Acquiring an understanding of these fields that is more than just surface level frequently requires manipulating expressions that feature combinations of vector and cross products involving the state variables characterizing the physical system, e.g., $\vec{E}, \vec{B}, \vec{J}$, in electromagnetism, or $\rho, \vec{u}, p$, in fluid dynamics, and their gradients, $\nabla$. 
-
-&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp; Vector calculus is the basis for almost every field of classical physics, e.g., electromagnetism, dynamics, fluid mechanics, etc.. Acquiring an understanding of these fields that is more than just surface level frequently requires manipulating expressions that feature combinations of vector and cross products involving the state variables characterizing the physical system, e.g., $\vec{E}, \vec{B}, \vec{J}$, in electromagnetism, or $\rho, \vec{u}, p$, in fluid dynamics, and their gradients, $\nabla$. Index notation gives us the ability to directly manipulate the underlying partial derivatives, and vector components, of these expressions without becoming lost in seas of algebra. Consequently, we can derive some interesting and useful relationships. For the sake of brevity, these will be enumerated in a [separate post](./2024-07-18_vectoridentities).
 
 
 <!-- References -->

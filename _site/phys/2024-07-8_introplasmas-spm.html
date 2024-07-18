@@ -130,12 +130,11 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function() {
 <!-- <script type="text/javascript">
   window.MathJax = {
     tex: {
-      extensions: ["TeX/AMSmath.js"],
-      // tags: 'ams'
+      tags: 'ams'
     }
-};
+  };
 </script> -->
-<script type="text/javascript">
+<!-- <script type="text/javascript">
   window.MathJax = {
     tex: {
       extensions: ["AMSmath.js", "AMSsymbols.js"],
@@ -145,12 +144,13 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function() {
       load: ['[tex]/mhchem']
     }
   };
-</script>
+</script> -->
 
 <script 
   src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_HTMLorMML' async>
 </script>
 
+  
   <body>
     <header>
 <nav>
@@ -173,8 +173,7 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function() {
       <h1>Single Particle Motion</h1>
 <p class="meta" style="color:#888">08 Jul 2024</p>
 <div class="post">
-  <h3 id="single-particle-motion">Single Particle Motion</h3>
-<p>    Plasma physics is the study of the behavior of plasmas. This study frequently begins with the question “What is a plasma?” Roughly-speaking, it is a gas of charged particles. These particles interact primarily through long-range electromagnetic forces, and all-together, can exhibit a wide spectrum of behavior across multiple scales. As a collection of charged particles, understanding of a plasma’s behavior can be gleaned by studying the motion of charged particles in an electromagnetic field. In the majority of interesting plasmas, this motion is governed by Newtonian mechanics subject to the impact of the Lorentz Force,</p>
+  <p>    Plasma physics is the study of the behavior of plasmas. This study frequently begins with the question “What is a plasma?” Roughly-speaking, it is a gas of charged particles. These particles interact primarily through long-range electromagnetic forces, and all-together, can exhibit a wide spectrum of behavior across multiple scales. As a collection of charged particles, understanding of a plasma’s behavior can be gleaned by studying the motion of charged particles in an electromagnetic field. In the majority of interesting plasmas, this motion is governed by Newtonian mechanics subject to the impact of the Lorentz Force,</p>
 
 \[\vec{F} = q_{s}(\vec{E} + \vec{v} \times \vec{B})\]
 
@@ -188,7 +187,7 @@ F_{z} &amp;= m_{s}\ddot{z} = q_{s}E_{z} + q_{s}(v_{x}B_{y} - v_{y}B_{x})
 
 <p>In a textbook on plasma physics, this is the point where the author would begin to assume various forms for the $\vec{E}$, and $\vec{B}$, fields, and demonstrate the corresponding solution.</p>
 
-<h4 id="case-1-uniform-b">Case 1: Uniform B</h4>
+<h4 id="case-1-vecb--b_0hatz">Case 1: $\vec{B} = B_{0}\hat{z}$</h4>
 <p>The simplest case is when the magnetic field is steady, and uniform, in a single direction. Convention in plasma physics is to take this to be in the z-direction. <a href="./2024-06-9_maxwell">Maxwell’s Equations</a> completely describe the behavior of an electromagnetic system, one which is characterized by charges, currents, and associated electric, and magnetic fields. Using Faraday’s Law, we can see that a uniform, steady, magnetic field implies an irrotational electric field,</p>
 
 \[\begin{align}
@@ -266,6 +265,8 @@ v_{y} &amp;= \mp v_{\perp}sin(\omega_{cs}t + \phi)
 \end{align}\]
 
 <p><em>Hold on</em>, you may be thinking, <em>why does $v_{y}$ have a $\mp$ attached to it?</em></p>
+
+<h4 id="case-1b-vece--e_0haty">Case 1b: $\vec{E} = E_{0}\hat{y}$</h4>
 
 </div>
 

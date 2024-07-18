@@ -130,12 +130,11 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function() {
 <!-- <script type="text/javascript">
   window.MathJax = {
     tex: {
-      extensions: ["TeX/AMSmath.js"],
-      // tags: 'ams'
+      tags: 'ams'
     }
-};
+  };
 </script> -->
-<script type="text/javascript">
+<!-- <script type="text/javascript">
   window.MathJax = {
     tex: {
       extensions: ["AMSmath.js", "AMSsymbols.js"],
@@ -145,12 +144,13 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function() {
       load: ['[tex]/mhchem']
     }
   };
-</script>
+</script> -->
 
 <script 
   src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_HTMLorMML' async>
 </script>
 
+  
   <body>
     <header>
 <nav>
@@ -173,8 +173,26 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function() {
       <h1>Multiscale Phenomena in Plasmas</h1>
 <p class="meta" style="color:#888">09 Jul 2024</p>
 <div class="post">
-  <h1 id="plasma-parameters">Plasma Parameters</h1>
-<p>    Their multiscale nature is a trademark of plasmas. There is never just one thing happening in a plasma.</p>
+  <p>     Their multiscale nature is a trademark of plasmas. There is never just one thing happening in a plasma. For example, in a fusion reactor plasma, at macroscopic length scales, say, $L \sim 1 \left[\text{m}\right]$, the evolution of the magnetic configuration is described by a <a href="./2024-07-15_mhd">magnetohydrodynamic</a> equilibrium. Zoom in with a microscope, and you’ll find a much different environment full of turbulent eddies, current sheets, and reconnecting magnetic topologies. Zoom in even further, and you would find individual particles moving in electromagnetic fields, and radiating their own away. The limited nature of <a href="../fusion/2024-07-18_plasmadiagnostics">plasma diagnostics</a> limits what we can do in practice, however, especially when we are talking about the hot and energetic environment of a fusion reactor plasma.</p>
+
+<h4 id="the-debye-length">The Debye Length</h4>
+<p>     Before we proceed any further, we have to start by talking about the fundamental spatial scale in a plasma, namely, the <em>Debye Length</em>. A plasma is a gas of charged particles. When charged particles move freely, they radiate electromagnetic fields. The form of these fields actually has an analytical solution, known as the <a href="./2024-07-18_lienardwiechert"><em>Lienard-Wiechert fields</em></a>,</p>
+
+\[\begin{equation}
+\text{Lienard-Wiechert goes here}
+\end{equation}\]
+
+<p>Fundamentally, at the lowest level of a plasma, the electromagnetic field at any point can be said to be a superposition of all the Lienard-Wiechert (LW) fields of all the plasma particles. Speaking in this way would be unproductive, not just because of the formidable appearance of the LW fields, but also because of the classic statistical mechanics problem of very large numbers.</p>
+
+<h4 id="plasma-frequency">Plasma Frequency</h4>
+
+<h4 id="cyclotron-frequency">Cyclotron Frequency</h4>
+
+<h4 id="hybrid">Hybrid</h4>
+
+<h4 id="mhd-timescales">MHD Timescales</h4>
+
+<!-- References -->
 
 </div>
 

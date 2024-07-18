@@ -130,12 +130,11 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function() {
 <!-- <script type="text/javascript">
   window.MathJax = {
     tex: {
-      extensions: ["TeX/AMSmath.js"],
-      // tags: 'ams'
+      tags: 'ams'
     }
-};
+  };
 </script> -->
-<script type="text/javascript">
+<!-- <script type="text/javascript">
   window.MathJax = {
     tex: {
       extensions: ["AMSmath.js", "AMSsymbols.js"],
@@ -145,12 +144,13 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function() {
       load: ['[tex]/mhchem']
     }
   };
-</script>
+</script> -->
 
 <script 
   src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_HTMLorMML' async>
 </script>
 
+  
   <body>
     <header>
 <nav>
@@ -259,9 +259,7 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function() {
 <p>as evident from the last line, it is straightforward to convert from $ijk \in \{123\}$ to $ijk \in \{xyz\}$, and see that the above is equivalent to the standard, determinant-based, formulation of the vector product (if the ‘+’ in the middle term makes you uncomfortable for that reason, then just pull a negative sign out of the difference).</p>
 
 <h4 id="deriving-vector-identities">Deriving Vector Identities</h4>
-<p>     Vector calculus is the basis for almost every field of classical physics, e.g., electromagnetism, dynamics, fluid mechanics, etc.. Acquiring an understanding of these fields that is more than just surface level frequently requires manipulating expressions that feature combinations of vector and cross products involving the state variables characterizing the physical system, e.g., $\vec{E}, \vec{B}, \vec{J}$, in electromagnetism, or $\rho, \vec{u}, p$, in fluid dynamics, and their gradients, $\nabla$.</p>
-
-<p>    </p>
+<p>     Vector calculus is the basis for almost every field of classical physics, e.g., electromagnetism, dynamics, fluid mechanics, etc.. Acquiring an understanding of these fields that is more than just surface level frequently requires manipulating expressions that feature combinations of vector and cross products involving the state variables characterizing the physical system, e.g., $\vec{E}, \vec{B}, \vec{J}$, in electromagnetism, or $\rho, \vec{u}, p$, in fluid dynamics, and their gradients, $\nabla$. Index notation gives us the ability to directly manipulate the underlying partial derivatives, and vector components, of these expressions without becoming lost in seas of algebra. Consequently, we can derive some interesting and useful relationships. For the sake of brevity, these will be enumerated in a <a href="./2024-07-18_vectoridentities">separate post</a>.</p>
 
 <!-- References -->
 <div class="footnotes" role="doc-endnotes">
