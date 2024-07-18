@@ -15,13 +15,25 @@ $$
 \end{equation}
 $$
 
-Fundamentally, at the lowest level of a plasma, the electromagnetic field at any point can be said to be a superposition of all the Lienard-Wiechert (LW) fields of all the plasma particles. Speaking in this way would be unproductive, not just because of the formidable appearance of the LW fields, but also because of the classic statistical mechanics problem of very large numbers. 
+Fundamentally, at the lowest level of a plasma, the electromagnetic field at any point can be said to be a superposition of all the Lienard-Wiechert (LW) fields of all the plasma particles. Continuing in this vein would be unproductive, not just because of the formidable appearance of the LW fields, but also because of the classic statistical mechanics problem of very large numbers that would render this system intractable.  
 
 #### Plasma Frequency
 
-#### Cyclotron Frequency
 
-#### Hybrid 
+#### Cyclotron Frequency
+In the presence of a magnetic field, the particles in a plasma will find themselves "tied" to the field lines, and begin gyrating at an angular rate,
+
+$$
+\begin{equation}
+\omega_{cs} = \frac{\abs{q_{s}}B_{0}}{m_{s}}
+\end{equation}
+$$
+
+#### Collision Frequencies
+
+#### Mean Free Path
+
+#### Hybrid Timescales
 
 #### MHD Timescales
 
