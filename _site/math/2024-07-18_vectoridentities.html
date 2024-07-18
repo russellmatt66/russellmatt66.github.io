@@ -150,7 +150,15 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function() {
   src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_HTMLorMML' async>
 </script>
 
-  
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RT0E6XZ74J"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RT0E6XZ74J');
+</script>
   <body>
     <header>
 <nav>
@@ -201,11 +209,20 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function() {
 &amp;= 0 
 \end{align}\]
 
-<p>Where we have used the fact that for a sufficiently smooth $\phi$ $\partial_{i}\partial_{j} = \partial_{j}\partial_{i}$. This was not so demanding, but we can also do the same with index notation, and avoid having to take a determinant,</p>
+<p>Where we have used the fact that, for a sufficiently smooth $\phi$, $\partial_{i}\partial_{j}\phi = \partial_{j}\partial_{i}\phi$. This was not so demanding, but we can also do the same with index notation, and avoid having to take a determinant,</p>
 
 \[\begin{align}
-\curl \grad \phi = \epsilon_{ijk}\partial_{j}\partial_{k}\phi 
+\curl \grad \phi &amp;= \hat{e}_{i}\epsilon_{ijk}\partial_{j}\partial_{k}\phi \\
+&amp;= \hat{x}\left(\epsilon_{xyz}\partial_{y}\partial_{z}\phi + \epsilon_{xzy}\partial_{z}\partial_{y}\phi\right) 
+    + \hat{y}\left(\epsilon_{yzx}\partial_{z}\partial_{x}\phi + \epsilon_{yxz}\partial_{x}\partial_{z}\phi\right) 
+    + \hat{z}\left(\epsilon_{zxy}\partial_{x}\partial_{y}\phi + \epsilon_{zyx}\partial_{y}\partial_{x}\phi\right) \\
+&amp;= \hat{x}\left(\partial_{y}\partial_{z}\phi - \partial_{z}\partial_{y}\phi\right) 
+    + \hat{y}\left(\partial_{z}\partial_{x}\phi - \partial_{x}\partial_{z}\phi\right) 
+    + \hat{z}\left(\partial_{x}\partial_{y}\phi - \partial_{y}\partial_{x}\phi\right) \\
+&amp;= 0
 \end{align}\]
+
+<h4 id="divergence">Divergence</h4>
 
 </div>
 

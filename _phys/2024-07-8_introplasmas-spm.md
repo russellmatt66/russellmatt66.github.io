@@ -40,9 +40,9 @@ $$
 \end{align}
 $$ 
 
-It is a common, and unfortunate, misconception that physics, and more broadly, mathematics, is an unimaginative, rote discipline. We have the freedom, and therefore the creativity, to specify the components of the electric field to be whatever we wish them to be, so long as they satisfy the above linear system of PDEs. 
+It is a common, and unfortunate, misconception that physics, and more broadly, mathematics, is an unimaginative, rote discipline. We have the freedom, and therefore the creativity, to specify the components of the electric field to be whatever we wish them to be, so long as they satisfy the above linear system of PDEs. Besides, the above is not the typical way that an irrotational electric field is treated. Using [index notation](../_math/2024-07-15_indexnotation), it can [be proven](../math/2024-07-18_vectoridentities#irrotationality) that irrotational electric fields can be written as the gradient of a scalar potential, $\vec{E} = -\grad \phi$. This is the preferred approach because it reduces a system of linear, coupled PDEs to just a single linear PDE.  
 
-&nbsp;&nbsp;&nbsp;&nbsp;There is another equation of Maxwell's that relates the electric and magnetic field directly, it is Ampere's Law,
+&nbsp;&nbsp;&nbsp;&nbsp;There is another equation of Maxwell's that relates the electric and magnetic field directly, it is Ampere's Law, 
 
 $$
 \begin{align}

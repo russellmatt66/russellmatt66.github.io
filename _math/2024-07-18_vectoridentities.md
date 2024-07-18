@@ -38,10 +38,19 @@ $$
 \end{align}
 $$
 
-Where we have used the fact that for a sufficiently smooth $\phi$ $\partial_{i}\partial_{j} = \partial_{j}\partial_{i}$. This was not so demanding, but we can also do the same with index notation, and avoid having to take a determinant,
+Where we have used the fact that, for a sufficiently smooth $\phi$, $\partial_{i}\partial_{j}\phi = \partial_{j}\partial_{i}\phi$. This was not so demanding, but we can also do the same with index notation, and avoid having to take a determinant,
 
 $$
 \begin{align}
-\curl \grad \phi = \epsilon_{ijk}\partial_{j}\partial_{k}\phi 
+\curl \grad \phi &= \hat{e}_{i}\epsilon_{ijk}\partial_{j}\partial_{k}\phi \\
+&= \hat{x}\left(\epsilon_{xyz}\partial_{y}\partial_{z}\phi + \epsilon_{xzy}\partial_{z}\partial_{y}\phi\right) 
+    + \hat{y}\left(\epsilon_{yzx}\partial_{z}\partial_{x}\phi + \epsilon_{yxz}\partial_{x}\partial_{z}\phi\right) 
+    + \hat{z}\left(\epsilon_{zxy}\partial_{x}\partial_{y}\phi + \epsilon_{zyx}\partial_{y}\partial_{x}\phi\right) \\
+&= \hat{x}\left(\partial_{y}\partial_{z}\phi - \partial_{z}\partial_{y}\phi\right) 
+    + \hat{y}\left(\partial_{z}\partial_{x}\phi - \partial_{x}\partial_{z}\phi\right) 
+    + \hat{z}\left(\partial_{x}\partial_{y}\phi - \partial_{y}\partial_{x}\phi\right) \\
+&= 0
 \end{align}
 $$
+
+#### Divergence
