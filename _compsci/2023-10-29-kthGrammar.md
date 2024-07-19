@@ -1,7 +1,7 @@
 ---
 layout: post
 title: K-th Symbol in Grammar - Leetcode 779
-date: 2023-10-29
+date: 2024-07-19
 collection: compsci
 ---
 ### Introduction
