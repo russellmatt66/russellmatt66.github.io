@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"> 
+<url>
+  <loc>http://russellmatt66.github.io/</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/phys/</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/math/</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/gpu/</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/fusion/</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/compsci/</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/phys/2024-07-18_plasmaturbulence</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/phys/2024-07-18_plasmacollisions</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/phys/2024-07-18_magneticreconnection</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/phys/2024-07-18_lienardwiechert</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/phys/2024-07-17_perturbationtheory</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/phys/2024-07-15_mhd</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/phys/2024-07-15_induction-eqn</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/phys/2024-07-10_plasmakinetics</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/phys/2024-07-10_fluidplasmas</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/phys/2024-07-9_maxwell</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/phys/2024-07-9_introplasmas-multi</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/phys/2024-07-8_introplasmas-spm</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/math/2024-07-18_vectoridentities</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/math/22024-07-17_integration</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/math/2024-07-17_pdes</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/math/2024-07-17_calculus</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/math/2024-07-16_numericalintegration</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/math/2024-07-16_gradients</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/math/2024-07-16_diracdelta</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/math/2024-07-15_indexnotation</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/math/2024-07-12_cartesiancoordinates</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/gpu/2024-07-18_lwsim</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/gpu/2024-07-16_imhdcudaics</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/gpu/2024-07-16_imhdcuda</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/gpu/2024-07-16_concurrency</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/gpu/2024-07-12_synchro</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/gpu/2024-07-12_race</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/fusion/2024-07-18_plasmadiagnostics</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/fusion/pinches</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/fusion/idealmhd</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/compsci/kthGrammar</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/./2024-07-18_plasmaturbulence</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/../math/2024-07-17_pdes</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/../math/2024-07-15_indexnotation</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/../math/2024-07-15_indexnotation#deriving-vector-identities</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/./2024-07-15_mhd#resistive-mhd</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/./2024-07-9_maxwell#cgs-units</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/../math/2024-07-15_indexnotation#levi-civita</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/../math/2024-07-15_indexnotation#kronecker-delta</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/../math/2024-07-17_calculus#multi-variable-product-rule</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/./2024-06-10_fluidplasmas</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/../_fusion/2024-07-8-idealmhd</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/./2024-06-9_introplasmas-multi</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/./2024-06-8_introplasmas-spm</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/./2024-07-15_mhd</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/../fusion/2024-07-18_plasmadiagnostics</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/./2024-07-18_lienardwiechert</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/../gpu/2024-07-18_lwsim</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/./2024-06-9_maxwell</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/../_math/2024-07-15_indexnotation</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/../math/2024-07-18_vectoridentities#irrotationality</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/./2024-07-15_indexnotation</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/../phys/2024-07-15_mhd</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/./2024-07-16_diracdelta</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/../math/2024-07-16_gradients#the-curl</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/./2024-07-18_vectoridentities</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/2024-07-16_concurrency</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/../_math/2024-07-16_numericalintegration</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/../_math/2024-07-16_gradients</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+<url>
+  <loc>http://russellmatt66.github.io/../_math/2024-07-15_indexnotation/#deriving-vector-identities</loc>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2024-07-19</lastmod>
+</url>
+</urlset>
