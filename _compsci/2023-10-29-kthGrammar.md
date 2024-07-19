@@ -31,7 +31,7 @@ $\hspace{1cm}$ As with basically every Leetcode problem, there are numerous vide
 $\hspace{1cm}$ One way to describe the solution to this problem is as the output of the function, $B_{n}(k)$, which evaluates to the $k$th digit in the $n$th row. *Wait*, you might be saying. *Recurrence relation? Binary tree? Why don't you just forget all that complicated-sounding math, and brute force it?* Like all brute force algorithms, ones that solve a problem by computing all the possible cases and then searching for the answer among them, we are limited by what we have the computational resource for. 
 
 ### Brute Force - Memory Requirements
-$\hspace{1cm}$ How much computational resource is required to store the binary number represented by the $n$th row in the table we are constructing? Well, the base case of $n=1$ involves only a single binary digit, which for convenience's sake we can consider to be stored in an `int` data type (32 bits), because that is the simplest way to implement a brute force approach at a first pass. 
+$\hspace{1cm}$ The brute-force solution is to create the nth binary number directly, store it in memory, and then return the $k$th value. How much computational resource is required to store the binary number represented by the $n$th row in the table we are constructing? Well, the base case of $n=1$ involves only a single binary digit, which for convenience's sake we can consider to be stored in an `int` data type (32 bits), because that is the simplest way to implement a brute force approach at a first pass. 
 
 $32$ bits is equivalent to $4$ bytes, and increasing $n$ by $1$ doubles the number of digits we need to store, so we can represent the amount of information (in bytes) that we need with the following function,
 
@@ -84,19 +84,19 @@ plt.show()
 
 ![Memory requirement](../assets/compsci/numBytes_kthGrammar.png)
 
-This graph is very interesting because it shows how quickly the amount of memory we need to solve this problem will scale to unrealistic heights. Unless we wish to dedicate an entire server to the problem (haha), the most RAM we can hope to dedicate towards this problem, without taking the speed hit from working with main memory, is somewhere around 64 GB (really less because the operation of the system is going to need some too). That gives us, roughly, the ability to store the $n=32$-nd or $33$-rd binary number. 
+This graph is very interesting because it shows how quickly the amount of memory we need to solve this problem will scale to unrealistic heights. Unless we wish to dedicate an entire server to the problem (haha), the most RAM we can hope to dedicate towards this problem, without taking the speed hit from working with main memory, is somewhere around 64 GB (really less because the operation of the system is going to need some too). That gives us, roughly, the ability to store around the $n=32$nd or $33$rd binary number. 
 
-Installing a 1 TB hard drive (or SSD if you want to break the bank) in our workstation will give us access to a little more of the solution space, but to reach $n=40$ we would need *two* of them, just to *hold the data*. At this point, not only would there be room for nothing else on the workstation except the operating system, source code, and C compiler of our choice (because this is one of those times when you would really need the power of C), but even the most well-written, optimized C would be slow as hell at these problem sizes as large chunks of data would constantly be shuffled into and out of main memory, the slowest level of the memory hierarchy. 
+Installing a 1 TB hard drive (or SSD if you want to break the bank) in our workstation will give us access to a little more of the solution space, but to reach $n=40$ we would need *two* of them, just to *hold* the data. At this point, not only would there be room for nothing else on the workstation except the operating system, source code, and C compiler of our choice (because this is one of those times when you would really need the power of C), but even the most well-written, optimized C would be slow as hell at these problem sizes as large chunks of data would constantly be shuffled into and out of main memory, the slowest level of the memory hierarchy. 
 
 That's a bit of a tangent, but hopefully you get the picture. A brute-force approach to this problem is simply a non-starter, except for a very limited span. If you're intrigued / confused by what a "memory hierachy" is, stay tuned for a post about them. Also, yes, I know that it is silly and wasteful to store a binary digit in an entire 32-bit `int`, but ask yourself if having 32 times the space would really matter (it wouldn't).
 
 ### Brute Force - Time Complexity
-For the sake of completeness, let me talk a little about the time complexity of the implementation I described for the brute-force solution to this problem. If you're not interested, then please, by all means skip down to [the section where 14 lines of code do what an entire server couldn't](#recurrence-relation---elegant-and-efficient).
+The time complexity of the brute-force solution is no better either. No matter how you slice it, brute-forcing this problem requires $O(2^{n})$ work since that is the size of the array you're creating. If this seems awfully inefficient, and a huge waste just to figure out whether something is a $0$ or a $1$, then I would agree. 
 
 ### Recurrence Relation
 If you want an elegant, efficient, powerful, and recursive solution to this problem, then here it is:
 ```
-int kthGrammar(int n, int k) {
+int kthGrammar(size_t n, size_t k) {
         // base case
         if (n == 1 && k == 1){
             return 0;
@@ -165,8 +165,10 @@ int kthGrammar(int n, int k) {
     }
 ```
 
-### Recurrence Relation - Time Complexity
-So, how fast does this code run? Obviously, the space complexity is *vastly* superior to the brute-force approach: $O(1)$ compared to $O(2^{n})$. 
+### Recurrence Relation - Time and Space Complexity 
+&nbsp;&nbsp;&nbsp;&nbsp; So, how fast does this code run? Obviously, the space complexity is vastly superior to the brute-force approach: $O(1)$ compared to $O(2^{n})$, as we only have to store the value of $n$, and $k$. However, that doesn't answer the question that was just posed, which was about the runtime of the algorithm, and not the storage requirements. Determining the time complexity of an algorithm is a process known as *asymptotic analysis*. The basic idea behind this process is to count how much work needs to be done as a function of the problem size in order to solve it. So, we could start by enumerating how many function calls are required as a function of $n$, or we could realize that what we are doing in effect is halving the search space at each step of the program. This is reminiscent of binary search, so we could expect the time complexity to be $O(log(n))$, which is about the best you can do, but because the size of the search space is $2^n$, taking the log of this will give us a time complexity of $O(n)$, instead. 
+
+
 
 ### Conclusion
 $\hspace{1cm}$ Thank you for getting to the end of this post. I hope that what I wrote was instructive and helped you to learn something, or at the very last was an entertaining walk-through of an interesting problem. 
