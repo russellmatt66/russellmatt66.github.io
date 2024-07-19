@@ -15,7 +15,7 @@ $$
 \end{equation}
 $$
 
-Fundamentally, at the lowest level of a plasma, the electromagnetic field at any point can be said to be a superposition of all the Lienard-Wiechert (LW) fields of all the plasma particles. Continuing in this vein would be unproductive, not just because of the formidable appearance of the LW fields, but also because of the classic statistical mechanics problem of very large numbers that would render this system intractable.  
+Fundamentally, at the lowest level of a plasma, the electromagnetic field at any point can be said to be a superposition of all the Lienard-Wiechert (LW) fields of all the plasma particles. However, continuing in this vein would be unproductive, not just because of the formidable appearance of the LW fields, but also because of the classic statistical mechanics problem of very large numbers that would render this system intractable. [Simulating it](../gpu/2024-07-18_lwsim) is also impossible in practice.  
 
 #### Plasma Frequency
 

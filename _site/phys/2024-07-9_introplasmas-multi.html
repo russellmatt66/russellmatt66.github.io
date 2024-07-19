@@ -173,6 +173,8 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function() {
     
     <li><a href="/fusion/">Fusion</a>
     
+    <li><a href="/compsci/">CS</a>
+    
   </ul>
 </nav>
 </header>
@@ -190,13 +192,22 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function() {
 \text{Lienard-Wiechert goes here}
 \end{equation}\]
 
-<p>Fundamentally, at the lowest level of a plasma, the electromagnetic field at any point can be said to be a superposition of all the Lienard-Wiechert (LW) fields of all the plasma particles. Speaking in this way would be unproductive, not just because of the formidable appearance of the LW fields, but also because of the classic statistical mechanics problem of very large numbers.</p>
+<p>Fundamentally, at the lowest level of a plasma, the electromagnetic field at any point can be said to be a superposition of all the Lienard-Wiechert (LW) fields of all the plasma particles. However, continuing in this vein would be unproductive, not just because of the formidable appearance of the LW fields, but also because of the classic statistical mechanics problem of very large numbers that would render this system intractable. <a href="../gpu/2024-07-18_lwsim">Simulating it</a> is also impossible in practice.</p>
 
 <h4 id="plasma-frequency">Plasma Frequency</h4>
 
 <h4 id="cyclotron-frequency">Cyclotron Frequency</h4>
+<p>In the presence of a magnetic field, the particles in a plasma will find themselves “tied” to the field lines, and begin gyrating at an angular rate,</p>
 
-<h4 id="hybrid">Hybrid</h4>
+\[\begin{equation}
+\omega_{cs} = \frac{\abs{q_{s}}B_{0}}{m_{s}}
+\end{equation}\]
+
+<h4 id="collision-frequencies">Collision Frequencies</h4>
+
+<h4 id="mean-free-path">Mean Free Path</h4>
+
+<h4 id="hybrid-timescales">Hybrid Timescales</h4>
 
 <h4 id="mhd-timescales">MHD Timescales</h4>
 

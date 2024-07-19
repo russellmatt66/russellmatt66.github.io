@@ -12,9 +12,9 @@ collections:
     output: true
     permalink: /phys/:title
 
-  # compsci:
-  #   output: true
-  #   permalink: /compsci/:title
+  compsci:
+    output: true
+    permalink: /compsci/:title
 
   math:
     output: true

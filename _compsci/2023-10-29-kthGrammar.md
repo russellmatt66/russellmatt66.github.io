@@ -1,6 +1,7 @@
 ---
 layout: post
 title: K-th Symbol in Grammar - Leetcode 779
+date: 2023-10-29
 collection: compsci
 ---
 ### Introduction
@@ -92,7 +93,7 @@ That's a bit of a tangent, but hopefully you get the picture. A brute-force appr
 ### Brute Force - Time Complexity
 For the sake of completeness, let me talk a little about the time complexity of the implementation I described for the brute-force solution to this problem. If you're not interested, then please, by all means skip down to [the section where 14 lines of code do what an entire server couldn't](#recurrence-relation---elegant-and-efficient).
 
-### Recurrence Relation - Elegant and Efficient
+### Recurrence Relation
 If you want an elegant, efficient, powerful, and recursive solution to this problem, then here it is:
 ```
 int kthGrammar(int n, int k) {
