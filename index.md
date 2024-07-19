@@ -1,6 +1,6 @@
 ---
 layout: default
-title: About Me
+title: Physics In Parallel
 ---
 ![portrait alt <>]({{ site.url }}/assets/killerwhaleph.png){:height="200px" width="200px" class="img-responsive"}
 
@@ -8,7 +8,7 @@ title: About Me
 
 &nbsp;&nbsp;&nbsp;&nbsp;Here you will find technical articles written by me on subjects that I am passionate about. The aim of these articles is to showcase high-performing numerical simulations that I have written, and the theory behind them. My, somewhat ambitious, goal is to write these articles in a way that would allow an expert to read them without growing bored, and a novice to follow along without growing confused or frustrated by them. 
 
-&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; 
 
 Please enjoy!  
 
