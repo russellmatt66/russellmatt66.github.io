@@ -5,7 +5,7 @@ date: 2024-08-15
 collection: phys
 ---
 ### A Brief Primer on Ideal MHD
-Ideal Magnetohydrodynamics (MHD), is the simplest possible framework for modelling a plasma as a fluid. In conservative form, meaning there are no external sources of mass, momentum, energy, or magnetic field, it can be written as,
+&nbsp;&nbsp;&nbsp;&nbsp; Ideal Magnetohydrodynamics (MHD), is the simplest possible framework for modelling a plasma as a fluid. This is powerful, as it allows us to study the macroscopic dynamics of the plasma without needing to enmesh ourselves with the microscopic details, which is the purview of kinetic theory. Fusion energy researchers, in particular, deploy Ideal MHD to understand the equilibrium of different magnetic configurations. In conservative form, meaning there are no external sources of mass, momentum, energy, or magnetic field, the model can be written as,
 
 $$
 \pdv{\vec{Q}}{}{t} + \div \mathbf{T} = 0
@@ -35,7 +35,7 @@ $$
 \end{bmatrix}^{T}
 $$
 
-The components of $\mathbf{T}$ are the fluxes of Ideal MHD variables in the x-, y-, and z-directions, respectively. The x-directed fluxes, $\vec{F}$, are expressed as,
+&nbsp;&nbsp;&nbsp;&nbsp; The components of $\mathbf{T}$ are the fluxes of Ideal MHD variables in the x-, y-, and z-directions, respectively. The x-directed fluxes, $\vec{F}$, are expressed as,
 
 $$
 \vec{F} = \begin{bmatrix}
@@ -80,16 +80,34 @@ vB_{z} - wB_{y} \\
 \end{bmatrix}
 $$
 
-Finally, the internal energy, $e$, of the plasma is given by,
+The internal energy, $e$, of the plasma is given by,
 
 $$
 e = \frac{p}{\gamma - 1} + \frac{B^{2}}{2\mu_{0}} + \frac{\rho \norm{u}^{2}}{2}
 $$
 
-where $p = nk_{B}T$ is the plasma pressure, and $\gamma = \frac{5}{3}$ is the adiabatic constant for a gas with 3 degrees of freedom.  
+where $p = nk_{B}T$ is the plasma pressure, and $\gamma = \frac{5}{3}$ is the adiabatic constant for a gas with 3 degrees of freedom. Lastly, the $\grad$ operator is just the familiar gradient from vector calculus,
+
+$$
+\grad = \begin{bmatrix}
+\pdv{}{}{x} \quad \pdv{}{}{y} \quad \pdv{}{}{z}
+\end{bmatrix}
+$$
+
+the $\norm{}$ operator is the familiar 2-norm from linear algebra,
+
+$$
+\norm{\vec{u}}^{2} = \sum_{i}^{N} u_{i}^{2}
+$$
+
+and the $\cdot$ operator is the inner product between two vectors,
+
+$$
+\vec{B}\cdot\vec{u} = \sum_{i} B_{i}u_{i}
+$$
 
 ### The Flux Jacobians
-The Ideal MHD model in conservative form, Equation (\ref{eq:imhd_consform}), can  be expanded,
+&nbsp;&nbsp;&nbsp;&nbsp; The Ideal MHD model in conservative form, Equation (\ref{eq:imhd_consform}), can therefore be expanded,
 
 $$
 \label{eq:imhd_expanded}
@@ -99,7 +117,7 @@ $$
 Physicists frequently like to wave their hands, and perform such mathematical chicanery as saying things like 
 
 $$
-\dv{y}{x}dx = dy
+\dv{y}{\not x}\dv{\not x}{t} = \dv{y}{t}
 $$
 
 which frustrates mathematicians. Regardless, we can play that kind of trick here, to Equation (\ref{eq:imhd_expanded}), and expand it further,
@@ -153,3 +171,104 @@ $$
 \frac{\Delta t}{\Delta x}\abs{\lambda_{A,max}} + \frac{\Delta t}{\Delta y}\abs{\lambda_{B,max}} + \frac{\Delta t}{\Delta z}\abs{\lambda_{C,max}} \leq 1
 \end{align}
 $$
+
+### $\mathbf{A}, \mathbf{B}$, and $\mathbf{C}$
+&nbsp;&nbsp;&nbsp;&nbsp; Before determining the eigenvalues of the Ideal MHD Flux Jacobians, which is a subject for a future post, the one-hundred, and ninety-two, components that make them up must be computed first. Here is the result,
+
+$$
+\mathbf{A} = \begin{bmatrix}
+0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+\frac{(\gamma - 1)}{2}\norm{\vec{u}}^{2} - u^{2} & u(3 - \gamma) & v(1 - \gamma) & w(1 - \gamma) & -\gamma \frac{B_{x}}{\mu_{0}} & (2 - \gamma)\frac{B_{y}}{\mu_{0}} & (2- \gamma)\frac{B_{z}}{\mu_{0}} & \gamma - 1 \\
+-uv & v & u & 0 & -\frac{B_{y}}{\mu_{0}} & -\frac{B_{x}}{\mu_{0}} & 0 & 0 \\
+-uw & w & 0 & u & -\frac{B_{z}}{\mu_{0}} & 0 & -\frac{B_{x}}{\mu_{0}} & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+\frac{1}{\rho}\left(vB_{x} - uB_{y}\right) & \frac{B_{y}}{\rho} & -\frac{B_{x}}{\rho} & 0 & -v & u & 0 & 0 \\
+\frac{1}{\rho}\left(wB_{x} - uB_{z}\right) & \frac{B_{z}}{\rho} & 0 & -\frac{B_{x}}{\rho} & -w & 0 & u & 0 \\
+A_{81} & A_{82} & (1 - \gamma)uv - \frac{B_{y}B_{x}}{\rho\mu_{0}} & uw(1 - \gamma) - \frac{B_{x}B_{z}}{\rho\mu_{0}} & (1 - \gamma)\frac{uB_{x}}{\mu_{0}} - \frac{\vec{B}\cdot\vec{u}}{\mu_{0}} & (2 - \gamma)\frac{uB_{y}}{\mu_{0}} - \frac{vB_{x}}{\mu_{0}} & (2 - \gamma)\frac{uB_{z}}{\mu_{0}} - \frac{wB_{x}}{\mu_{0}} & u\gamma
+\end{bmatrix}
+$$
+
+where, 
+
+$$
+\begin{align}
+A_{81} &= u\left[(\gamma - 1)\norm{\vec{u}}^{2} - \frac{1}{\rho}(\gamma e + (2 - \gamma)\frac{B^{2}}{2\mu_{0}})\right] + B_{x}\frac{\vec{B}\cdot\vec{u}}{\rho\mu_{0}} \\
+A_{82} &= \frac{1}{\rho}\left[\gamma e + (2 - \gamma)\frac{B^{2}}{2\mu_{0}}\right] + (1 - \gamma)\left(u^{2} + \frac{\norm{\vec{u}}^{2}}{2}\right) - \frac{B_{x}^{2}}{\rho\mu_{0}}
+\end{align}
+$$
+
+$$
+\mathbf{B} = \begin{bmatrix}
+0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 \\
+-uv & v & u & 0 & -\frac{B_{y}}{\mu_{0}} & -\frac{B_{x}}{\mu_{0}} & 0 & 0 \\
+\frac{(\gamma - 1)}{2}\norm{\vec{u}}^{2} - v^{2} & (1 - \gamma)u & (3 - \gamma)v & (1 - \gamma)w & (2-\gamma)\frac{B_{x}}{\mu_{0}} & -\gamma\frac{B_{y}}{\mu_{0}} & (2 - \gamma)\frac{B_{z}}{\mu_{0}} & \gamma - 1 \\
+-vw & 0 & w & v & 0 & -\frac{B_{z}}{\mu_{0}} & -\frac{B_{y}}{\mu_{0}} & 0 \\
+\frac{1}{\rho}(vB_{x} - uB_{y}) & \frac{B_{y}}{\rho} & -\frac{B_{x}}{\rho} & 0 & -v & u & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+\frac{1}{\rho}(vB_{z} - wB_{y}) & 0 & -\frac{B_{z}}{\rho} & \frac{B_{y}}{\rho} & 0 & w & -v & 0 \\
+B_{81} & (1 - \gamma)uv - \frac{B_{x}B_{y}}{\rho\mu_{0}} & B_{83} & (1 - \gamma)vw - \frac{B_{y}B_{z}}{\rho\mu_{0}} & (2 - \gamma)\frac{vB_{x}}{\mu_{0}} - \frac{uB_{y}}{\mu_{0}} & (1 - \gamma)\frac{vB_{y}}{\mu_{0}} + B_{y}\frac{\vec{u}\cdot\vec{B}}{\mu_{0}} & (2-\gamma)\frac{vB_{z}}{\mu_{0}} - \frac{wB_{y}}{\mu_{0}} & v\gamma 
+\end{bmatrix}
+$$
+
+where,
+
+$$
+\begin{align}
+B_{81} &= v\left[(\gamma - 1)\norm{\vec{u}}^{2} - \frac{1}{\rho}(\gamma e + (2 - \gamma)\frac{B^{2}}{2\mu_{0}})\right] + B_{y}\frac{\vec{B}\cdot\vec{u}}{\rho\mu_{0}} \\
+B_{83} &= \frac{1}{\rho}\left[\gamma e + (2 - \gamma)\frac{B^{2}}{2\mu_{0}}\right] + (1 - \gamma)\left(v^{2} + \frac{\norm{\vec{u}}^{2}}{2}\right) - \frac{B_{y}^{2}}{\rho\mu_{0}}
+\end{align}
+$$
+
+$$
+\mathbf{C} = \begin{bmatrix}
+0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\
+-uw & w & 0 & u & -\frac{B_{z}}{\mu_{0}} & 0 & -\frac{B_{x}}{\mu_{0}} & 0 \\
+-vw & 0 & w & v & -\frac{B_{z}}{\mu_{0}} & 0 & -\frac{B_{x}}{\mu_{0}} & 0 \\
+\frac{(\gamma - 1)}{2}\norm{\vec{u}}^{2} - w^{2} & (1 - \gamma)u & (1 - \gamma)v & (3 - \gamma)w & (2 - \gamma)\frac{B_{x}}{\mu_{0}} & (2 - \gamma)\frac{B_{y}}{\mu_{0}} & -\gamma\frac{B_{y}}{\mu_{0}} & \gamma - 1 \\
+\frac{1}{\rho}(w B_{x} - uB_{z}) & \frac{B_{z}}{\rho} & 0 & -\frac{B_{x}}{\rho} & -w & 0 & u & 0 \\
+\frac{1}{\rho}(wB_{y} - vB_{z}) & 0 & \frac{B_{z}}{\rho} & -\frac{B_{y}}{\rho} & 0 & -w & v & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+C_{81} & (1 - \gamma)uw - \frac{B_{x}B_{z}}{\rho\mu_{0}} & (1 - \gamma)vw - \frac{B_{y}B_{z}}{\rho\mu_{0}} & C_{84} & (2-\gamma)\frac{wB_{x}}{\mu_{0}} - \frac{uB_{z}}{\mu_{0}} & (2 - \gamma)\frac{wB_{y}}{\mu_{0}} - \frac{vB_{z}}{\mu_{0}} & (1-\gamma)\frac{wB_{z}}{\mu_{0}} - \frac{\vec{u}\cdot\vec{B}}{\mu_{0}} & w\gamma
+\end{bmatrix}
+$$
+
+where,
+
+$$
+\begin{align}
+C_{81} &= w\left[(\gamma - 1)\norm{\vec{u}}^{2} - \frac{1}{\rho}(\gamma e + (2 - \gamma)\frac{B^{2}}{2\mu_{0}})\right] + B_{z}\frac{\vec{B}\cdot\vec{u}}{\rho\mu_{0}} \\
+C_{84} &= \frac{1}{\rho}\left[\gamma e + (2 - \gamma)\frac{B^{2}}{2\mu_{0}}\right] + (1 - \gamma)\left(w^{2} + \frac{\norm{\vec{u}}^{2}}{2}\right) - \frac{B_{z}^{2}}{\rho\mu_{0}}
+\end{align}
+$$
+
+As aforementioned, this is a great mathematical exercise, and one that took me 8 hours of solid work (non-contiguous) to do. I would love to hear from anyone who catches a mistake in these expressions at the email below. 
+
+<!-- ### $\mathbf{A}$
+&nbsp;&nbsp;&nbsp;&nbsp; In this section, we are going to calculate **ALL** the the components of the X-Flux Jacobian, $\mathbf{A}$. For the sake of brevity, I am going to drop the notation from the derivative that indicates it should be taken with all other fluid variables held fixed, i.e., treated as constant, but it is crucial to remember that they are. The first row is fairly trivial,
+
+$$
+\begin{align}
+A_{11} &= 0 \\
+A_{12} &= \pdv{\rho u}{}{\rho u} = 1 \\
+A_{13} &= \pdv{\rho u}{}{\rho v} = 0 \\
+A_{14} &= \pdv{\rho u}{}{\rho w} = 0 \\
+A_{15} &= \pdv{\rho u}{}{B_{x}} = 0 \\
+A_{16} &= \pdv{\rho u}{}{B_{y}} = 0 \\
+A_{17} &= \pdv{\rho u}{}{B_{z}} = 0 \\
+A_{18} &= \pdv{\rho u}{}{e} = 0
+\end{align}
+$$ 
+
+The second row presents a challenge with the first component,
+
+$$
+\begin{align}
+
+\end{align}
+$$
+
+### $\mathbf{B}$
+&nbsp;&nbsp;&nbsp;&nbsp; In this section, we are going to calculate **ALL** the the components of the Y-Flux Jacobian, $\mathbf{B}$. As when calculating $\mathbf{A}$, the first row is fairly trivial.
+
+### $\mathbf{C}$
+&nbsp;&nbsp;&nbsp;&nbsp; In this section, we are going to calculate **ALL** the the components of the Z-Flux Jacobian, $\mathbf{C}$. As when calculating $\mathbf{A}$, and $\mathbf{B}$, the first row is fairly trivial. -->
