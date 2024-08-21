@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <!-- Enable responsiveness on mobile devices -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-  <title>Astronautics Exam Problem</title>
+  <title>The Flux Jacobians of the Ideal MHD System</title>
   <link rel="stylesheet" href="/css/main.css">
   <link rel="shortcut icon" type="image/png" href="/assets/killerwhaleph.png">
 </head>
@@ -191,51 +191,121 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function() {
 </header>
 
     <div class="container">
-      <h1>Astronautics Exam Problem</h1>
-<p class="meta" style="color:#888"></p>
+      <h1>The Flux Jacobians of the Ideal MHD System</h1>
+<p class="meta" style="color:#888">15 Aug 2024</p>
 <div class="post">
-  <p>    Inspired by a problem in Zangwill<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>, I came up with an exam problem based on it. Here is the original problem:</p>
+  <h3 id="a-brief-primer-on-ideal-mhd">A Brief Primer on Ideal MHD</h3>
+<p>Ideal Magnetohydrodynamics (MHD), is the simplest possible framework for modelling a plasma as a fluid. In conservative form, meaning there are no external sources of mass, momentum, energy, or magnetic field, it can be written as,</p>
 
-<p>2.1 [\textbf{Measuring B}]</p>
+\[\pdv{\vec{Q}}{}{t} + \div \mathbf{T} = 0
+\label{eq:imhd_consform}\]
 
-<p>Let [\vec{F}_{1}] and [\vec{F}_{2}] be the instantaneous forces that act on a particle with charge $q$ when it moves through a magnetic field $\vec{B}(\vec{r})$ with velocities $\vec{v}_{1}$ and $\vec{v}_{2}$, respectively.</p>
+<p>stating that the evolution of the Ideal MHD variables,</p>
 
-<p>Without choosing a coordinate system, show that $\vec{B}(\vec{r})$ can be determined from the observables $\vec{v}_{1} \times \vec{F}_{1}$ and $\vec{v}_{2} \times \vec{F}_{2}$ if $\vec{v}_{1}$ and $\vec{v}_{2}$ are appropriately oriented.</p>
+\[\vec{Q} = \begin{bmatrix}
+\rho \\ 
+\rho u \\
+\rho v \\
+\rho w \\
+B_{x} \\
+B_{y} \\
+B_{z} \\
+e
+\end{bmatrix}^{T}\]
 
-<p>Here is the problem I developed:</p>
-<blockquote>
-  <p>You are an engineer for a fusion rocket company that is launching a mission to test their interstellar propulsion technology, and acquire valuable scientific data on the magnetic fields of outer space.</p>
-</blockquote>
+<p>is balanced by the divergence of the respective fluxes, expressed by the rank-2 tensor, $\mathbf{T}$,</p>
 
-<blockquote>
-  <p>The system that will be performing this task consists of two autonomous probes, each equipped with an array of sensors for accurately measuring their trajectories’. Once immersed in the interstellar plasma, the probes will become charged, and begin to experience a Lorentz force.</p>
-</blockquote>
+\[\mathbf{T} = \begin{bmatrix}
+\vec{F} \quad \vec{G} \quad \vec{H} 
+\end{bmatrix}^{T}\]
 
-<blockquote>
-  <p>(20 pts) (a)  By measuring their velocity, and acceleration, and maintaining a specific orientation with regard to each other while moving through a given region of space, the probes can obtain a reading for the steady magnetic field there, $\vec{B}(\vec{r})$. Derive this exact expression by algebraically combining and manipulating the observables that the probes obtain: $ \vec{v}_{1},\vec{v}_{2},\vec{F}_{1},\vec{F}_{2}$.</p>
-</blockquote>
+<p>The components of $\mathbf{T}$ are the fluxes of Ideal MHD variables in the x-, y-, and z-directions, respectively. The x-directed fluxes, $\vec{F}$, are expressed as,</p>
 
-<blockquote>
-  <p>(10 pts) (b) What assumptions need to hold about the probes’ characteristics and trajectories’ for the expression you derived to be valid?</p>
-</blockquote>
+\[\vec{F} = \begin{bmatrix}
+\rho u \\ 
+\rho u^{2} - \frac{B_{x}^{2}}{\mu_{0}} + p + \frac{B^{2}}{2\mu_{0}} \\
+\rho uv - \frac{B_{y}B_{x}}{\mu_{0}} \\
+\rho uw - \frac{B_{z}B_{x}}{\mu_{0}} \\
+0 \\
+vB_{x} - uB_{y} \\
+wB_{x} - uB_{z} \\
+(e + p + \frac{B^{2}}{2\mu_{0}})u - \frac{\vec{B} \cdot \vec{u}}{\mu_{0}}B_{x}
+\end{bmatrix}\]
 
-<blockquote>
-  <p>(10 pts) (c) How would deviations in the probes’ observables, e.g., an error in the accelerometer, or speedometer, effect the result?</p>
-</blockquote>
+<p>the y-directed fluxes, $\vec{G}$,</p>
 
-<blockquote>
-  <p>(10 pts) (d) Give some numbers, and ask them to calculate the steady magnetic field. Does it make sense? (is the divergence 0?)</p>
-</blockquote>
+\[\vec{G} = \begin{bmatrix}
+\rho v \\ 
+\rho uv - \frac{B_{y}B_{x}}{\mu_{0}} \\
+\rho v^{2} - \frac{B_{y}^{2}}{\mu_{0}} + p + \frac{B^{2}}{2\mu_{0}} \\
+\rho vw - \frac{B_{y}B_{z}}{\mu_{0}} \\
+uB_{y} - vB_{x} \\
+0 \\
+wB_{y} - vB_{z} \\
+(e + p + \frac{B^{2}}{2\mu_{0}})v - \frac{\vec{B} \cdot \vec{u}}{\mu_{0}}B_{y}
+\end{bmatrix}\]
 
-<p>There’s a couple of places that I think the problem still needs work. One, obviously (d) needs numbers. Two, there’s no guarantee that the magnetic field in space will be steady. More likely, it will be quasi-steady, with the amplitude of these fluctuations varying dependent on the state of the sun, or more generally, whichever star is driving the local dynamics. Based on this reason, I think this question would serve as a good second question for an exam where the first question is about calculating the conditions of the plasma at the specific location.</p>
+<p>and the z-directed fluxes, $\vec{H}$,</p>
 
-<div class="footnotes" role="doc-endnotes">
-  <ol>
-    <li id="fn:1" role="doc-endnote">
-      <p>Zangwill, Andrew. “The Maxwell Equations.” Modern Electrodynamics, Cambridge University Press, Cambridge, UK, 2012. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
+\[\vec{H} = \begin{bmatrix}
+\rho w \\ 
+\rho uw - \frac{B_{x}B_{z}}{\mu_{0}} \\
+\rho vw - \frac{B_{y}B_{z}}{\mu_{0}} \\
+\rho w^{2} - \frac{B_{z}^{2}}{\mu_{0}} + p + \frac{B^{2}}{2\mu_{0}} \\
+uB_{z} - wB_{x} \\
+vB_{z} - wB_{y} \\
+0 \\
+(e + p + \frac{B^{2}}{2\mu_{0}})w - \frac{\vec{B} \cdot \vec{u}}{\mu_{0}}B_{z}
+\end{bmatrix}\]
+
+<p>Finally, the internal energy, $e$, of the plasma is given by,</p>
+
+\[e = \frac{p}{\gamma - 1} + \frac{B^{2}}{2\mu_{0}} + \frac{\rho \norm{u}^{2}}{2}\]
+
+<p>where $p = nk_{B}T$ is the plasma pressure, and $\gamma = \frac{5}{3}$ is the adiabatic constant for a gas with 3 degrees of freedom.</p>
+
+<h3 id="the-flux-jacobians">The Flux Jacobians</h3>
+<p>The Ideal MHD model in conservative form, Equation (\ref{eq:imhd_consform}), can  be expanded,</p>
+
+\[\label{eq:imhd_expanded}
+\pdv{\vec{Q}}{}{t} + \pdv{\vec{F}}{}{x} + \pdv{\vec{G}}{}{y} + \pdv{\vec{H}}{}{z} = 0\]
+
+<p>Physicists frequently like to wave their hands, and perform such mathematical chicanery as saying things like</p>
+
+\[\dv{y}{x}dx = dy\]
+
+<p>which frustrates mathematicians. Regardless, we can play that kind of trick here, to Equation (\ref{eq:imhd_expanded}), and expand it further,</p>
+
+\[\begin{align}
+(\ref{eq:imhd_expanded}) \rightarrow \pdv{\vec{Q}}{}{t} + \pdv{\vec{F}}{}{\vec{Q}}\pdv{\vec{Q}}{}{x} + \pdv{\vec{G}}{}{\vec{Q}}\pdv{\vec{Q}}{}{y} + \pdv{\vec{H}}{}{\vec{Q}}\pdv{\vec{Q}}{}{z} &amp;= 0 \\
+\therefore \pdv{\vec{Q}}{}{t} + \mathbf{A}\pdv{\vec{Q}}{}{x} + \mathbf{B}\pdv{\vec{Q}}{}{y} + \mathbf{C}\pdv{\vec{Q}}{}{z} &amp;= 0
+\end{align}\]
+
+<p>The rank-2 tensors, $\mathbf{A}, \mathbf{B}, \mathbf{C}$, are known as the $\textit{Flux Jacobians}$, and their components are defined in the following manner,</p>
+
+\[\begin{align}
+A_{ij} &amp;= \pdv{F_{i}}{}{Q_{j}}\left.\right|_{Q_{k}} \\
+B_{ij} &amp;= \pdv{G_{i}}{}{Q_{j}}\left.\right|_{Q_{k}} \\
+C_{ij} &amp;= \pdv{H_{i}}{}{Q_{j}}\left.\right|_{Q_{k}} \\
+\end{align}\]
+
+<p>where the $\left.\right|_{Q_{k}}$ notation indicates that the derivative is taken <em>while holding all other fluid variables constant</em>. 
+This point is italicized, because it is crucially important for computing the flux jacobians, which is necessary to do in order to understand the properties, and stability, of the Ideal MHD system.</p>
+
+<p>To illustrate, consider the $A_{11}$ term,</p>
+
+\[A_{11} = \pdv{\rho u}{}{\rho}\left.\right|_{Q_{k}}\]
+
+<p>On the surface, this looks like it should evaluate to $A_{11} = u$, however, because $\rho u$ itself is one of the fluid variables, which is being held constant in this case since it is not the variable that is being differentiated with respect to, $A_{11} = 0$ is the <em>actual</em> correct answer.There are eight flux terms, eight variables, and three flux jacobians, so in total there are one-hundred, and ninety-two, derivatives which must be carefully taken in this manner in order to fully compute them.</p>
+
+<h3 id="motivation">Motivation</h3>
+<p>     Besides curiosity, the mathematical exercise, or to better understand the properties of the Ideal MHD equations, one of the primary reasons to calculate the flux jacobians is to understand the stability of a numerical simulation. All information is transmitted via modes, e.g., the sound waves that we hear, the light waves that we see, the variations in density that we smell, the pressure waves that we feel, etc.. In fluid dynamics, and more broadly in magnetohydrodynamics, we make various assumptions, and approximations, about the properties of a system in order to derive a set of governing equations. These governing equations capture various aspects of the system, and discard others. What information is transmitted, and how, is determined by the <em>fluid characteristics</em>, i.e., the different modes that the system supports, which are encoded by the flux jacobians, namely they are the eigenvalues.</p>
+
+<p>     To visualize this, fluid dynamicists use <em>characteristic curves</em>, which are essentially graphs with $t$ as the ordinate (on the “y-axis”), and $x$ as the abscissa (on the “x-axis”). This kind of graph shows where in the domain information from a given mode, at a certain event, will have propagated to by a given time, also known as the <em>domain of influence</em>, as well as where in the domain the information of a given mode will have come from which influences the state of a given event at a given time, known as the <em>domain of dependence</em>. These characteristics have a finite, fixed, velocity so their curves are straight lines with the slope equal to the inverse of the characteristic’s velocity, and which sweep out two cones when revolved 360 degrees around the time-axis, at a fixed event. The volume of these cones, one forwards, and one backwards, are the aforementioned domains.</p>
+
+<p>     When we discretize the governing equations of a fluid system, on a mesh, in order to either solve them either explicitly (marching the state of the variables forward in time according to some method), or implicitly (inverting a matrix at each timestep in order to update the state of the variables), we introduce a synthetic characteristic speed to the solution, which is based on our choice of timestep, $\Delta t$, and the spacing of the mesh, $\Delta x$. Just like any characteristic, this numerical construct sweeps out a zone of dependence, and a zone of influence. In order for our simulation to remain stable, this numerical volume MUST contain all the information of the physical volume. In other words, the slope of the numerical characteristic, $\frac{\Delta t}{\Delta x}$, must be smaller than the slope associated with the fastest physical characteristic. Mathematically, in 1D,</p>
+
+\[\frac{\Delta t}{\Delta x}\]
 
 </div>
 

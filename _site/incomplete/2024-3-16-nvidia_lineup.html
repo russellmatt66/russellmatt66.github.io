@@ -16,6 +16,10 @@ MathJax.Hub.Config({
     displayMath: [ ['$$','$$'], ['\\[','\\]'] ],
     processEscapes: true
   },
+  TeX: {
+    equationNumbers: {autoNumber: "all" },
+    extensions: ["AMSmath.js", "AMSsymbols.js"]
+  },
   "HTML-CSS": {
     fonts: ["Latin-Modern"],
     mtextFontInherit: true
@@ -26,6 +30,7 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function() {
   var TEX = MathJax.InputJax.TeX;
   TEX.Definitions.Add({
     macros: {
+      ranktwotensor: ["Macro","{\\overline{\\overline{#1}}}",1],
       rowvec: ["Macro","{\\begin{bmatrix} #1 \\end{bmatrix}}", 1],
       colvec: ["Macro","{\\begin{bmatrix} #1 \\end{bmatrix}}", 1],
       quantity:["Macro","{\\left\\{ #1 \\right\\}}",1],
