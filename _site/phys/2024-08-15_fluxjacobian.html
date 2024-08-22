@@ -192,9 +192,10 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function() {
 
     <div class="container">
       <h1>The Flux Jacobians of Ideal Magnetohydrodynamics</h1>
-<p class="meta" style="color:#888">15 Aug 2024</p>
+<p class="meta" style="color:#888">21 Aug 2024</p>
 <div class="post">
-  <h3 id="a-brief-primer-on-ideal-mhd">A Brief Primer on Ideal MHD</h3>
+  <p><em>10 min. read</em></p>
+<h3 id="a-brief-primer-on-ideal-mhd">A Brief Primer on Ideal MHD</h3>
 <p>     Ideal Magnetohydrodynamics (MHD), is the simplest possible framework for modelling a plasma as a fluid. This is powerful, as it allows us to study the macroscopic dynamics of the plasma without needing to enmesh ourselves with the microscopic details, which is the purview of kinetic theory. Fusion energy researchers, in particular, deploy Ideal MHD to understand the equilibrium of different magnetic configurations. In conservative form, meaning there are no external sources of mass, momentum, energy, or magnetic field, the model can be written as,</p>
 
 \[\pdv{\vec{Q}}{}{t} + \div \mathbf{T} = 0
@@ -202,7 +203,8 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function() {
 
 <p>stating that the evolution of the Ideal MHD variables,</p>
 
-\[\vec{Q} = \begin{bmatrix}
+\[\label{eq:imhdvars}
+\vec{Q} = \begin{bmatrix}
 \rho \\ 
 \rho u \\
 \rho v \\

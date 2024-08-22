@@ -1,9 +1,10 @@
 ---
 layout: post
 title: The Flux Jacobians of Ideal Magnetohydrodynamics 
-date: 2024-08-15
+date: 2024-08-21
 collection: phys
 ---
+*10 min. read*
 ### A Brief Primer on Ideal MHD
 &nbsp;&nbsp;&nbsp;&nbsp; Ideal Magnetohydrodynamics (MHD), is the simplest possible framework for modelling a plasma as a fluid. This is powerful, as it allows us to study the macroscopic dynamics of the plasma without needing to enmesh ourselves with the microscopic details, which is the purview of kinetic theory. Fusion energy researchers, in particular, deploy Ideal MHD to understand the equilibrium of different magnetic configurations. In conservative form, meaning there are no external sources of mass, momentum, energy, or magnetic field, the model can be written as,
 
@@ -15,6 +16,7 @@ $$
 stating that the evolution of the Ideal MHD variables, 
 
 $$
+\label{eq:imhdvars}
 \vec{Q} = \begin{bmatrix}
 \rho \\ 
 \rho u \\
