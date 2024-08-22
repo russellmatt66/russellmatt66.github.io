@@ -1,6 +1,6 @@
 ---
 layout: post
-title: The Flux Jacobians of the Ideal MHD System 
+title: The Flux Jacobians of Ideal Magnetohydrodynamics 
 date: 2024-08-15
 collection: phys
 ---
