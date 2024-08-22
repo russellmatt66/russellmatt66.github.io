@@ -241,7 +241,10 @@ C_{84} &= \frac{1}{\rho}\left[\gamma e + (2 - \gamma)\frac{B^{2}}{2\mu_{0}}\righ
 \end{align}
 $$
 
-As aforementioned, this is a great mathematical exercise, and one that took me 8 hours of solid work (non-contiguous) to do. I would love to hear from anyone who catches a mistake in these expressions at the email below. 
+As aforementioned, this is a great mathematical exercise, and one that took me 8 hours of solid work (non-contiguous) to do. I would love to hear from anyone who catches a mistake in these expressions at the email at the bottom of the page. 
+
+*Here is the x-flux jacobian so that the image will be attached to my post*
+![X-Flux Jacobian](../assets/phys/imhd_fjA.png)
 
 <!-- ### $\mathbf{A}$
 &nbsp;&nbsp;&nbsp;&nbsp; In this section, we are going to calculate **ALL** the the components of the X-Flux Jacobian, $\mathbf{A}$. For the sake of brevity, I am going to drop the notation from the derivative that indicates it should be taken with all other fluid variables held fixed, i.e., treated as constant, but it is crucial to remember that they are. The first row is fairly trivial,
