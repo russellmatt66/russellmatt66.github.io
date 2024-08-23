@@ -72,7 +72,9 @@ $$
 det(\mathbf{A} - \lambda\mathbf{I}) = 0
 $$
 
-The *determinant* is a function, $det()$, which takes in an $N\times N$ matrix, and returns a scalar. The determinant of a $2\times 2$ matrix is defined in the following manner,
+### Determinants 
+
+The *determinant* is a function, $det()$, which takes in an $N\times N$ matrix of real numbers, and returns a scalar, so rigorously speaking, $det: \mathbb{R}^{N\times N} \rightarrow \mathbb{R}$. The determinant of a $2\times 2$ matrix is defined in the following manner,
 
 $$
 det(\mathbf{A}_{2by2}) = \begin{vmatrix}
@@ -81,7 +83,13 @@ c & d
 \end{vmatrix} = ad - bc
 $$
 
-The determinant of a $3\times 3$ matrix can be expressed as a sum of determinants of $2\times 2$ sub-matrices,
+Notice that computing this requires the performance of 3 floating-point operations, so we shall say that,
+
+$$
+F(2) = 3
+$$ 
+
+where $F(N)$ expresses the amount of work it takes to compute the determinant of an $N\times N$ matrix. $F(2)$ is a trivial amount of work for a computer, and a straightforward task for a human with a calculator. The determinant of a $3\times 3$ matrix can be expressed as a sum of determinants of $2\times 2$ sub-matrices,
 
 $$
 det(\mathbf{A}_{3by3}) = \begin{vmatrix}
@@ -103,7 +111,13 @@ g & h
 \end{vmatrix}
 $$
 
-The determinant of a $4\times 4$ matrix can be expressed as a sum of determinants of $3\times 3$ sub-matrices, 
+&nbsp;&nbsp;&nbsp;&nbsp; If you have taken a course in linear algebra, or calculus, this formula will hopefully be familiar to you. You might also remember that it doesn't matter what row, or column, that you use as the leading factors of the sub-matrix expansion, so long as you remember to multiply the ones whose row and column index sum to an odd number, by $-1$. Both of these facts are important, the former because it is a way of drastically reducing the amount of work necessary to compute a determinant for matrices that have an appreciable number of zeros along a certain row or column, as you can choose to expand along this dimension, and therefore trivialize much of the algebra. In general, the amount of work we have to do to compute a $3\times 3$ determinant is,
+
+$$
+F(3) = 3 * F(2) + 3 + 2
+$$
+
+&nbsp;&nbsp;&nbsp;&nbsp; The first term in the above is the number of floating-point operations (FPOs) that it takes to compute the determinants of the sub-matrices, the second term is the number of FPOs to multiply these by their leading factors, and then the last term is the number of addition operations to sum everything together. The determinant of a $4\times 4$ matrix can be expressed as a sum of determinants of $3\times 3$ sub-matrices, 
 
 $$
 det(\mathbf{A}_{4by4}) = \begin{vmatrix}
@@ -134,7 +148,30 @@ m & n & o
 \end{vmatrix}
 $$
 
-and so on, and so forth (larger dimensions not rendered here for obvious reasons). It is apparent that computing the determinant is a very expensive, and time-consuming operation. In practice, instead of doing this, there are various *matrix decompositions*[^1] which can express the given matrix as a product of several other matrices, in one of which the eigenvalues are explicitly stored, that are employed. High-performance libraries exist to do these computations on CPU, and GPU, which can be useful for implementing an adaptive timestep in a simulation. 
+and so on, and so forth (larger dimensions not rendered here for obvious reasons). In general, for an $N\times N$ matrix, you will need to perform $N * F(N-1)$ FPOs to compute the sub-matrix determinants, $N$ more FPOs to multiply these together with their leading factors, and finally $N-1$ FPOs to sum everything together. This is a recurrence relation with $F(2) = 3$ as the base case,
+
+$$
+\begin{align}
+F(N) &= N * F(N-1) + 2N - 1 \\
+&= N(F(N-1) + 2) - 1 
+\end{align}
+$$
+
+![Sub-Matrix Expansion Runtime](../assets/phys/det_runtime.png)
+
+| N | F(N)   |
+| - | ------ |
+| 2 | 3      |
+| 3 | 14     |
+| 4 | 63     |
+| 5 | 324    |
+| 6 | 1955   |
+| 7 | 13698  |
+| 8 | 109599 |
+
+It is apparent, visualized in the above figure with a few values tabulated below, that computing the determinant is a very expensive, and time-consuming operation. Just to hammer the point home, lines representing when an implementation would need GFLOPs, TFLOPs, PFLOPs, and EFLOPS of performance, in order to compute the problem in one second, are plotted alongside the data representing the runtime of the sub-matrix expansion algorithm. It is clear that this is not a wise, or worthwhile, task to be doing for unstructured matrices of any appreciable size, especially because doing so in the context of an eigenvalue problem yields an $Nth$ degree polynomial whose roots must then be found. 
+
+&nbsp;&nbsp;&nbsp;&nbsp; In practice, instead of doing this, there are various *matrix decompositions*[^1] which can express the given matrix as a product of several other matrices, in one of which the eigenvalues are explicitly stored, that are employed for finding the eigenvalues of very large systems. High-performance libraries exist to do these computations on CPU, and GPU, which can be useful for implementing an adaptive timestep in a simulation. However, it should be noted that these decompositions are still expensive in of themselves, typically requiring between $O(N logN) - O(N^{3})$ work, and many of which are constrained as to what matrices they can operate on.  
 
 ### The Ideal MHD Eigenvalues
 &nbsp;&nbsp;&nbsp;&nbsp; There are three matrices which are naturally relevant to Ideal Magnetohydrodynamics, namely, the Flux Jacobians, $\mathbf{A}, \mathbf{B}$, and $\mathbf{C}$. These matrices describe the rate at which the fluxes in the x-,y-, and z-directions, respectively, change with respect to a change in the fluid variables, $\vec{Q}$. From dimensional analysis of Equation (\ref{eq:imhd_system_fj}), you can see that the units of the Flux Jacobians must be that of velocity, distance over time, and so the eigenvalues of these matrices have a special interpretation as *characteristic speeds*.  
@@ -149,7 +186,9 @@ $$
 
 &nbsp;&nbsp;&nbsp;&nbsp; The **equation type** of a system of PDEs is also defined by the eigenvalues of these matrices. There are three basic kinds of PDEs, *hyperbolic*, *parabolic*, and *elliptic*. Hyperbolic equations describe wave-like behavior, parabolic equations describe diffusion-like behavior, and elliptic equations describe steady-state behavior, or eigenvalue problems, where the challenge is determining a spectrum of numbers, instead of evolving the state of a dynamical system. What type a system of PDEs is has important implications for the kinds of numerical algorithms which are best suited to solving it. Furthermore, some PDEs can be of mixed-type, perhaps being hyperbolic in one part of the domain, and parabolic in another, due to nonuniformity in the coefficients. Fortunately, Ideal MHD does not have this problem, because the only coefficients in the system are two constants, $\gamma$, and $\mu_{0}$. As we will see, it is hyperbolic in the entire domain, which is based on its eigenvalues being real numbers with zero imaginary part. 
 
-&nbsp;&nbsp;&nbsp;&nbsp; While there are numerical routines implemented in C, and C++, which compute the eigenvalues of a matrix, there is little recourse to symbolically computing them (except the expensive Mathematica software, of course). However, by looking at the previous examples of how to compute a determinant by hand, we can notice that the determinant of the sub-matrices are multiplied by a leading factor, which is a value in the primary matrix. If this value is 0, then the associated sub-matrix determinant does not need to be computed, which means that if we are clever, and the primary matrix is full of zeroes (like the Ideal MHD Flux Jacobians are), then things can be greatly simplified!  
+&nbsp;&nbsp;&nbsp;&nbsp;
+
+<!-- &nbsp;&nbsp;&nbsp;&nbsp; While there are numerical routines implemented in C, and C++, which compute the eigenvalues of a matrix, there is little recourse to symbolically computing them (except the expensive Mathematica software, of course). However, by looking at the previous examples of how to compute a determinant by hand, we can notice that the determinant of the sub-matrices are multiplied by a leading factor, which is a value in the primary matrix. If this value is 0, then the associated sub-matrix determinant does not need to be computed, which means that if we are clever, and the primary matrix is full of zeroes (like the Ideal MHD Flux Jacobians are), then things can be greatly simplified!   -->
 
 <!-- &nbsp;&nbsp;&nbsp;&nbsp; Long ago, in Fortran77, high-performance libraries were written to implement numerical linear algebra routines that performed this kind of task, among others. Fortran77, or F77 as it is lovingly-referred to, is also the number of expletives one might utter when dealing with a language full of such idiosyncracies as requiring there to be a fixed number of leading whitespaces before every line (if you thought *Python* whitespace was bad). As the language matured, these routines were ported to Fortran90, a much more enjoyable version of Fortran, C, and C++. Now, bindings exist in many languages to access these high-performance libraries, as well as ports of them which run on a GPU.     -->
 
