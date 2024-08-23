@@ -174,8 +174,8 @@ $$
 \end{align}
 $$
 
-### $\mathbf{A}, \mathbf{B}$, and $\mathbf{C}$
-&nbsp;&nbsp;&nbsp;&nbsp; Before determining the eigenvalues of the Ideal MHD Flux Jacobians, which is a subject for a future post, the one-hundred, and ninety-two, components that make them up must be computed first. Here is the result,
+### Appendix
+&nbsp;&nbsp;&nbsp;&nbsp; Before determining the eigenvalues of the Ideal MHD Flux Jacobians, which is a subject for a future post, the one-hundred, and ninety-two, components that make them up must be computed first. Here are the results,
 
 $$
 \mathbf{A} = \begin{bmatrix}
@@ -194,6 +194,7 @@ where,
 
 $$
 \begin{align}
+\label{eq:imhd_fjA}
 A_{81} &= u\left[(\gamma - 1)\norm{\vec{u}}^{2} - \frac{1}{\rho}(\gamma e + (2 - \gamma)\frac{B^{2}}{2\mu_{0}})\right] + B_{x}\frac{\vec{B}\cdot\vec{u}}{\rho\mu_{0}} \\
 A_{82} &= \frac{1}{\rho}\left[\gamma e + (2 - \gamma)\frac{B^{2}}{2\mu_{0}}\right] + (1 - \gamma)\left(u^{2} + \frac{\norm{\vec{u}}^{2}}{2}\right) - \frac{B_{x}^{2}}{\rho\mu_{0}}
 \end{align}

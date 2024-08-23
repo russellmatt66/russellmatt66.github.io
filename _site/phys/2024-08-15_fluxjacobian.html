@@ -330,8 +330,8 @@ This point is italicized, because it is crucially important for computing the fl
 \frac{\Delta t}{\Delta x}\abs{\lambda_{A,max}} + \frac{\Delta t}{\Delta y}\abs{\lambda_{B,max}} + \frac{\Delta t}{\Delta z}\abs{\lambda_{C,max}} \leq 1
 \end{align}\]
 
-<h3 id="mathbfa-mathbfb-and-mathbfc">$\mathbf{A}, \mathbf{B}$, and $\mathbf{C}$</h3>
-<p>     Before determining the eigenvalues of the Ideal MHD Flux Jacobians, which is a subject for a future post, the one-hundred, and ninety-two, components that make them up must be computed first. Here is the result,</p>
+<h3 id="appendix">Appendix</h3>
+<p>     Before determining the eigenvalues of the Ideal MHD Flux Jacobians, which is a subject for a future post, the one-hundred, and ninety-two, components that make them up must be computed first. Here are the results,</p>
 
 \[\mathbf{A} = \begin{bmatrix}
 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
@@ -347,6 +347,7 @@ A_{81} &amp; A_{82} &amp; (1 - \gamma)uv - \frac{B_{y}B_{x}}{\rho\mu_{0}} &amp; 
 <p>where,</p>
 
 \[\begin{align}
+\label{eq:imhd_fjA}
 A_{81} &amp;= u\left[(\gamma - 1)\norm{\vec{u}}^{2} - \frac{1}{\rho}(\gamma e + (2 - \gamma)\frac{B^{2}}{2\mu_{0}})\right] + B_{x}\frac{\vec{B}\cdot\vec{u}}{\rho\mu_{0}} \\
 A_{82} &amp;= \frac{1}{\rho}\left[\gamma e + (2 - \gamma)\frac{B^{2}}{2\mu_{0}}\right] + (1 - \gamma)\left(u^{2} + \frac{\norm{\vec{u}}^{2}}{2}\right) - \frac{B_{x}^{2}}{\rho\mu_{0}}
 \end{align}\]
