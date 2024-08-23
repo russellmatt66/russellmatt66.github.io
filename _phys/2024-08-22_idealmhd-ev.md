@@ -66,20 +66,7 @@ $$
 
 All vectors can be boiled down to a magnitude, and a direction. The *magnitude* of a vector is a measure of how long it is, and its direction gives a sense for its orientation. If we compare the magnitude of these two vectors, and their orientations, we will notice they're different when viewed in these two coordinate systems, even though we're talking about the **same** underlying mathematical object. *Great*, you may be thinking, *when do we get to what eigenvectors, and eigenvalues, are?* 
 
-&nbsp;&nbsp;&nbsp;&nbsp; For a given system, there is a set of vectors which *do not rotate* when the system is applied to it. Their lengths will change, but their orientations will not. These vectors are termed **eigenvectors**, and the factors by which their lengths change, are the **eigenvalues**.
-
-### The Ideal MHD Eigenvalues
-&nbsp;&nbsp;&nbsp;&nbsp; There are three matrices which are naturally relevant to Ideal Magnetohydrodynamics, namely, the Flux Jacobians, $\mathbf{A}, \mathbf{B}$, and $\mathbf{C}$. These matrices describe the rate at which the fluxes in the x-,y-, and z-directions, respectively, change with respect to a change in the fluid variables, $\vec{Q}$. From dimensional analysis of Equation (\ref{eq:imhd_system_fj}), you can see that the units of the Flux Jacobians must be that of velocity, distance over time, and so the eigenvalues of these matrices have a special interpretation as *characteristic speeds*.  
-
-&nbsp;&nbsp;&nbsp;&nbsp; The stability of a numerical code that solves the Ideal MHD system [depends on the value of these characteristic speeds](./2024-08-15_fluxjacobian#motivation), in comparison to the characteristic speed of information propagation on the simulation mesh, namely, 
-
-$$
-\begin{align}
-\frac{\Delta t}{\Delta x}\abs{\lambda_{A,max}} + \frac{\Delta t}{\Delta y}\abs{\lambda_{B,max}} + \frac{\Delta t}{\Delta z}\abs{\lambda_{C,max}} \leq 1
-\end{align}
-$$
-
-In principle, the eigenvalues, $\\{\lambda\\}$, of a system, $\mathbf{A}$, can be determined by solving for the roots of a *characteristic polynomial*, which is defined by the equation,
+&nbsp;&nbsp;&nbsp;&nbsp; For a given system, there is a set of vectors which *do not rotate* when the system is applied to it. Their lengths will change, but their orientations will not. These vectors are termed **eigenvectors**, and the factors by which their lengths change, are the **eigenvalues**. In principle, the eigenvalues, $\\{\lambda\\}$, of a system, $\mathbf{A}$, can be determined by solving for the roots of a *characteristic polynomial*, which is defined by the equation,
 
 $$
 det(\mathbf{A} - \lambda\mathbf{I}) = 0
@@ -119,12 +106,52 @@ $$
 The determinant of a $4\times 4$ matrix can be expressed as a sum of determinants of $3\times 3$ sub-matrices, 
 
 $$
-det(\mathbf{A}_{4by4}) = 
+det(\mathbf{A}_{4by4}) = \begin{vmatrix}
+a & b & c & d \\
+e & f & g & h \\
+i & j & k & l \\
+m & n & o & p
+\end{vmatrix}
+= a \begin{vmatrix}
+f & g & h \\
+j & k & l \\
+n & o & p
+\end{vmatrix}
+- b \begin{vmatrix}
+e & g & h \\
+i & k & l \\
+m & o & p
+\end{vmatrix}
++ c \begin{vmatrix}
+e & f & h \\
+i & j & l \\
+m & n & p
+\end{vmatrix}
+- d \begin{vmatrix}
+e & f & g \\
+i & j & k \\
+m & n & o
+\end{vmatrix}
 $$
 
-and so on, and so forth (not rendered here for obvious reasons). It is apparent that computing the determinant is a very expensive, and time-consuming operation. 
+and so on, and so forth (larger dimensions not rendered here for obvious reasons). It is apparent that computing the determinant is a very expensive, and time-consuming operation. In practice, instead of doing this, there are various *matrix decompositions*[^1] which can express the given matrix as a product of several other matrices, in one of which the eigenvalues are explicitly stored, that are employed. High-performance libraries exist to do these computations on CPU, and GPU, which can be useful for implementing an adaptive timestep in a simulation. 
 
-&nbsp;&nbsp;&nbsp;&nbsp; In practice, instead of doing this, there are various *matrix decompositions*[^1] which can express the given matrix as a product of several other matrices, in one of which the eigenvalues are explicitly stored.   
+### The Ideal MHD Eigenvalues
+&nbsp;&nbsp;&nbsp;&nbsp; There are three matrices which are naturally relevant to Ideal Magnetohydrodynamics, namely, the Flux Jacobians, $\mathbf{A}, \mathbf{B}$, and $\mathbf{C}$. These matrices describe the rate at which the fluxes in the x-,y-, and z-directions, respectively, change with respect to a change in the fluid variables, $\vec{Q}$. From dimensional analysis of Equation (\ref{eq:imhd_system_fj}), you can see that the units of the Flux Jacobians must be that of velocity, distance over time, and so the eigenvalues of these matrices have a special interpretation as *characteristic speeds*.  
+
+&nbsp;&nbsp;&nbsp;&nbsp; The stability of a numerical code that solves the Ideal MHD system [depends on the value of these characteristic speeds](./2024-08-15_fluxjacobian#motivation), in comparison to the characteristic speed of information propagation on the simulation mesh, namely, 
+
+$$
+\begin{align}
+\frac{\Delta t}{\Delta x}\abs{\lambda_{A,max}} + \frac{\Delta t}{\Delta y}\abs{\lambda_{B,max}} + \frac{\Delta t}{\Delta z}\abs{\lambda_{C,max}} \leq 1
+\end{align}
+$$
+
+&nbsp;&nbsp;&nbsp;&nbsp; The **equation type** of a system of PDEs is also defined by the eigenvalues of these matrices. There are three basic kinds of PDEs, *hyperbolic*, *parabolic*, and *elliptic*. Hyperbolic equations describe wave-like behavior, parabolic equations describe diffusion-like behavior, and elliptic equations describe steady-state behavior, or eigenvalue problems, where the challenge is determining a spectrum of numbers, instead of evolving the state of a dynamical system. What type a system of PDEs is has important implications for the kinds of numerical algorithms which are best suited to solving it. Furthermore, some PDEs can be of mixed-type, perhaps being hyperbolic in one part of the domain, and parabolic in another, due to nonuniformity in the coefficients. Fortunately, Ideal MHD does not have this problem, because the only coefficients in the system are two constants, $\gamma$, and $\mu_{0}$. As we will see, it is hyperbolic in the entire domain, which is based on its eigenvalues being real numbers with zero imaginary part. 
+
+&nbsp;&nbsp;&nbsp;&nbsp; While there are numerical routines implemented in C, and C++, which compute the eigenvalues of a matrix, there is little recourse to symbolically computing them (except the expensive Mathematica software, of course). However, by looking at the previous examples of how to compute a determinant by hand, we can notice that the determinant of the sub-matrices are multiplied by a leading factor, which is a value in the primary matrix. If this value is 0, then the associated sub-matrix determinant does not need to be computed, which means that if we are clever, and the primary matrix is full of zeroes (like the Ideal MHD Flux Jacobians are), then things can be greatly simplified!  
+
+<!-- &nbsp;&nbsp;&nbsp;&nbsp; Long ago, in Fortran77, high-performance libraries were written to implement numerical linear algebra routines that performed this kind of task, among others. Fortran77, or F77 as it is lovingly-referred to, is also the number of expletives one might utter when dealing with a language full of such idiosyncracies as requiring there to be a fixed number of leading whitespaces before every line (if you thought *Python* whitespace was bad). As the language matured, these routines were ported to Fortran90, a much more enjoyable version of Fortran, C, and C++. Now, bindings exist in many languages to access these high-performance libraries, as well as ports of them which run on a GPU.     -->
 
 <!-- References -->
 [^1]: Trefethen and Bau, *Numerical Linear Algebra*, SIAM, 1997
