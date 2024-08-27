@@ -461,11 +461,11 @@ A_{74} & 0 & u-\lambda
 = -A_{26}\left[(u-\lambda)^{2} - A_{47}A_{74}\right]\\
 
 D_{1222} &= \begin{vmatrix}
-A_{22} - \lambda & A_{24} & A_{26} \\
-w & u-\lambda & 0 \\
-A_{72} & A_{74} & 0 
+A_{22} - \lambda & A_{24} & A_{27} \\
+w & u-\lambda & A_{47} \\
+A_{72} & A_{74} & u-\lambda
 \end{vmatrix}
-= A_{26}\left[wA_{74} - (u-\lambda)A_{72}\right]\\
+= (A_{22} - \lambda)\left[(u-\lambda)^{2} - A_{47}A_{74}\right] - A_{24}\left[w(u-\lambda) - A_{47}A_{74}\right] + A_{27}\left[wA_{74} - (u-\lambda)A_{72}\right]\\
 
 D_{1231} &= \begin{vmatrix}
 A_{23} & A_{24} & A_{27} \\
@@ -479,7 +479,7 @@ A_{22} - \lambda & A_{24} & A_{27} \\
 w & u-\lambda & A_{47} \\
 A_{72} & A_{74} & u-\lambda
 \end{vmatrix}
-= (A_{22} - \lambda)\left[(u-\lambda)^{2} - A_{47}A_{74}\right] - A_{24}\left[w(u-\lambda) - A_{47}A_{74}\right] + A_{27}\left[wA_{74} - (u-\lambda)A_{72}\right]\\
+= D_{1222}\\
 
 D_{2111} &= \begin{vmatrix}
 u - \lambda & 0 & A_{47} \\
