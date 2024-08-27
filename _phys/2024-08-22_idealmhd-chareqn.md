@@ -241,6 +241,7 @@ $$
 Space is getting tight, so let's call these determinants $D_{1}$, and $D_{2}$, respectively, meaning the above is written as,
 
 $$
+\label{eqn:master_polynomial}
 -\lambda D_{1} - D_{2} = 0
 $$
 
@@ -261,7 +262,7 @@ v & u - \lambda & 0 & A_{36} & 0 \\
 w & 0 & u - \lambda & 0 & A_{47} \\
 A_{62} & A_{63} & 0 & u - \lambda & 0 \\
 A_{72} & 0 & A_{74} & 0 & u - \lambda \\
-\end{vmatrix} 
+\end{vmatrix} \label{eqn:first_det}
 \\
 D_{2} &= -(\gamma - 1)\begin{vmatrix}
 -uv & u - \lambda & 0 & A_{36} & 0 \\
@@ -563,8 +564,34 @@ A_{21} & A_{23} & A_{27} \\
 -uw & 0 & A_{47} \\
 A_{71} & 0 & u-\lambda
 \end{vmatrix}
-= -A_{23}\left[-uw(u-\lambda) - A_{47}A_{71}\right]
+= -A_{23}\left[-uw(u-\lambda) - A_{47}A_{71}\right] \label{eqn:last_det}
 \end{align}
+$$
+
+Equations (\ref{eqn:first_det} - \ref{eqn:last_det}) represent all the pieces that we need to insert into Equation (\ref{eqn:master_polynomial}) in order to derive the characteristic polynomial of Ideal MHD,
+
+$$
+\begin{align}
+&\lambda D_{1} + D_{2} = 0 \\
+&\rightarrow \lambda \left[-(\gamma - 1)D_{11} + (u\gamma - \lambda)D_{12}\right] - (\gamma - 1)D_{21} + (u\gamma - \lambda)D_{22} = 0 \\
+&\therefore \lambda\left[(1 - \gamma)\left(vD_{111} + (\lambda - u)D_{112} - A_{36}D_{113}\right)
++ (u\gamma - \lambda)\left(-vD_{121} + (u-\lambda)D_{122} + A_{36}D_{123}\right)\right] \\
+&+ (1-\gamma)\left[-uvD_{211} - (u-\lambda)D_{212} - A_{36}D_{213}\right] + (u\gamma - \lambda)\left[uvD_{221} + (u-\lambda)D_{222} + A_{36}D_{223}\right] = 0
+\end{align}
+$$
+
+The next step after the above is of course to insert the expressions for the $D_{mno}$ into it,
+
+$$
+\begin{equation}
+\begin{split}
+\rightarrow \lambda\left[(1 - \gamma)\left(v\left((\lambda - u)D_{1111} - A_{47}D_{1112}\right) + (\lambda - u)((\lambda - u)D_{1122} - A_{62}D_{1121}) - A_{36}(A_{63}D_{1132} - A_{62}D_{1131})\right) \\
++ (u\gamma - \lambda)\left(-v((u-\lambda)D_{1211} + A_{47}D_{1212}) + (u-\lambda)(A_{62}D_{1221} + (u-\lambda)D_{1222}) + A_{36}(A_{62}D_{1231}-A_{63}D_{1232})\right)\right] \\
++ (1-\gamma)\left[uv(A_{63}D_{2111}+(u-\lambda)D_{2112}) - (\lambda - u)(A_{61}D_{2121} + (u-\lambda)D_{2122}) + A_{36}(A_{61}D_{2131} - A_{63}D_{2132})\right] \\
++(u\gamma - \lambda)\left[uv(A_{47}D_{2212} + (u-\lambda)D_{2211}) + (u-\lambda)(A_{61}D_{2221} + (u-\lambda)D_{2222}) + A_{36}(A_{61}D_{2231} - A_{63}D_{2232})\right] \\
+= 0
+\end{split}
+\end{equation}
 $$
 
 <!-- same goes for $\mathbf{B} - \lambda\mathbf{I}$, and $\mathbf{C} - \lambda\mathbf{I}$,
