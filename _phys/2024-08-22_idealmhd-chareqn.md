@@ -393,7 +393,179 @@ $$
 
 Yep, you guessed it, we're still not done. Remember when we determined the runtime complexity of computing a determinant? Each of these twelve, $4\times 4$, determinants expands into a sum of two $3\times 3$ determinants. Sunk-cost fallacy, and whatnot, there's really nothing else that can be done at this point except calculate them. 
 
-&nbsp;&nbsp;&nbsp;&nbsp; The good news is that, due to their structure, many of these $3\times 3$ determinants can be reduced to just a single $2\times 2$ determinant which can be directly expanded into a scalar equation. In other words, we will finally be hitting the bedrock of this calculation, and then the remaining task to deriving the characteristic polynomial of Ideal MHD will be percolating these results upwards in order to obtain a 7th-degree polynomial in $\lambda$ that is equal to zero, i.e., $P_{7}(\lambda) = 0$. The roots of this equation are the eigenvalues, but as you might have guessed, actually determining these characteristics will be the subject of a future post.   
+&nbsp;&nbsp;&nbsp;&nbsp; The good news is that, due to their structure, many of these $3\times 3$ determinants can be reduced to just a single $2\times 2$ determinant which can be directly expanded into a scalar equation. In other words, we will finally be hitting the bedrock of this calculation, and then the remaining task to deriving the characteristic polynomial of Ideal MHD will be percolating these results upwards in order to obtain a 7th-degree polynomial in $\lambda$ that is equal to zero, i.e., $P_{7}(\lambda) = 0$. The roots of this equation are the eigenvalues, but as you might have guessed, actually determining these characteristics will be the subject of a future post. Let's get back to computing this next layer of determinants, there are twenty-four,
+
+$$
+\begin{align}
+D_{1111} &= \begin{vmatrix}
+A_{63} & u - \lambda & 0 \\
+0 & 0 & u - \lambda \\
+A_{83} & A_{86} & A_{87}
+\end{vmatrix} 
+= -(u - \lambda)\left[A_{63}A_{86} + (u - \lambda)A_{83}\right]\\
+
+D_{1112} &= \begin{vmatrix}
+A_{63} & 0 & u - \lambda \\
+0 & A_{74} & 0 \\
+A_{83} & A_{84} & A_{86}
+\end{vmatrix} 
+= A_{74}\left[A_{63}A_{86} - (u - \lambda)A_{83}\right]\\
+
+D_{1121} &= \begin{vmatrix}
+u - \lambda & 0 & A_{47} \\
+A_{74} & 0 & u - \lambda \\
+A_{84} & A_{86} & A_{87}
+\end{vmatrix} 
+= -A_{86}\left[(u-\lambda)^{2} + A_{47}A_{74}\right]\\
+
+D_{1122} &= \begin{vmatrix}
+w & u - \lambda & A_{47} \\
+A_{72} & A_{74} & u - \lambda \\
+A_{82} & A_{84} & A_{87}
+\end{vmatrix} 
+= w\left[A_{74}A_{87} - (u-\lambda)A_{84}\right] - (u-\lambda)\left[A_{72}A_{87} - (u-\lambda)A_{82}\right] + A_{47}\left[A_{72}A_{84} - A_{74}A_{82}\right]\\
+
+D_{1131} &= \begin{vmatrix}
+0 & u-\lambda & A_{47} \\
+0 & A_{74} & u-\lambda \\
+A_{83} & A_{84} & A_{87} 
+\end{vmatrix}
+= A_{83}\left[(u-\lambda)^{2} - A_{47}A_{74}\right]\\
+
+D_{1132} &= \begin{vmatrix}
+w & u - \lambda & A_{47} \\
+A_{72} & A_{74} & u - \lambda \\
+A_{82} & A_{84} & A_{87}
+\end{vmatrix} 
+= w\left[A_{74}A_{87} - (u-\lambda)A_{84}\right] - (u-\lambda)\left[A_{72}A_{87} - (u-\lambda)A_{82}\right] + A_{47}\left[A_{72}A_{84} - A_{74}A_{82}\right]\\
+
+D_{1211} &= \begin{vmatrix}
+A_{23} & A_{26} & A_{27} \\
+A_{63} & u-\lambda & 0 \\
+0 & 0 & u-\lambda
+\end{vmatrix}
+= (u-\lambda)\left[A_{23}(u-\lambda) - A_{26}A_{63}\right]\\
+
+D_{1212} &= \begin{vmatrix}
+A_{23} & A_{24} & A_{26} \\
+A_{63} & 0 & u-\lambda \\
+0 & A_{74} & 0
+\end{vmatrix}
+= -A_{74}\left[A_{23}(u-\lambda) - A_{26}A_{63}\right]\\
+
+D_{1221} &= \begin{vmatrix}
+A_{24} & A_{26} & A_{27} \\
+u-\lambda & 0 & A_{47} \\
+A_{74} & 0 & u-\lambda
+\end{vmatrix}
+= -A_{26}\left[(u-\lambda)^{2} - A_{47}A_{74}\right]\\
+
+D_{1222} &= \begin{vmatrix}
+A_{22} - \lambda & A_{24} & A_{26} \\
+w & u-\lambda & 0 \\
+A_{72} & A_{74} & 0 
+\end{vmatrix}
+= A_{26}\left[wA_{74} - (u-\lambda)A_{72}\right]\\
+
+D_{1231} &= \begin{vmatrix}
+A_{23} & A_{24} & A_{27} \\
+0 & u-\lambda & A_{47} \\
+0 & A_{74} & u-\lambda
+\end{vmatrix}
+= A_{23}\left[(u-\lambda)^{2} - A_{47}A_{74}\right]\\
+
+D_{1232} &= \begin{vmatrix}
+A_{22} - \lambda & A_{24} & A_{27} \\
+w & u-\lambda & A_{47} \\
+A_{72} & A_{74} & u-\lambda
+\end{vmatrix}
+= (A_{22} - \lambda)\left[(u-\lambda)^{2} - A_{47}A_{74}\right] - A_{24}\left[w(u-\lambda) - A_{47}A_{74}\right] + A_{27}\left[wA_{74} - (u-\lambda)A_{72}\right]\\
+
+D_{2111} &= \begin{vmatrix}
+u - \lambda & 0 & A_{47} \\
+A_{74} & 0 & u-\lambda \\
+A_{84} & A_{86} & A_{87} 
+\end{vmatrix}
+= -A_{86}\left[(u-\lambda)^{2} - A_{47}A_{74}\right]\\
+
+D_{2112} &= \begin{vmatrix}
+0 & u - \lambda & A_{47} \\
+0 & A_{74} & u-\lambda \\
+A_{83} & A_{84} & A_{87} 
+\end{vmatrix}
+= A_{83}\left[(u-\lambda)^{2} - A_{47}A_{74}\right]\\
+
+D_{2121} &= \begin{vmatrix}
+u - \lambda & 0 & A_{47} \\
+A_{74} & 0 & u-\lambda \\
+A_{84} & A_{86} & A_{87} 
+\end{vmatrix}
+= D_{2111} \\
+
+D_{2122} &= \begin{vmatrix}
+-uw & u-\lambda & A_{47} \\
+A_{71} & A_{74} & u-\lambda \\
+A_{81} & A_{84} & A_{87}
+\end{vmatrix}
+= -uw\left[A_{74}A_{87} - (u-\lambda)A_{84}\right] - (u-\lambda)\left[A_{71}A_{87} - (u-\lambda)A_{81}\right] + A_{47}\left[A_{71}A_{84} - A_{74}A_{81}\right]\\
+
+D_{2131} &= \begin{vmatrix}
+0 & u-\lambda & A_{47} \\
+0 & A_{74} & u-\lambda \\
+A_{83} & A_{84} & A_{87}
+\end{vmatrix}
+= D_{2112} \\
+
+D_{2132} &= \begin{vmatrix}
+-uw & u-\lambda & A_{47} \\
+A_{71} & A_{74} & u-\lambda \\
+A_{81} & A_{84} & A_{87}
+\end{vmatrix}
+= D_{2122}\\
+
+D_{2211} &= \begin{vmatrix}
+A_{23} & A_{26} & A_{27} \\
+A_{63} & u-\lambda & 0 \\
+0 & 0 & u-\lambda
+\end{vmatrix}
+= D_{1211}\\
+
+D_{2212} &= \begin{vmatrix}
+A_{23} & A_{24} & A_{26} \\
+A_{63} & 0 & u-\lambda \\
+0 & A_{74} & 0
+\end{vmatrix}
+= D_{1212}\\
+
+D_{2221} &= \begin{vmatrix}
+A_{24} & A_{26} & A_{27} \\
+u-\lambda & 0 & A_{47} \\
+A_{74} & 0 & u-\lambda
+\end{vmatrix}
+= D_{1221} \\
+
+D_{2222} &= \begin{vmatrix}
+A_{21} & A_{24} & A_{27} \\
+-uw & u-\lambda & A_{47} \\
+A_{71} & A_{74} & u-\lambda
+\end{vmatrix}
+= A_{21}\left[(u-\lambda)^{2} - A_{47}A_{74}\right] - A_{24}\left[-uw(u-\lambda) - A_{47}A_{71}\right] + A_{27}\left[-uwA_{74}-(u-\lambda)A_{71}\right]\\
+
+D_{2231} &= \begin{vmatrix}
+A_{23} & A_{24} & A_{27} \\
+0 & u-\lambda & A_{47} \\
+0 & A_{74} & u-\lambda
+\end{vmatrix}
+= D_{1232}\\
+
+D_{2232} &= \begin{vmatrix}
+A_{21} & A_{23} & A_{27} \\
+-uw & 0 & A_{47} \\
+A_{71} & 0 & u-\lambda
+\end{vmatrix}
+= -A_{23}\left[-uw(u-\lambda) - A_{47}A_{71}\right]
+\end{align}
+$$
 
 <!-- same goes for $\mathbf{B} - \lambda\mathbf{I}$, and $\mathbf{C} - \lambda\mathbf{I}$,
 
