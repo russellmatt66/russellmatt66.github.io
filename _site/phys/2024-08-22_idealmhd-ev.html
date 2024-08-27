@@ -192,7 +192,7 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function() {
 
     <div class="container">
       <h1>The Eigenvalues of Ideal Magnetohydrodynamics</h1>
-<p class="meta" style="color:#888">22 Aug 2024</p>
+<p class="meta" style="color:#888">26 Aug 2024</p>
 <div class="post">
   <h3 id="recap">Recap</h3>
 <p>     Previously, I have written about <a href="./2024-08-15_fluxjacobian">the Flux Jacobians of Ideal MHD</a>, which are an idea that is central to this post. Recapping briefly, Ideal MHD is the simplest, meaningful, fluid description of a plasma. Its main application is in the field of fusion energy, where it is used to describe the equilibrium of magnetic configurations. In the absence of external sources of mass, momentum, energy, and magnetic field, we can write the system in the following form,</p>
@@ -393,15 +393,119 @@ A_{71} &amp; A_{72} &amp; 0 &amp; A_{74} &amp; -w &amp; 0 &amp; u - \lambda &amp
 A_{81} &amp; A_{82} &amp; A_{83} &amp; A_{84} &amp; A_{85} &amp; A_{86} &amp; A_{87} &amp; u\gamma - \lambda
 \end{bmatrix}\]
 
-<p>same goes for $\mathbf{B} - \lambda\mathbf{I}$, and $\mathbf{C} - \lambda\mathbf{I}$,</p>
+<p>The fifth row has only a single non-zero element, so if we perform our sub-matrix expansion about it, then we only have to take a single $7\times 7$ determinant,</p>
 
-\[\mathbf{B} - \lambda\mathbf{I} = 
-\begin{bmatrix}
-\end{bmatrix}\]
+\[det(\mathbf{A} - \lambda\mathbf{I}) = 
+-\lambda \begin{vmatrix}
+-\lambda &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+A_{21} &amp; A_{22} - \lambda &amp; A_{23} &amp; A_{24} &amp; A_{26} &amp; A_{27} &amp; \gamma - 1 \\
+-uv &amp; v &amp; u - \lambda &amp; 0 &amp; A_{36} &amp; 0 &amp; 0 \\
+-uw &amp; w &amp; 0 &amp; u - \lambda &amp; 0 &amp; A_{47} &amp; 0 \\
+A_{61} &amp; A_{62} &amp; A_{63} &amp; 0 &amp; u - \lambda &amp; 0 &amp; 0 \\
+A_{71} &amp; A_{72} &amp; 0 &amp; A_{74} &amp; 0 &amp; u - \lambda &amp; 0 \\
+A_{81} &amp; A_{82} &amp; A_{83} &amp; A_{84} &amp; A_{86} &amp; A_{87} &amp; u\gamma - \lambda
+\end{vmatrix} = 0\]
 
-\[\mathbf{C} - \lambda\mathbf{I} = 
+<p>Unfortunately, the best choice we have here will result in two $6 \times 6$ determinants, but notice beforehand that we can already determine one of our eigenvalues just from inspecting the above equation, since $\lambda = 0$ is a valid solution to it. Consequently, we can focus on just when the determinant in the above is equal to zero, as any non-trivial solutions to the eigenvalues require it,</p>
+
+\[\rightarrow - \lambda \begin{vmatrix}
+A_{22} - \lambda &amp; A_{23} &amp; A_{24} &amp; A_{26} &amp; A_{27} &amp; \gamma - 1 \\
+v &amp; u - \lambda &amp; 0 &amp; A_{36} &amp; 0 &amp; 0 \\
+w &amp; 0 &amp; u - \lambda &amp; 0 &amp; A_{47} &amp; 0 \\
+A_{62} &amp; A_{63} &amp; 0 &amp; u - \lambda &amp; 0 &amp; 0 \\
+A_{72} &amp; 0 &amp; A_{74} &amp; 0 &amp; u - \lambda &amp; 0 \\
+A_{82} &amp; A_{83} &amp; A_{84} &amp; A_{86} &amp; A_{87} &amp; u\gamma - \lambda
+\end{vmatrix}
+- \begin{vmatrix}
+A_{21} &amp; A_{23} &amp; A_{24} &amp; A_{26} &amp; A_{27} &amp; \gamma - 1 \\
+-uv &amp; u - \lambda &amp; 0 &amp; A_{36} &amp; 0 &amp; 0 \\
+-uw &amp; 0 &amp; u - \lambda &amp; 0 &amp; A_{47} &amp; 0 \\
+A_{61} &amp; A_{63} &amp; 0 &amp; u - \lambda &amp; 0 &amp; 0 \\
+A_{71} &amp; 0 &amp; A_{74} &amp; 0 &amp; u - \lambda &amp; 0 \\
+A_{81} &amp; A_{83} &amp; A_{84} &amp; A_{86} &amp; A_{87} &amp; u\gamma - \lambda
+\end{vmatrix} = 0\]
+
+<p>Space is getting tight, so let’s call these determinants $D_{1}$, and $D_{2}$, respectively. The best we can do in both cases is expand using the last column, and get two $5\times 5$ determinants out of each.</p>
+
+\[\begin{align}
+D_{1} &amp;= -(\gamma - 1)\begin{vmatrix}
+v &amp; u - \lambda &amp; 0 &amp; A_{36} &amp; 0 \\
+w &amp; 0 &amp; u - \lambda &amp; 0 &amp; A_{47} \\
+A_{62} &amp; A_{63} &amp; 0 &amp; u - \lambda &amp; 0 \\
+A_{72} &amp; 0 &amp; A_{74} &amp; 0 &amp; u - \lambda \\
+A_{82} &amp; A_{83} &amp; A_{84} &amp; A_{86} &amp; A_{87}
+\end{vmatrix}
++ (u\gamma - \lambda)\begin{vmatrix}
+A_{22} - \lambda &amp; A_{23} &amp; A_{24} &amp; A_{26} &amp; A_{27} \\
+v &amp; u - \lambda &amp; 0 &amp; A_{36} &amp; 0 \\
+w &amp; 0 &amp; u - \lambda &amp; 0 &amp; A_{47} \\
+A_{62} &amp; A_{63} &amp; 0 &amp; u - \lambda &amp; 0 \\
+A_{72} &amp; 0 &amp; A_{74} &amp; 0 &amp; u - \lambda \\
+\end{vmatrix} 
+\\
+D_{2} &amp;= -(\gamma - 1)\begin{vmatrix}
+-uv &amp; u - \lambda &amp; 0 &amp; A_{36} &amp; 0 \\
+-uw &amp; 0 &amp; u - \lambda &amp; 0 &amp; A_{47} \\
+A_{61} &amp; A_{63} &amp; 0 &amp; u - \lambda &amp; 0 \\
+A_{71} &amp; 0 &amp; A_{74} &amp; 0 &amp; u - \lambda \\
+A_{81} &amp; A_{83} &amp; A_{84} &amp; A_{86} &amp; A_{87}
+\end{vmatrix}
++ (u\gamma - \lambda)\begin{vmatrix}
+A_{21} &amp; A_{23} &amp; A_{24} &amp; A_{26} &amp; A_{27} \\
+-uv &amp; u - \lambda &amp; 0 &amp; A_{36} &amp; 0 \\
+-uw &amp; 0 &amp; u - \lambda &amp; 0 &amp; A_{47} \\
+A_{61} &amp; A_{63} &amp; 0 &amp; u - \lambda &amp; 0 \\
+A_{71} &amp; 0 &amp; A_{74} &amp; 0 &amp; u - \lambda
+\end{vmatrix} 
+\end{align}\]
+
+<p>We can rewrite this,</p>
+
+\[\begin{align}
+D_{1} &amp;= -(\gamma - 1)D_{11} + (u\gamma - \lambda)D_{12} \\
+D_{2} &amp;= -(\gamma - 1)D_{21} + (u\gamma - \lambda)D_{22} \\
+\therefore -\lambda&amp;\left[(1-\gamma)D_{11} + (u\gamma - \lambda)D_{12}\right] + (\gamma-1)D_{21} + (\lambda - u\gamma)D_{22} = 0
+\end{align}\]
+
+<p>Unfortunately, there’s no way around what we have to do next if we want to see this calculation through. The $D_{kl}$ are structured such that the simplest expansion we can break each of them down into involves three $4\times 4$ determinants per $D_{kl}$. The best decision we can make is to expand across the dimension with the simplest terms, yielding,</p>
+
+\[\begin{align}
+D_{11} &amp;= vD_{111} - (u - \lambda)D_{112} - A_{36}D_{113} \\
+D_{12} &amp;= -vD_{121} + (u - \lambda)D_{122} + A_{36}D_{123} \\
+D_{21} &amp;= -uvD_{211} - (u - \lambda)D_{212} - A_{36}D_{213} \\
+D_{22} &amp;= uvD_{221} + (u - \lambda)D_{222} + A_{36}D_{223}
+\end{align}\]
+
+<p>where,</p>
+
+\[\begin{align}
+D_{111} &amp;= \\
+D_{112} &amp;= \\
+D_{113} &amp;= \\
+D_{121} &amp;= \\
+D_{122} &amp;= \\
+D_{123} &amp;= \\
+D_{211} &amp;= \\
+D_{212} &amp;= \\
+D_{213} &amp;= \\
+D_{221} &amp;= \\
+D_{222} &amp;= \\
+D_{223} &amp;= 
+\end{align}\]
+
+<!-- same goes for $\mathbf{B} - \lambda\mathbf{I}$, and $\mathbf{C} - \lambda\mathbf{I}$,
+
+$$
+\mathbf{B} - \lambda\mathbf{I} = 
 \begin{bmatrix}
-\end{bmatrix}\]
+\end{bmatrix}
+$$
+
+$$
+\mathbf{C} - \lambda\mathbf{I} = 
+\begin{bmatrix}
+\end{bmatrix}
+$$ -->
 
 <!-- &nbsp;&nbsp;&nbsp;&nbsp; While there are numerical routines implemented in C, and C++, which compute the eigenvalues of a matrix, there is little recourse to symbolically computing them (except the expensive Mathematica software, of course). However, by looking at the previous examples of how to compute a determinant by hand, we can notice that the determinant of the sub-matrices are multiplied by a leading factor, which is a value in the primary matrix. If this value is 0, then the associated sub-matrix determinant does not need to be computed, which means that if we are clever, and the primary matrix is full of zeroes (like the Ideal MHD Flux Jacobians are), then things can be greatly simplified!   -->
 
