@@ -594,6 +594,12 @@ $$
 \end{equation}
 $$
 
+and now, you guessed it, we insert the expressions for the $D_{ijkl}$ to eventually reduce everything down to a 7th-degree polynomial in $\lambda$, and the fluid variables $\vec{Q}$, $P_{7}(\lambda, \vec{Q}) = 0$, which will **in principle** allow us to compute the eigenvalues by finding the roots. Of course, an analytic formula for the roots of a 7th-degree polynomial does not exist, so if we want a closed-form expression that is tractable, then we will need to factor the expression, i.e., write it as,
+
+$$
+P_{7}(\lambda, \vec{Q}) = \Pi_{i=1}^{7} (\lambda - R_{i}) = 0
+$$
+
 <!-- same goes for $\mathbf{B} - \lambda\mathbf{I}$, and $\mathbf{C} - \lambda\mathbf{I}$,
 
 $$
