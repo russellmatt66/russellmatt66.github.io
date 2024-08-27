@@ -1,6 +1,6 @@
 ---
 layout: post
-title: The Eigenvalues of Ideal Magnetohydrodynamics
+title: The Characteristic Equation of Ideal Magnetohydrodynamics
 date: 2024-08-26
 collection: phys
 ---
@@ -15,7 +15,7 @@ $$
 where $\vec{Q}$ are the [Ideal MHD variables](./2024-08-15_fluxjacobian#eq:imhdvars), and $\mathbf{A}, \mathbf{B}$, and $\mathbf{C}$, are the [Flux Jacobians](./2024-08-15_fluxjacobian#the-flux-jacobians). These mathematical objects express how the fluxes vary with respect to the fluid variables, and they contain important information about the properties of the system related to the type of the equations, their characteristics, and stability.
 
 ### Eigenvalues and Eigenvectors
-&nbsp;&nbsp;&nbsp;&nbsp; If you study physics, or engineering, to a serious degree, then you will eventually run into the concepts of an "eigenvalue", and an "eigenvector". If you are already familiar, and comfortable, with what these are, and just want to get to the meat of this post [where the eigenvalues of the Ideal MHD Flux Jacobians are calculated](#the-ideal-mhd-eigenvalues), then please follow this link, and feel free to skip this section as it will be a brief introduction to these concepts. 
+&nbsp;&nbsp;&nbsp;&nbsp; If you study physics, or engineering, to a serious degree, then you will eventually run into the concepts of an "eigenvalue", and an "eigenvector". If you are already familiar, and comfortable, with what these are, and just want to get to the meat of this post [where the characteristic equation of the Ideal MHD Flux Jacobians is derived](#the-ideal-mhd-characteristic-equation), then please follow this link, and feel free to skip this section as it will be a brief introduction to these concepts. 
 
 &nbsp;&nbsp;&nbsp;&nbsp; These, somewhat intimidating, names bely deceptively simple ideas, but which are also devilishly rich with detail to understand the deeper you go, and understanding which begins by talking about the idea of a *system*. Intuitively, you can understand a system as something where input goes in, something happens to it, and output comes out. For example, the American education system takes in children around the age of five, obliges them to sit down and learn for seven hours a day, five days a week, asks them do homework for another three starting when they reach high school, and keeps them in this cycle for thirteen years. What comes out of this system is hopefully an educated, well-socialized populace of workers who can think critically, make informed decisions, and perform tasks which add value to society in exchange for a cut of this value in the form of monetary compensation which allows them to meet their basic needs, and do things which they find fulfilling.     
 
@@ -173,7 +173,7 @@ $$
 
 &nbsp;&nbsp;&nbsp;&nbsp; In practice, instead of doing this, there are various *matrix decompositions*[^1] which can express the given matrix as a product of several other matrices, in one of which the eigenvalues are explicitly stored, that are employed for finding the eigenvalues of very large systems. High-performance libraries exist to do these computations on CPU, and GPU, which can be useful for implementing an adaptive timestep in a simulation. However, it should be noted that these decompositions are still expensive in of themselves, typically requiring between $O(N logN) \sim O(N^{3})$ work, and many of which are constrained as to what matrices they can operate on.  
 
-### The Ideal MHD Eigenvalues
+### The Ideal MHD Characteristic Equation
 &nbsp;&nbsp;&nbsp;&nbsp; There are three matrices which are naturally relevant to Ideal Magnetohydrodynamics, namely, the [Flux Jacobians](./2024-08-15_fluxjacobian#appendix), $\mathbf{A}, \mathbf{B}$, and $\mathbf{C}$, which are written out in their full form where [this hyperlink](./2024-08-15_fluxjacobian#appendix) leads. These matrices describe the rate at which the fluxes in the x-,y-, and z-directions, respectively, change with respect to a change in the fluid variables, $\vec{Q}$. From dimensional analysis of Equation (\ref{eq:imhd_system_fj}), you can see that the units of the Flux Jacobians must be that of velocity, distance over time, and so the eigenvalues of these matrices have a special interpretation as *characteristic speeds*. The stability of a numerical code that solves the Ideal MHD system [depends on the value of these characteristic speeds](./2024-08-15_fluxjacobian#motivation), in comparison to the characteristic speed of information propagation on the simulation mesh, namely, 
 
 $$
@@ -238,7 +238,13 @@ A_{81} & A_{83} & A_{84} & A_{86} & A_{87} & u\gamma - \lambda
 \end{vmatrix} = 0
 $$
 
-Space is getting tight, so let's call these determinants $D_{1}$, and $D_{2}$, respectively. The best we can do in both cases is expand using the last column, and get two $5\times 5$ determinants out of each. 
+Space is getting tight, so let's call these determinants $D_{1}$, and $D_{2}$, respectively, meaning the above is written as,
+
+$$
+-\lambda D_{1} - D_{2} = 0
+$$
+
+The best we can do in both cases is expand using the last column, and get two $5\times 5$ determinants out of each. 
 
 $$
 \begin{align}
@@ -284,7 +290,7 @@ D_{2} &= -(\gamma - 1)D_{21} + (u\gamma - \lambda)D_{22} \\
 \end{align}
 $$
 
-Unfortunately, there's no way around what we have to do next if we want to see this calculation through. The $D_{kl}$ are structured such that the simplest expansion we can break each of them down into involves three $4\times 4$ determinants per $D_{kl}$. The best decision we can make is to expand across the dimension with the simplest terms, yielding,    
+&nbsp;&nbsp;&nbsp;&nbsp; Unfortunately, there's no way around what we have to do next if we want to see this calculation through. The $D_{kl}$ are structured such that the simplest expansion we can break each of them down into involves three $4\times 4$ determinants per $D_{kl}$. The best decision we can make is to expand across the dimension with the simplest terms, yielding,    
 
 $$
 \begin{align}
@@ -299,20 +305,93 @@ where,
 
 $$
 \begin{align}
-D_{111} &= \\
-D_{112} &= \\
-D_{113} &= \\
-D_{121} &= \\
-D_{122} &= \\
-D_{123} &= \\
-D_{211} &= \\
-D_{212} &= \\
-D_{213} &= \\
-D_{221} &= \\
-D_{222} &= \\
-D_{223} &= 
+D_{111} &= \begin{vmatrix}
+0 & u - \lambda & 0 & A_{47} \\
+A_{63} & 0 & u - \lambda & 0 \\
+0 & A_{74} & 0 & u - \lambda \\
+A_{83} & A_{84} & A_{86} & A_{87} 
+\end{vmatrix} = -(u - \lambda)D_{1111} - A_{47}D_{1112}\\
+
+D_{112} &= \begin{vmatrix}
+w & u - \lambda & 0 & A_{47} \\
+A_{62} & 0 & u - \lambda & 0 \\
+A_{72} & A_{74} & 0 & u - \lambda \\
+A_{82} & A_{84} & A_{86} & A_{87} 
+\end{vmatrix} = -A_{62}D_{1121} - (u - \lambda)D_{1122}\\
+
+D_{113} &= \begin{vmatrix}
+w & 0 & u - \lambda & A_{47} \\
+A_{62} & A_{63} & 0 & 0 \\
+A_{72} & 0 & A_{74} & u - \lambda \\
+A_{82} & A_{83} & A_{84} & A_{87} 
+\end{vmatrix} = -A_{62}D_{1131} + A_{63}D_{1132}\\
+
+D_{121} &= \begin{vmatrix}
+A_{23} & A_{24} & A_{26} & A_{27} \\
+0 & u - \lambda & 0 & A_{47} \\
+A_{63} & 0 & u - \lambda & 0 \\
+0 & A_{74} & 0 & u - \lambda
+\end{vmatrix} = (u -\lambda)D_{1211} + A_{47}D_{1212}\\
+
+D_{122} &=\begin{vmatrix}
+A_{22}-\lambda & A_{24} & A_{26} & A_{27} \\
+w & u - \lambda & 0 & A_{47} \\
+A_{62} & 0 & u - \lambda & 0 \\
+A_{72} & A_{74} & 0 & u - \lambda
+\end{vmatrix} = A_{62}D_{1221} + (u - \lambda)D_{1222}\\
+
+D_{123} &= \begin{vmatrix}
+A_{22}-\lambda & A_{23} & A_{24} & A_{27} \\
+w & 0 & u - \lambda & A_{47} \\
+A_{62} & A_{63} & 0 & 0 \\
+A_{72} & 0 & A_{74} & u - \lambda
+\end{vmatrix} = A_{62}D_{1231} - A_{63}D_{1232}\\
+
+D_{211} &= \begin{vmatrix}
+0 & u - \lambda & 0 & A_{47} \\
+A_{63} & 0 & u - \lambda & 0 \\
+0 & A_{74} & 0 & u - \lambda \\
+A_{83} & A_{84} & A_{86} & A_{87}
+\end{vmatrix} = -A_{63}D_{2111} - (u - \lambda)D_{2112}\\
+
+D_{212} &= \begin{vmatrix}
+-uw & u - \lambda & 0 & A_{47} \\
+A_{61} & 0 & u - \lambda & 0 \\
+A_{71} & A_{74} & 0 & u - \lambda \\
+A_{81} & A_{84} & A_{86} & A_{87}
+\end{vmatrix} = -A_{61}D_{2121} - (u - \lambda)D_{2122}\\
+
+D_{213} &= \begin{vmatrix}
+-uw & 0 & u - \lambda & A_{47} \\
+A_{61} & A_{63} & 0 & 0 \\
+A_{71} & 0 & A_{74} & u - \lambda \\
+A_{81} & A_{83} & A_{84} & A_{87}
+\end{vmatrix} = -A_{61}D_{2131} + A_{63}D_{2132}\\
+
+D_{221} &= \begin{vmatrix}
+A_{23} & A_{24} & A_{26} & A_{27} \\
+0 & u-\lambda & 0 & A_{47} \\
+A_{63} & 0 & u - \lambda & 0 \\
+0 & A_{74} & 0 & u - \lambda
+\end{vmatrix} = (u - \lambda)D_{2211} + A_{47}D_{2212}\\
+
+D_{222} &= \begin{vmatrix}
+A_{21} & A_{24} & A_{26} & A_{27} \\
+-uw & u-\lambda & 0 & A_{47} \\
+A_{61} & 0 & u - \lambda & 0 \\
+A_{71} & A_{74} & 0 & u - \lambda
+\end{vmatrix} = A_{61}D_{2221} + (u - \lambda)D_{2222}\\
+
+D_{223} &= \begin{vmatrix}
+A_{21} & A_{23} & A_{24} & A_{27} \\
+-uw & 0 & u-\lambda & A_{47} \\
+A_{61} & A_{63} & 0 & 0 \\
+A_{71} & 0 & A_{74} & u - \lambda
+\end{vmatrix} = A_{61}D_{2231} - A_{63}D_{2232} 
 \end{align}
 $$
+
+Yep, you guessed it, we're still not done. Remember when we determined the runtime complexity of computing a determinant? Each of these twelve, $4\times 4$, determinants expands into a sum of two $3\times 3$ determinants. There's really nothing else that can be done at this point except calculate them. The good news is that, due to their structure, many of these $3\times 3$ determinants can be reduced to just a single $2\times 2$ determinant which can be directly expanded into a scalar equation. In other words, we will finally be hitting the bedrock of this calculation, and then the remaining task to deriving the characteristic polynomial of Ideal MHD will be percolating these results upwards in order to obtain a 7th-degree polynomial in $\lambda$ that is equal to zero, i.e., $P_{7}(\lambda) = 0$. The roots of this equation are the eigenvalues, but as you might have guessed, actually determining these characteristics will be the subject of a future post.   
 
 <!-- same goes for $\mathbf{B} - \lambda\mathbf{I}$, and $\mathbf{C} - \lambda\mathbf{I}$,
 
