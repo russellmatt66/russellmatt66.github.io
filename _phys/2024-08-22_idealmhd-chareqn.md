@@ -643,12 +643,12 @@ $$
 $$
 \begin{equation}
 \begin{split}
-T_{\mathrm{II}} = &(\lambda - u)^{4}\left[\right] \\
-&+ (\lambda - u)^{3}\left[\right] \\
-&+ (\lambda - u)^{2}\left[\right] \\
-&+ (\lambda - u)\left[\right] \\
-&+ \left[\right] \\
-&+ (\lambda - A_{22})\left[\right]
+T_{\mathrm{II}} = &(\lambda - u)^{4}\left[-(\lambda - A_{22})\right] \\
+&+ (\lambda - u)^{3}\left[vA_{23} + wA_{24} + A_{27}A_{72} + A_{26}A_{62}\right] \\
+&+ (\lambda - u)^{2}\left[vA_{26}A_{63} + A_{47}A_{74}(\lambda - A_{22}) + A_{24}A_{47}A_{74} + wA_{27}A_{74} + A_{23}A_{36}A_{62} + A_{36}A_{63}(\lambda - A_{22})\right] \\
+&+ (\lambda - u)\left[-vA_{23}A_{47}A_{74} - A_{26}A_{47}A_{62}A_{74} - wA_{24}A_{36}A_{63} - A_{27}A_{36}A_{63}A_{72}\right] \\
+&+ \left[-vA_{26}A_{47}A_{63}A_{74} - A_{23}A_{36}A_{47}A_{62}A_{74} - A_{24}A_{36}A_{47}A_{63}A_{74} - wA_{27}A_{36}A_{63}A_{74}\right] \\
+&+ (\lambda - A_{22})\left[-A_{36}A_{47}A_{63}A_{74}\right]
 \end{split}
 \end{equation}
 $$
@@ -656,11 +656,11 @@ $$
 $$
 \begin{equation}
 \begin{split}
-T_{\mathrm{III}} = &(\lambda - u)^{4}\left[\right] \\
-&+ (\lambda - u)^{3}\left[\right] \\
-&+ (\lambda - u)^{2}\left[\right] \\
-&+ (\lambda - u)\left[\right] \\
-&+ \left[\right] 
+T_{\mathrm{III}} = &(\lambda - u)^{4}A_{21} \\
+&+ (\lambda - u)^{3}\left[-uvA_{83} - uwA_{24} + A_{27}A_{71} + A_{61}A_{86}\right] \\
+&+ (\lambda - u)^{2}\left[-uvA_{63}A_{86} - A_{21}A_{47}A_{74} + A_{24}A_{47}A_{71} - uwA_{27}A_{74} + A_{36}A_{61}A_{83} - A_{36}A_{63}A_{81}\right] \\
+&+ (\lambda - u)\left[uvA_{47}A_{74}A_{83} - A_{47}A_{61}A_{74}A_{86} + uwA_{36}A_{63}A_{84} - A_{36}A_{63}A_{71}A_{87}\right] \\
+&+ \left[uvA_{47}A_{63}A_{74}A_{86} - A_{36}A_{47}A_{61}A_{74}A_{83} + uwA_{36}A_{63}A_{74}A_{87} - A_{36}A_{47}A_{63}A_{71}A_{84} + A_{36}A_{47}A_{63}A_{74}A_{81}\right] 
 \end{split}
 \end{equation}
 $$
@@ -668,17 +668,19 @@ $$
 $$
 \begin{equation}
 \begin{split}
-T_{\mathrm{IV}} = &(\lambda - u)^{4}\left[\right] \\
-&+ (\lambda - u)^{3}\left[\right] \\
-&+ (\lambda - u)^{2}\left[\right] \\
-&+ (\lambda - u)\left[\right] \\
-&+ \left[\right] \\
-&+ (\lambda - A_{22})\left[\right]
+T_{\mathrm{IV}} = &(\lambda - u)^{4}A_{21}\\
+&+ (\lambda - u)^{3}\left[-uvA_{23} - uwA_{24} + A_{27}A_{71} + A_{26}A_{61}\right] \\
+&+ (\lambda - u)^{2}\left[-uvA_{26}A_{63} - A_{21}A_{47}A_{74} + A_{24}A_{47}A_{71} - uwA_{27}A_{74} - (\lambda - A_{22})A_{36}A_{61}\right] \\
+&+ (\lambda - u)\left[uvA_{23}A_{47}A_{74} - A_{26}A_{47}A_{61}A_{74} + wA_{24}A_{36}A_{61} + A_{27}A_{36}A_{61}A_{72} + uwA_{23}A_{36}A_{63}\right] \\
+&+ \left[uvA_{26}A_{47}A_{63}A_{74} + A_{24}A_{36}A_{47}A_{61}A_{74} + wA_{27}A_{36}A_{61}A_{74} - A_{23}A_{36}A_{47}A_{63}A_{71}\right] \\
+&+ (\lambda - A_{22})A_{36}A_{47}A_{61}A_{74}
 \end{split}
 \end{equation}
 $$
 
-Our goal at this point is just to break things down into flux Jacobian components, and collect together like powers. 
+
+
+<!-- Our goal at this point is just to break things down into flux Jacobian components, and collect together like powers.  -->
 
 <!-- same goes for $\mathbf{B} - \lambda\mathbf{I}$, and $\mathbf{C} - \lambda\mathbf{I}$,
 
