@@ -568,7 +568,7 @@ A_{71} & 0 & u-\lambda
 \end{align}
 $$
 
-Equations (\ref{eqn:first_det} - \ref{eqn:last_det}) represent all the pieces that we need to insert into Equation (\ref{eqn:master_polynomial}) in order to derive the characteristic polynomial of Ideal MHD,
+&nbsp;&nbsp;&nbsp;&nbsp; Equations (\ref{eqn:first_det} - \ref{eqn:last_det}) represent all the pieces that we need to insert into Equation (\ref{eqn:master_polynomial}) in order to derive the characteristic polynomial of Ideal MHD,
 
 $$
 \begin{align}
@@ -591,14 +591,94 @@ $$
 +(u\gamma - \lambda)\left[uv(A_{47}D_{2212} + (u-\lambda)D_{2211}) + (u-\lambda)(A_{61}D_{2221} + (u-\lambda)D_{2222}) + A_{36}(A_{61}D_{2231} - A_{63}D_{2232})\right] \\
 = 0
 \end{split}
+\label{eqn:ceqn_dmno}
 \end{equation}
 $$
 
-and now, you guessed it, we insert the expressions for the $D_{ijkl}$ to eventually reduce everything down to a 7th-degree polynomial in $\lambda$, and the fluid variables $\vec{Q}$, $P_{7}(\lambda, \vec{Q}) = 0$, which will **in principle** allow us to compute the eigenvalues by finding the roots. Of course, an analytic formula for the roots of a 7th-degree polynomial does not exist, so if we want a closed-form expression that is tractable, then we will need to factor the expression, i.e., write it as,
+and now, you guessed it, we insert the expressions for the $D_{ijkl}$ to eventually reduce everything down to a 7th-degree polynomial in $\lambda$, and the fluid variables $\vec{Q}$: $P_{7,A}(\lambda, \vec{Q}) = 0$, which will **in principle** allow us to compute the eigenvalues by finding the roots. Of course, an analytic formula for the roots of a 7th-degree polynomial does not exist, so if we want a closed-form expression that is tractable, then we will need to factor the expression, i.e., write it as,
 
 $$
-P_{7}(\lambda, \vec{Q}) = \Pi_{i=1}^{7} (\lambda - R_{i}) = 0
+\label{eqn:ceqn_factored}
+P_{7,A}(\lambda, \vec{Q}) = \Pi_{i=1}^{7} (\lambda - R_{A,i}(\vec{Q})) = 0
 $$
+
+Otherwise, the best we can do is write out the characteristic equation in a canonical form, 
+
+$$
+P_{7,A}(\lambda, \vec{Q}) = \sum_{i=0}^{7} K_{A,i}(\vec{Q})\lambda^{i} = 0
+$$
+
+&nbsp;&nbsp;&nbsp;&nbsp; At this point, you might be asking yourself, *what was the point?* In science, and engineering, it's important to be able to carry out calculations that require fortitude to complete, and this certainly is one. However, as one of the best professors I had in undergraduate told me once about graduate school, "it's also important to understand when it's time to stop working on something". Our only hope at determining analytical form for the eigenvalues of $\mathbf{A}$, which I should remind you is just *one* of the three Flux Jacobians, is if we can turn Equation (\ref{eqn:ceqn_dmno}) into something that looks like Equation (\ref{eqn:ceqn_factored}).
+
+&nbsp;&nbsp;&nbsp;&nbsp; First off, let's collect terms together and rewrite Equation (\ref{eqn:ceqn_dmno}) so that it's less cluttered, and more readable,
+
+$$
+\begin{equation}
+\begin{split}
+\therefore &\lambda\left[(1-\gamma)(\mathrm{I}_{1} + \mathrm{I}_{2} + \mathrm{I}_{3}) + (u\gamma - \lambda)(\mathrm{II}_{1} + \mathrm{II}_{2} + \mathrm{II}_{3})\right] \\
+&+ (1-\gamma)\left[\mathrm{III}_{1} + \mathrm{III}_{2} + \mathrm{III}_{3}\right] + (u\gamma - \lambda)\left[\mathrm{IV}_{1} + \mathrm{IV}_{2} + \mathrm{IV}_{3}\right] = 0
+\end{split}
+\end{equation}
+$$
+
+$$
+\label{eqn:ceqn_T_romannumerals}
+\rightarrow (1-\gamma)\left[\lambda T_{\mathrm{I}} + T_{\mathrm{III}}\right] + (u\gamma - \lambda)\left[\lambda T_{\mathrm{II}} + T_{\mathrm{IV}}\right] = 0
+$$
+
+where,
+
+$$
+\begin{equation}
+\begin{split}
+T_{\mathrm{I}} = &(\lambda - u)^{4}A_{82} \\
+&+ (\lambda - u)^{3}\left[wA_{84} - A_{72}A_{87} + A_{86} - vA_{83}\right] \\ 
+&+ (\lambda - u)^{2}\left[wA_{74}A_{87} + A_{47}A_{72}A_{84} - A_{47}A_{74}A_{82} + vA_{63}A_{86} + A_{36}A_{62}A_{83} - A_{36}A_{63}A_{82}\right] \\
+&+ (\lambda - u)\left[-A_{47}A_{74}A_{86} - vA_{47}A_{74}A_{83} + wA_{84} + A_{72}A_{87}\right] \\
+&+ \left[-vA_{47}A_{63}A_{74}A_{86} - A_{36}A_{72}A_{74}A_{83} - wA_{36}A_{63}A_{74}A_{87} - A_{36}A_{47}A_{63}A_{72}A_{84} + A_{36}A_{47}A_{63}A_{74}A_{82}\right]
+\end{split}
+\end{equation}
+$$
+
+$$
+\begin{equation}
+\begin{split}
+T_{\mathrm{II}} = &(\lambda - u)^{4}\left[\right] \\
+&+ (\lambda - u)^{3}\left[\right] \\
+&+ (\lambda - u)^{2}\left[\right] \\
+&+ (\lambda - u)\left[\right] \\
+&+ \left[\right] \\
+&+ (\lambda - A_{22})\left[\right]
+\end{split}
+\end{equation}
+$$
+
+$$
+\begin{equation}
+\begin{split}
+T_{\mathrm{III}} = &(\lambda - u)^{4}\left[\right] \\
+&+ (\lambda - u)^{3}\left[\right] \\
+&+ (\lambda - u)^{2}\left[\right] \\
+&+ (\lambda - u)\left[\right] \\
+&+ \left[\right] 
+\end{split}
+\end{equation}
+$$
+
+$$
+\begin{equation}
+\begin{split}
+T_{\mathrm{IV}} = &(\lambda - u)^{4}\left[\right] \\
+&+ (\lambda - u)^{3}\left[\right] \\
+&+ (\lambda - u)^{2}\left[\right] \\
+&+ (\lambda - u)\left[\right] \\
+&+ \left[\right] \\
+&+ (\lambda - A_{22})\left[\right]
+\end{split}
+\end{equation}
+$$
+
+Our goal at this point is just to break things down into flux Jacobian components, and collect together like powers. 
 
 <!-- same goes for $\mathbf{B} - \lambda\mathbf{I}$, and $\mathbf{C} - \lambda\mathbf{I}$,
 
