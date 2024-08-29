@@ -678,7 +678,16 @@ T_{\mathrm{IV}} = &(\lambda - u)^{4}A_{21}\\
 \end{equation}
 $$
 
+which we can write as,
 
+$$
+\begin{align}
+T_{I} &= A_{82}(\lambda - u)^{4} + \kappa_{I,3}(\lambda - u)^{3} + \kappa_{I,2}(\lambda - u)^{2} + \kappa_{I,1}(\lambda - u) + \kappa_{I,0} \\
+T_{II} &= (A_{22} - \lambda)(\lambda - u)^{4} + \kappa_{II,3}(\lambda - u)^{3} + \left[\kappa_{II,2} + \kappa_{II,2\lambda}(\lambda-A_{22})\right](\lambda - u)^{2} + \kappa_{II,1}(\lambda - u) + \kappa_{II,0} + (\lambda - A_{22})\kappa_{II,\lambda} \\
+T_{III} &= A_{21}(\lambda - u)^{4} + \kappa_{III,3}(\lambda - u)^{3} + \kappa_{III,2}(\lambda - u)^{2} + \kappa_{III,1}(\lambda - u) + \kappa_{III,0} \\
+T_{IV} &= A_{21}(\lambda - u)^{4} + \kappa_{IV,3}(\lambda - u)^{3} + \left[\kappa_{IV,2} + A_{36}A_{61}(A_{22} - \lambda)\right](\lambda - u)^{2} + \kappa_{IV,1}(\lambda - u)  + \kappa_{IV,\lambda}(\lambda - A_{22}) + \kappa_{IV,0} 
+\end{align}
+$$
 
 <!-- Our goal at this point is just to break things down into flux Jacobian components, and collect together like powers.  -->
 
