@@ -689,6 +689,47 @@ T_{IV} &= A_{21}(\lambda - u)^{4} + \kappa_{IV,3}(\lambda - u)^{3} + \left[\kapp
 \end{align}
 $$
 
+where,
+
+$$
+\begin{align}
+\kappa_{\mathrm{I},3} &= wA_{84} - A_{72}A_{87} + A_{86} - vA_{83} \\
+\kappa_{\mathrm{I},2} &= wA_{74}A_{87} + A_{47}A_{72}A_{84} - A_{47}A_{74}A_{82} + vA_{63}A_{86} + A_{36}A_{62}A_{83} - A_{36}A_{63}A_{82} \\
+\kappa_{\mathrm{I},1} &= -A_{47}A_{74}A_{86} - vA_{47}A_{74}A_{83} + wA_{84} + A_{72}A_{87} \\
+\kappa_{\mathrm{I},0} &= -vA_{47}A_{63}A_{74}A_{86} - A_{36}A_{72}A_{74}A_{83} - wA_{36}A_{63}A_{74}A_{87} - A_{36}A_{47}A_{63}A_{72}A_{84} + A_{36}A_{47}A_{63}A_{74}A_{82}
+\end{align}
+$$
+
+$$
+\begin{align}
+\kappa_{\mathrm{II},3} &= vA_{23} + wA_{24} + A_{27}A_{72} + A_{26}A_{62} \\
+\kappa_{\mathrm{II},2} &= vA_{26}A_{63} + A_{24}A_{47}A_{74} + wA_{27}A_{74} + A_{23}A_{36}A_{62} \\
+\kappa_{\mathrm{II},2\lambda} &= A_{47}A_{74} + A_{36}A_{63} \\
+\kappa_{\mathrm{II},1} &= -vA_{23}A_{47}A_{74} - A_{26}A_{47}A_{62}A_{74} - wA_{24}A_{36}A_{63} - A_{27}A_{36}A_{63}A_{72} \\
+\kappa_{\mathrm{II},0} &= -vA_{26}A_{47}A_{63}A_{74} - A_{23}A_{36}A_{47}A_{62}A_{74} - A_{24}A_{36}A_{47}A_{63}A_{74} - wA_{27}A_{36}A_{63}A_{74} \\
+\kappa_{\mathrm{II},\lambda} &= -A_{36}A_{47}A_{63}A_{74}
+\end{align}
+$$
+
+$$
+\begin{align}
+\kappa_{\mathrm{III},3} &= -uvA_{83} - uwA_{24} + A_{27}A_{71} + A_{61}A_{86} \\
+\kappa_{\mathrm{III},2} &= -uvA_{63}A_{86} - A_{21}A_{47}A_{74} + A_{24}A_{47}A_{71} - uwA_{27}A_{74} + A_{36}A_{61}A_{83} - A_{36}A_{63}A_{81} \\
+\kappa_{\mathrm{III},1} &= uvA_{47}A_{74}A_{83} - A_{47}A_{61}A_{74}A_{86} + uwA_{36}A_{63}A_{84} - A_{36}A_{63}A_{71}A_{87} \\
+\kappa_{\mathrm{III},0} &= uvA_{47}A_{63}A_{74}A_{86} - A_{36}A_{47}A_{61}A_{74}A_{83} + uwA_{36}A_{63}A_{74}A_{87} - A_{36}A_{47}A_{63}A_{71}A_{84} + A_{36}A_{47}A_{63}A_{74}A_{81}
+\end{align}
+$$
+
+$$
+\begin{align}
+\kappa_{\mathrm{IV},3} &= -uvA_{23} - uwA_{24} + A_{27}A_{71} + A_{26}A_{61} \\
+\kappa_{\mathrm{IV},2} &= -uvA_{26}A_{63} - A_{21}A_{47}A_{74} + A_{24}A_{47}A_{71} - uwA_{27}A_{74} \\
+\kappa_{\mathrm{IV},1} &= uvA_{23}A_{47}A_{74} - A_{26}A_{47}A_{61}A_{74} + wA_{24}A_{36}A_{61} + A_{27}A_{36}A_{61}A_{72} + uwA_{23}A_{36}A_{63} \\
+\kappa_{\mathrm{IV},\lambda} &= A_{36}A_{47}A_{61}A_{74} \\
+\kappa_{\mathrm{IV},0} &= uvA_{26}A_{47}A_{63}A_{74} + A_{24}A_{36}A_{47}A_{61}A_{74} + wA_{27}A_{36}A_{61}A_{74} - A_{23}A_{36}A_{47}A_{63}A_{71}
+\end{align}
+$$
+
 <!-- Our goal at this point is just to break things down into flux Jacobian components, and collect together like powers.  -->
 
 <!-- same goes for $\mathbf{B} - \lambda\mathbf{I}$, and $\mathbf{C} - \lambda\mathbf{I}$,
