@@ -1,7 +1,7 @@
 ---
 layout: post
 title: The Characteristic Equation of Ideal Magnetohydrodynamics
-date: 2024-08-26
+date: 2024-09-23
 collection: phys
 ---
 ### Recap
@@ -178,7 +178,7 @@ $$
 
 $$
 \begin{align}
-\frac{\Delta t}{\Delta x}\abs{\lambda_{A,max}} + \frac{\Delta t}{\Delta y}\abs{\lambda_{B,max}} + \frac{\Delta t}{\Delta z}\abs{\lambda_{C,max}} \leq 1
+\frac{\Delta t}{\Delta x}\abs{\lambda_{A,max}} + \frac{\Delta t}{\Delta y}\abs{\lambda_{B,max}} + \frac{\Delta t}{\Delta z}\abs{\lambda_{C,max}} \leq 3
 \end{align}
 $$
 
