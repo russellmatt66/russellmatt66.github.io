@@ -251,7 +251,7 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function() {
 <p>     There is a powerful relationship between the LV tensor, and the Kronecker delta. When you have a sum over a product of LV symbols that occurs in a very particular way, you can rewrite the product of LV symbols as a difference of a product of Kronecker deltas, like so,</p>
 
 \[\begin{equation}
-\epsilon_{ijk}\epsilon_{klm} = \delta_{il}\delta_{jm} - \delta_{jl}\delta_{jm}
+\epsilon_{ijk}\epsilon_{klm} = \delta_{il}\delta_{jm} - \delta_{im}\delta_{jl}
 \end{equation}\]
 
 <p>What makes this relationship so powerful in the practice of vector calculus, is the ability it gives us to work with expressions which are the <a href="../math/2024-07-16_gradients#the-curl">curl of a curl</a>. These sorts of expressions arise frequently when working with electromagnetism, fluid dynamics, and other domains of classical physics which deal with systems that are sometimes not irrotational. Specifically, the role that the Kronecker delta plays in this fashion is to equate pairs of indices to each other.</p>

@@ -74,7 +74,7 @@ $$
 
 $$
 \begin{equation}
-\epsilon_{ijk}\epsilon_{klm} = \delta_{il}\delta_{jm} - \delta_{jl}\delta_{jm}
+\epsilon_{ijk}\epsilon_{klm} = \delta_{il}\delta_{jm} - \delta_{im}\delta_{jl}
 \end{equation}
 $$
 
