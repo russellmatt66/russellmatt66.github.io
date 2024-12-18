@@ -21,13 +21,13 @@ collections:
     output: true
     permalink: /math/:title
 
-  fusion:
-    output: true
-    permalink: /fusion/:title
-
-  # hpc:
+  # fusion:
   #   output: true
-  #   permalink: /hpc/:title
+  #   permalink: /fusion/:title
+
+  hpc:
+    output: true
+    permalink: /hpc/:title
 
   gpu:
     output: true

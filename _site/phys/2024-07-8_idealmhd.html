@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <!-- Enable responsiveness on mobile devices -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-  <title>Nuclear Fusion</title>
+  <title>Ideal MHD</title>
   <link rel="stylesheet" href="/css/main.css">
   <link rel="shortcut icon" type="image/png" href="/assets/killerwhaleph.png">
 </head>
@@ -182,7 +182,7 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function() {
     
     <li><a href="/gpu/">GPU</a>
     
-    <li><a href="/fusion/">Fusion</a>
+    <li><a href="/hpc/">HPC</a>
     
     <li><a href="/compsci/">CS</a>
     
@@ -191,22 +191,34 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function() {
 </header>
 
     <div class="container">
-      
-<div style="display:flex; justify-content:space-between; align-items:baseline;">
-  <h4><a href="/fusion/2024-07-18_plasmadiagnostics" title="Plasma Diagnostics">Plasma Diagnostics</a></h4>
-  <p>18 Jul 2024</p>
-</div>
+      <h1>Ideal MHD</h1>
+<p class="meta" style="color:#888">08 Jul 2024</p>
+<div class="post">
+  <h3 id="the-conservative-form">The Conservative Form</h3>
+<p>    Ideal Magnetohydrodynamics (MHD) is the simplest model for describing the behavior of a fluid plasma. Due to this simplicity there are some restrictions on when we, strictly-speaking, can apply it. Funnily enough, in practice Ideal MHD applies more than it should. The reason why plasma scientists care so much about Ideal MHD is that it describes the equilibrium of magnetic fusion reactors. Although it is the simplest fluid model of a plasma, it is still quite complicated. In the absence of source terms, this is what it looks like,</p>
 
-<div style="display:flex; justify-content:space-between; align-items:baseline;">
-  <h4><a href="/fusion/2024-07-8_pinches" title="Plasma Pinches">Plasma Pinches</a></h4>
-  <p>08 Jul 2024</p>
-</div>
+\[\pdv{\vec{Q}}{}{t} + \div \textbf{T} = 0\]
 
-<div style="display:flex; justify-content:space-between; align-items:baseline;">
-  <h4><a href="/fusion/2024-07-8_idealmhd" title="Ideal MHD">Ideal MHD</a></h4>
-  <p>08 Jul 2024</p>
-</div>
+<p>If source terms were present, then they would show up on the right-hand side (RHS) of this expression, instead of 0. Without source terms, the above is what’s known as a $\textit{homogeneous}$ partial differential equation (PDE), i.e., one that is zero everywhere. When a system of PDEs is written in the above fashion, it is referred to as being in “conservative form”, as the above can be seen to be in the form of a conservation law. Homogeneous PDEs are by no means easy to solve, but $\textit{heterogeneous}$ PDEs, ones that are not zero everywhere, are even harder. PDEs are ubiquitous in science, and engineering, so the existence and uniqueness of solutions to them is a crucial matter.</p>
 
+<p>    $\vec{Q}$ is the vector of Ideal MHD variables. These are the physical quantities which characterize the state of the plasma being studied by the Ideal MHD model. There are eight of them,</p>
+
+\[\vec{Q} = \colvec{\rho \\ \rho u \\ \rho v \\ \rho w \\ B_{x} \\ B_{y} \\ B_{z} \\ e}^{T}\]
+
+<p>$\rho = m_{i}n$ is the fluid density, the $\rho\vec{u}$ terms are the fluid momentum in the x-, y-, and z-directions, $\vec{B}$ is the magnetic field, and $e = \frac{p}{\gamma - 1} + \frac{\rho v^{2}}{2} + \frac{B^{2}}{2\mu_{0}}$ is the internal energy of the plasma, which is the sum of the plasma’s thermal energy, kinetic energy, and magnetic energy. $p = nk_{B}T$ is the pressure, which can be expressed using the Ideal Gas Law, and $\gamma = 5/3$ is the adiabatic index which corresponds to a gas where the particles have three translational degrees of freedom, meaning we think of them as just zooming about without spinning.</p>
+
+<p>$\textbf{T}$ is the rank-2 tensor which describes the fluxes of these variables. You can think of a “tensor” as a way of storing information in multiple dimensions. If this sounds just like a matrix, or a vector, that’s because those data structures are just lower dimensional forms (rank-2, and rank-1, respectively) of the more general tensor! The information that $\textbf{T}$ stores are terms that describe how the Ideal MHD quantities are transported through space.</p>
+
+<p>    We’re not string theorists here, so for us space has three-dimensions. Consequently, $\textbf{T}$, has three terms as well, each one of which is a vector that describes how the physical quantities are transported in a given direction.</p>
+
+\[\textbf{T} = \rowvec{\vec{F} \\ \vec{G} \\ \vec{H}}\]
+
+<p>    Lastly, $\nabla$ is the <a href="../_math/2024-07-16_gradients">gradient</a>. The gradient is a special kind of vector that points in the direction of a function’s maximum possible change. If you are familiar with vector calculus, then you are familiar with $\nabla$. There are all kinds of mathematical tricks that we can play with $\nabla$, and these tricks are the sleight of hand that makes up the shell game which is classical physics. People that like to memorize things study medicine, not physics, so the best way to play these tricks is to write them in <a href="../_math/2024-07-15_indexnotation">index notation</a> as this allows one to derive them just from a basic understanding of a <a href="../_math/2024-07-15_indexnotation/#deriving-vector-identities">few mathematical tools</a>.</p>
+
+<h4 id="deriving-ideal-mhd">Deriving Ideal MHD</h4>
+<p>All MHD models begin from a set of fluid equations, and all fluid equations begin by taking a set of moments of a kinetic equation, with a suitable means of closing this infinite process. The two most popular schemes for creating these fluid equations are the <strong>5N-moment</strong> model, and <strong>13N-moment</strong> model. The <em>N</em> in these names refers to the number of kinetic equations at the basis of this procedure, i.e., the number of species of particle your fluid is considered to be composed of, and the numeric literal refers to the number of fluid variables the model results in. 5N models are the most basic kind, describing the flux of mass, momentum, and energy in the medium using variables for the density, velocity, and energy. 13N models go a step further to model the flux of heat.</p>
+
+</div>
 
     </div>
     <footer>

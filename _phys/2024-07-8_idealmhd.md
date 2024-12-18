@@ -2,7 +2,7 @@
 layout: post
 title: Ideal MHD
 date: 2024-07-08
-collection: fusion
+collection: physics
 ---
 ### The Conservative Form
 &nbsp;&nbsp;&nbsp;&nbsp;Ideal Magnetohydrodynamics (MHD) is the simplest model for describing the behavior of a fluid plasma. Due to this simplicity there are some restrictions on when we, strictly-speaking, can apply it. Funnily enough, in practice Ideal MHD applies more than it should. The reason why plasma scientists care so much about Ideal MHD is that it describes the equilibrium of magnetic fusion reactors. Although it is the simplest fluid model of a plasma, it is still quite complicated. In the absence of source terms, this is what it looks like,
