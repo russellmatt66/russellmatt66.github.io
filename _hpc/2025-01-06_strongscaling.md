@@ -4,4 +4,13 @@ title: Strong Scaling
 date: 2025-01-06
 collection: hpc
 ---
-WIP
+### Death By A Thousand Memory Migrations
+&nbsp;&nbsp;&nbsp;&nbsp; What kills strong scaling in practice is what also commonly kills distributed performance: **communication overhead**. It is a fact of physics, namely the speed of light, that it will take longer for the information encoded in electrical signals to travel from the memory of Processor A, all the way to the memory of Processor B, than it will for the information to travel from the memory of Processor A to its registers, and back after having been operated on. Information does not just *appear* in the memories of the Processors that constitute an array of them. It has to begin *somewhere*, and then be transferred accordingly. 
+
+&nbsp;&nbsp;&nbsp;&nbsp; Let's consider a very simple problem to solve with parallel programming: we have a list of numbers, and we want to sum them. Let's make this concrete, and say that we have $N=1024$ numbers. Going a step further, let's next consider an array of processors. Each processor in the array can either add two numbers together using a single unit of time, or migrate any amount of data to another processor using three units of time. This is actually a very charitable **compute-to-communication ratio** (C2C). For example, in modern GPUs like the [A100](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/a100/pdf/nvidia-a100-datasheet-us-nvidia-1758950-r4-web.pdf) this ratio can be as high as 260x if we are talking about moving FP32 data to a companion device linked to with NVLink instead of processing it with Tensor Cores, and over **2400x** if we need to use PCIe to move this data to a device that is in a different node entirely, or to a host. Even if we were dealing not with Tensor Cores, but just with explicit FP32, we'd still have a 32.5x difference between the speed at which we can compute, and the the speed at which we can transfer data, when utilizing the A100. The modest RTX2060 that I have been primarily developing [imhd-CUDA](https://github.com/russellmatt66/imhd-CUDA) with, a CUDA solver for the 3D, time-dependent, Ideal Magnetohydrodynamics system of PDEs, to study fusion equilibria has a C2C of 18.75x. What this means in practice is that wherever possible, you want to **overlap communication with computation**. To implement this, CUDA has the concept of a [*stream*](https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html?highlight=Streams#streams)
+
+&nbsp;&nbsp;&nbsp;&nbsp; Let's return to our earlier example. 
+
+<!-- References -->
+[^1:] Schmidt, B., et al. (2017). *Parallel Programming: Concepts and Practice* (1st ed.). Morgan Kaufmann.  
+[Amazon](https://www.amazon.com/Parallel-Programming-Bertil-Schmidt-Ph-D/dp/0128498900)

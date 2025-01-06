@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <!-- Enable responsiveness on mobile devices -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-  <title>Amdahl's Law</title>
+  <title>CUDA - How to Plug and Play with your GPU</title>
   <link rel="stylesheet" href="/css/main.css">
   <link rel="shortcut icon" type="image/png" href="/assets/killerwhaleph.png">
 </head>
@@ -191,56 +191,35 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function() {
 </header>
 
     <div class="container">
-      <h1>Amdahl's Law</h1>
-<p class="meta" style="color:#888">17 Dec 2024</p>
+      <h1>CUDA - How to Plug and Play with your GPU</h1>
+<p class="meta" style="color:#888">06 Jan 2025</p>
 <div class="post">
-  <p>     Every quantitative field has its fundamental laws. Engineers will point to mass, momentum, and energy conservation. Modern physicists will smirk and point to Noether’s theorem, instead. Economists will point to supply and demand. Financial professionals will point to compound interest. Mathematicians will point to Godel’s Incompleteness Theorem. Computer scientists will gesture in the direction of Alan Turing. In high-performance computing (HPC), the first thing that you learn is how hard it can be to parallelize something. Then, this motivates you to learn how to figure out whether or not you <em>should</em>[^1].</p>
+  <p>Why do I love CUDA? One big reason is how it lets you just Plug and Play.</p>
 
-<p>     Every algorithm can be thought of as being a set of sections that are parallelizable, together with a set of sections that are not parallelizable. Pregnancy is the classic example of a process that is not parallelizable. Nine women can have nine babies in nine months, but as the joke goes, regardless of what the manager thinks, nine women cannot have one baby in one month. With a single core, the wall-time of the algorithm can be expressed as,</p>
+<p>Before CUDA was developed by Ian Buck and his team at NVIDIA in the early-2000s, programming a GPU meant translating your application into the language of shaders. These are essentially specifications for how triangles in a mesh of them are colored in.</p>
 
-\[\begin{align}
-T(1) = T_{ser} + T_{par}
-\end{align}\]
+<p>This also meant working with graphics languages like OpenGL, or Vulkan, which require you to engage in the laborious process of talking directly to the GPU. CUDA abstracts away these worries, and presents applications programmers with the idea of an execution configuration, instead.</p>
 
-<p>     When multiple processors are introduced, which to be sure is not the <em>only</em> way to add parallelism, but it is the simplest to think about, then we cut the time of the parallel section accordingly. Assuming the workload is evenly balanced, the processors are uniform, and we don’t think too much about the rare case when the specific details of the hardware, and problem, align so as to neglect for the moment the situations when <em>super-linear</em> speedups occur, then we can assume that $p$ processors will reduce the wall-time of the parallel section by a factor of $p$,</p>
+<p>This sounds intimidating, but it’s actually a genius idea, as it allows one to focus on writing “MPI-like” kernels that the execution configuration merely specifies the structure of the thread teams for. When a kernel is launched each thread will go through and execute its statements, similar to the way MPI works.</p>
 
-\[\begin{align}
-T(p) \geq T_{ser} + \frac{T_{par}}{p}
-\end{align}\]
+<p>In general, these teams take the structure of a 3D block of threads, which are themselves a member of a 3D grid of threadblocks, each of which can have at most 1024 threads in total. This 6D structure is what’s known as an “execution configuration”, and every global device kernel requires one to launch.</p>
 
-<p>     In practice, the workload will not be evenly balanced, bottlenecks will exist, etc., so we consider the expression on the RHS to be a lower-bound on the wall-time of the algorithm, hence the sign. What we are <em>really</em> interested in is an estimate of the speedup,</p>
+<p>One of the first keys to parallel programming is finding a way to partition the work amongst your thread team. CUDA makes this easy by assigning global and local coordinates to the threads.</p>
 
-\[S(p) = \frac{T(1)}{T(p)}\]
+<p>The code snippet below shows what this looks like in practice using the example of a global device kernel that solves the Ideal MHD system of PDEs using an approach that minimizes memory operations by leveraging register variables.</p>
 
-\[\rightarrow S(p) \leq \frac{T_{ser} + T_{par}}{T_{ser} + \frac{T_{par}}{p}} \label{eqn:speedup}\]
+<p>The local coordinates of a thread, meaning in its threadblock, are given by threadIdx.{x,y,z}.</p>
 
-<p>     Frequently, when you have a binary option like this in mathematics, or physics, which adds up to some value, then you know that a coefficient is swiftly going to show up which characterizes how much each of the options contributes. For example, in probability, if there are two outcomes to an event then we can ascribe a probability, $\alpha$, that one of the events occurs. Then, the probability that the other one occurs is $1 - \alpha$. To progress, we do something similar here. We say that there is a coefficient, $\alpha$, which relates how much of the overall runtime is taken by the serial portion,</p>
+<p>The number of threads along a dimension of the threadblocks are given by blockDim.{x,y,z}.</p>
 
-\[\begin{align}
-T_{ser} &amp;= \alpha T(1) \\
-\therefore T_{par} &amp;= (1 - \alpha)T(1) 
-\end{align}\]
+<p>The global coordinates of the threadblocks in the execution grid are given by blockIdx.{x,y,z}.</p>
 
-<p>Consequently, we insert this into Equation (\ref{eqn:speedup}), and rearrange,</p>
+<p>The number of threadblocks along a given dimension of the grid is given by gridDim.{x,y,z}</p>
 
-\[\begin{align}
-\therefore S(p) &amp;\leq \frac{\alpha T(1) + (1 - \alpha)T(1)}{\alpha T(1) + \frac{1}{p}(1 - \alpha)T(1)} \\
-&amp;\leq \frac{\alpha + 1 - \alpha}{\alpha + \frac{1 - \alpha}{p}} \\
-&amp;\leq \frac{1}{\alpha + \frac{1 - \alpha}{p}} \label{eqn:amdahl_final}
-\end{align}\]
+<p>You can use these innate values to index a given thread into, and then stride through, a computational grid. Since each thread has a unique set of coordinates, you can prevent data hazards by striding them along a dimension of the computational grid a distance equal to the number of threads along the same dimension of the execution grid.</p>
 
-<p>In general, Equation (\ref{eqn:amdahl_final}) gives us an expression for the speedup. One of the first things that physicists like to do when they find such a thing for what they were looking for is take limits,</p>
+<p>This makes developing a first-pass implementation fairly straightforward once you see how this works, and after all, developer time is more valuable than compute time!</p>
 
-\[\begin{align}
-&amp;\lim_{p\rightarrow 1} S(p) \leq 1 \\
-&amp;\lim_{p\rightarrow \infty} S(p) \leq \frac{1}{\alpha}
-\end{align}\]
-
-<p>     Obviously, the first line is what we expect. When there is only a single core in our cluster, then we expect at best no change in performance. At worst, we might even see a slowdown due to the software overhead from introducing parallelism. The accuracy of this analysis is limited to algorithms which are <a href="./2025-01-06_strongscaling"><strong>strong-scaling</strong></a>, meaning that even with a fixed problem size more processors will result in a speedup compared to less. As we will see in a moment, this is not always true. More does <em>not</em> always equal better, and for a very important reason when it comes to parallel programming. We can already see a hint of this from the second line of the above. Even in the case where we have an infinitude of processing cores, we are still limited by the structure of the algorithm, here represented by the coefficient $\alpha$, regarding what speedup we can obtain.</p>
-
-<!-- References -->
-<p>[^1:] Schmidt, B., et al. (2017). <em>Parallel Programming: Concepts and Practice</em> (1st ed.). Morgan Kaufmann.<br />
-<a href="https://www.amazon.com/Parallel-Programming-Bertil-Schmidt-Ph-D/dp/0128498900">Amazon</a></p>
 
 </div>
 
