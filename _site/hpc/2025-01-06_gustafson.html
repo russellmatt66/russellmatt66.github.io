@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <!-- Enable responsiveness on mobile devices -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-  <title>Strong Scaling</title>
+  <title>Gustafson's Law</title>
   <link rel="stylesheet" href="/css/main.css">
   <link rel="shortcut icon" type="image/png" href="/assets/killerwhaleph.png">
 </head>
@@ -191,17 +191,10 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function() {
 </header>
 
     <div class="container">
-      <h1>Strong Scaling</h1>
+      <h1>Gustafson's Law</h1>
 <p class="meta" style="color:#888">06 Jan 2025</p>
 <div class="post">
-  <p>To start with a definition, <em>strong-scaling</em> refers to the situation when we fix the problem size, and vary the number of processor cores being leveraged for the parallel application. Intuitively, we might expect everything to eventually bow to the principle of diminishing returns, so that nothing “scales strongly” forever. Consequently, and also because scalability depends on the hardware configuration, HPC practitioners do not typically discuss algorithms as being “strongly-scalable” in a vacuum, but instead use the idea in practice as a test of the performance of a given application and specific configuration.</p>
-
-<h3 id="death-by-a-thousand-memory-migrations">Death By A Thousand Memory Migrations</h3>
-<p>     What kills strong scaling in practice is what also commonly kills distributed performance: <strong>communication overhead</strong>. It is a fact of physics, namely the speed of light, that it will take longer for the information encoded in electrical signals to travel from the memory of Processor A, all the way to the memory of Processor B, than it will for the information to travel from the memory of Processor A to its registers, and back after having been operated on. Information does not just <em>appear</em> in the memories of the Processors that constitute an array of them. It has to begin <em>somewhere</em>, and then be transferred accordingly.</p>
-
-<p>     Let’s consider a very simple problem to solve with parallel programming: we have a list of numbers, and we want to sum them[^1]. Let’s make this concrete, and say that we have $N=1024$ numbers. Going a step further, let’s next consider an array of processors. Each processor in the array can either add two numbers together using a single unit of time, or migrate any amount of data to another processor using three units of time. This is actually a very charitable <strong>compute-to-communication ratio</strong> (C2C). For example, in modern GPUs like the <a href="https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/a100/pdf/nvidia-a100-datasheet-us-nvidia-1758950-r4-web.pdf">A100</a> this ratio can be as high as 260x if we are talking about moving FP32 data to a companion device linked to with NVLink instead of processing it with Tensor Cores, and over <strong>2400x</strong> if we need to use PCIe to move this data to a device that is in a different node entirely, or to a host. Even if we were dealing not with Tensor Cores, but just with explicit FP32, we’d still have a 32.5x difference between the speed at which we can compute, and the the speed at which we can transfer data, when utilizing the A100. The modest RTX2060 that I have been primarily developing <a href="https://github.com/russellmatt66/imhd-CUDA">imhd-CUDA</a> with, a CUDA solver for the 3D, time-dependent, Ideal Magnetohydrodynamics system of PDEs, to accelerate the study of fusion equilibria has a C2C of 18.75x. What this means in practice is that wherever possible, you want to <strong>overlap communication with computation</strong>. To implement this, CUDA has the concept of a <a href="https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html?highlight=Streams#streams"><em>stream</em></a>.</p>
-
-<p>     Let’s return to our earlier example. WIP</p>
+  <p>WIP</p>
 
 <!-- References -->
 <p>[^1:] Schmidt, B., et al. (2017). <em>Parallel Programming: Concepts and Practice</em> (1st ed.). Morgan Kaufmann.<br />
