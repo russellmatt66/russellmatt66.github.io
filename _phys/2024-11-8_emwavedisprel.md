@@ -51,8 +51,8 @@ $$
 
 that describe two waves propagating, one to the left, and one to the right. Both travel at the speed of light in vacuum, and both are non-dispersive because their phase velocities are independent of $k$. \\
 
-&nbsp;&nbsp;&nbsp;&nbsp; This is just the beginning of where you can go with dispersion relations. One of the coolest things I learned in graduate school for computational physics is how to derive PDEs *starting* from the Taylor Series for $\omega(\vec{k})$. It takes a little bit of legwork to do this, so if you're interested check out the posts where this is done!
+<!-- &nbsp;&nbsp;&nbsp;&nbsp; This is just the beginning of where you can go with dispersion relations. One of the coolest things I learned in graduate school for computational physics is how to derive PDEs *starting* from the Taylor Series for $\omega(\vec{k})$. It takes a little bit of legwork to do this, so if you're interested check out the posts where this is done!
 
 [The Advection Equation](../_phys/2024-11-8_advdisprel) \\
 [The Schrodinger Equation](../_phys/2024-11-8_sedisprel) \\
-[The Korteweg de Vries Equation](../_phys/2024-11-8_kdvdisprel)
+[The Korteweg de Vries Equation](../_phys/2024-11-8_kdvdisprel) -->
