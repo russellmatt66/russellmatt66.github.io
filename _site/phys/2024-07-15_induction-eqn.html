@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <!-- Enable responsiveness on mobile devices -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-  <title>Physics</title>
+  <title>The MHD Induction Equation</title>
   <link rel="stylesheet" href="/css/main.css">
   <link rel="shortcut icon" type="image/png" href="/assets/killerwhaleph.png">
 </head>
@@ -191,37 +191,98 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function() {
 </header>
 
     <div class="container">
-      
-<div style="display:flex; justify-content:space-between; align-items:baseline;">
-  <h4><a href="/phys/2024-11-8_emwavedisprel" title="The Dispersion Relation for Plane Electromagnetic Waves">The Dispersion Relation for Plane Electromagnetic Waves</a></h4>
-  <p>08 Nov 2024</p>
+      <h1>The MHD Induction Equation</h1>
+<p class="meta" style="color:#888">15 Jul 2024</p>
+<div class="post">
+  <h4 id="a-notational-prologue">A Notational Prologue</h4>
+<p>I have previously written about <a href="../math/2024-07-15_indexnotation">index notation</a>. In my estimation, it is the single most useful tool that one can have in their arsenal if they wish to do vector calculus seriously. If you know index notation then feel free to continue, but if you do not, then you can follow the link above and refer to the information where it leads as you continue reading. Index notation is an immensely useful shorthand for writing vector equations that allows you to <a href="../math/2024-07-15_indexnotation#deriving-vector-identities">derive vector identities</a> such as</p>
+
+\[\begin{equation}
+\curl \curl \vec{B} = \nabla (\div \vec{B}) - \laplacian \vec{B}
+\end{equation}\]
+
+<p>which would otherwise require rote memorization, or a tedious amount of algebra to prove, much less derive. The <a href="https://library.psfc.mit.edu/catalog/online_pubs/NRL_FORMULARY_13.pdf">NRL Plasma Formulary</a> is a brilliant resource which catalogues these identities, including the one above.</p>
+
+<h4 id="deriving-the-mhd-induction-equation">Deriving The MHD Induction Equation</h4>
+<p>When there is a plasma with a finite resistivity that we wish to analyze with MHD, we must use a flavor known as <a href="./2024-07-15_mhd#resistive-mhd">Resistive MHD</a> to incorporate the impact of the non-ideal plasma properties. Written in <a href="./2024-07-9_maxwell#cgs-units">cgs units</a>, the relevant parts look like the following,</p>
+
+\[\begin{align}
+\pdv{\rho}{}{t} + \div \rho\vec{u} &amp;= 0 \tag{1} \label{eqn:masscont} \\
+\rho \left(\pdv{\vec{u}}{}{t} + \vec{u}\cdot\nabla\vec{u}\right) &amp;= \frac{\vec{j}\cross\vec{B}}{c} - \nabla p \tag{2} \label{eqn:momcont} \\
+\dv{}{t}\left(\frac{p}{\rho^{5/3}}\right) &amp;= 0 \tag{3} \label{eqn:eos} \\ 
+\vec{E} + \frac{\vec{u} \cross \vec{B}}{c} &amp;= \eta\vec{j} \tag{4} \label{eqn:gohmlaw} \\
+\end{align}\]
+
+<p>Together with (1) - (4), we also incorporate Faraday’s Law, and Ampere’s Law under the assumption of a steady electric field,</p>
+
+\[\begin{align}
+\curl \vec{E} &amp;= -\frac{1}{c}\pdv{\vec{B}}{}{t} \tag{5} \label{eqn:flaw} \\
+\curl \vec{B} &amp;= \frac{4\pi}{c}\vec{j} \tag{6} \label{eqn:alaw}
+\end{align}\]
+
+<p>A frequent strategy when working with Maxwell’s equation is to eliminate one of the fields by taking the curl of an equation, here, we do that on Eqn. (\ref{eqn:gohmlaw}), giving,</p>
+
+\[\begin{equation}
+\curl \vec{E} + \curl \left(\frac{\vec{u} \cross \vec{B}}{c}\right) = \eta \curl \vec{j}
+\end{equation}\]
+
+<p>note that, in the process of creating the above, we have assumed a plasma with a uniform resistivity, $\eta(\vec{x}, t) = \eta$. Next, we insert Faraday’s Law, Eqn. (\ref{eqn:flaw}), and use Ampere’s Law, Eqn. (\ref{eqn:alaw}), to obtain,</p>
+
+\[\begin{align}
+-\frac{1}{c}\pdv{\vec{B}}{}{t} + \curl \left(\frac{\vec{u} \cross \vec{B}}{c}\right) &amp;= \eta \curl \vec{j} \\
+\therefore \pdv{\vec{B}}{}{t} - \curl \left(\vec{u} \cross \vec{B}\right) &amp;= - \frac{c^{2}\eta}{4\pi} \curl \curl \vec{B} \tag{7}
+\end{align}\]
+
+<p>Rather than proceed via appeal to the venerable <a href="https://library.psfc.mit.edu/catalog/online_pubs/NRL_FORMULARY_13.pdf">NRL Plasma Formulary</a>, we will decide instead to represent, and manipulate, the above using index notation, so that it first becomes,</p>
+
+\[\begin{align}
+\partial_{t}B_{i} - \epsilon_{ijk}\partial_{j}\epsilon_{klm}u_{l}B_{m} &amp;= -\bar{\eta} \epsilon_{ijk}\partial_{j}\epsilon_{klm}\partial_{l}B_{m} \\
+\end{align}\]
+
+<p>where $\bar{\eta} = \frac{c^{2}\eta}{4\pi}$.</p>
+
+<p>     If the above expression is unclear to you, I highly recommend you review the relevant parts of <a href="../math/2024-07-15_indexnotation">this post going over index notation</a> before continuing. Due to the wondrous nature of index notation, the $\epsilon$ being rendered here represent scalars, so we can freely slide them through the partial derivatives, allowing us to eventually write the expression in a simplified form after applying a well known relationship between the <a href="../math/2024-07-15_indexnotation#levi-civita">Levi-Civita symbols</a>, and the <a href="../math/2024-07-15_indexnotation#kronecker-delta">Kronecker delta</a>,</p>
+
+\[\begin{align}
+\partial_{t}B_{i} - \epsilon_{ijk}\epsilon_{klm}\partial_{j}u_{l}B_{m} &amp;= -\bar{\eta} \epsilon_{ijk}\epsilon_{klm}\partial_{j}\partial_{l}B_{m} \\
+\implies \partial_{t}B_{i} - \left[\delta_{il}\delta_{jm} - \delta_{jl}\delta_{im}\right]\partial_{j}u_{l}B_{m} &amp;= - \bar{\eta} \left[\delta_{il}\delta_{jm} - \delta_{jl}\delta_{im}\right]\partial_{j}\partial_{l}B_{m}
+\end{align}\]
+
+<p>Due to the definition of the Kronecker delta, any index expression that, for example, $\delta_{il}$, multiplies, will be 0 unless $i = l$. We utilize this fact appropriately, along with the <a href="../math/2024-07-17_calculus#multi-variable-product-rule">product rule</a>, to simplify the above,</p>
+
+\[\begin{align}
+\therefore \partial_{t}B_{i} - \partial_{j}(u_{i}B_{j}) + \partial_{j}(u_{j}B_{i}) &amp;= \bar{\eta} \left[\partial_{j}\partial_{j}B_{i} - \partial_{j}\partial_{i}B_{j}\right] \\
+\implies \partial_{t}B_{i} - B_{j}\partial_{j}u_{i} - u_{i}\partial_{j}B_{j} + B_{i}\partial_{j}u_{j} + u_{j}\partial_{j}B_{i} &amp;= RHS
+\end{align}\]
+
+<p>Now, we can just readily convert from index notation back to the more compact symbolic notation, assume incompressible flow, and use Maxwell’s Equations to simplify further, while noting in the process that we also implicitly assume our magnetic field is sufficiently smooth,</p>
+
+\[\begin{align}
+\pdv{\vec{B}}{}{t} - (\vec{B} \cdot \nabla)\vec{u} - \vec{u}(\div \vec{B}) + \vec{B} (\div \vec{u}) + (\vec{u} \cdot \nabla)\vec{B} &amp;= \bar{\eta}\left[\laplacian \vec{B} - \nabla(\div \vec{B})\right] 
+\end{align}\]
+
+\[\begin{align}
+\div \vec{B} &amp; = 0 \\
+\div \vec{u} &amp;= 0
+\end{align}\]
+
+<p>ultimately yielding the desirous form of the Induction Equation<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>,</p>
+
+\[\begin{align}
+\therefore &amp;\pdv{\vec{B}}{}{t} - (\vec{B} \cdot \nabla)\vec{u} + (\vec{u} \cdot \nabla)\vec{B} = \bar{\eta}\laplacian \vec{B} \\
+\implies &amp;\pdv{\vec{B}}{}{t} + (\vec{u} \cdot \nabla)\vec{B} = (\vec{B} \cdot \nabla)\vec{u} + \bar{\eta}\laplacian \vec{B} \quad \text{QED}
+\end{align}\]
+
+<!-- References -->
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>https://suli.pppl.gov/2024/course/reconnection_Zhou.pdf <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
 </div>
 
-<div style="display:flex; justify-content:space-between; align-items:baseline;">
-  <h4><a href="/phys/2024-08-15_fluxjacobian" title="The Flux Jacobians of Ideal Magnetohydrodynamics">The Flux Jacobians of Ideal Magnetohydrodynamics</a></h4>
-  <p>21 Aug 2024</p>
 </div>
-
-<div style="display:flex; justify-content:space-between; align-items:baseline;">
-  <h4><a href="/phys/2024-07-15_mhd" title="Magnetohydrodynamics">Magnetohydrodynamics</a></h4>
-  <p>15 Jul 2024</p>
-</div>
-
-<div style="display:flex; justify-content:space-between; align-items:baseline;">
-  <h4><a href="/phys/2024-07-15_induction-eqn" title="The MHD Induction Equation">The MHD Induction Equation</a></h4>
-  <p>15 Jul 2024</p>
-</div>
-
-<div style="display:flex; justify-content:space-between; align-items:baseline;">
-  <h4><a href="/phys/2024-07-8_introplasmas-spm" title="Single Particle Motion">Single Particle Motion</a></h4>
-  <p>08 Jul 2024</p>
-</div>
-
-<div style="display:flex; justify-content:space-between; align-items:baseline;">
-  <h4><a href="/phys/2024-07-8_idealmhd" title="Ideal MHD">Ideal MHD</a></h4>
-  <p>08 Jul 2024</p>
-</div>
-
 
     </div>
     <footer>

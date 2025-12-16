@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <!-- Enable responsiveness on mobile devices -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-  <title>Physics</title>
+  <title>Vector Calculus Identities</title>
   <link rel="stylesheet" href="/css/main.css">
   <link rel="shortcut icon" type="image/png" href="/assets/killerwhaleph.png">
 </head>
@@ -191,37 +191,53 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function() {
 </header>
 
     <div class="container">
-      
-<div style="display:flex; justify-content:space-between; align-items:baseline;">
-  <h4><a href="/phys/2024-11-8_emwavedisprel" title="The Dispersion Relation for Plane Electromagnetic Waves">The Dispersion Relation for Plane Electromagnetic Waves</a></h4>
-  <p>08 Nov 2024</p>
-</div>
+      <h1>Vector Calculus Identities</h1>
+<p class="meta" style="color:#888">18 Jul 2024</p>
+<div class="post">
+  <p>     This post uses <a href="./2024-07-15_indexnotation">index notation</a>, so please consult the linked post for context, if you feel it is necessary, or experience confusion.</p>
 
-<div style="display:flex; justify-content:space-between; align-items:baseline;">
-  <h4><a href="/phys/2024-08-15_fluxjacobian" title="The Flux Jacobians of Ideal Magnetohydrodynamics">The Flux Jacobians of Ideal Magnetohydrodynamics</a></h4>
-  <p>21 Aug 2024</p>
-</div>
+<h4 id="irrotationality">Irrotationality</h4>
+<p>An irrotational vector field is one with a vanishing curl,</p>
 
-<div style="display:flex; justify-content:space-between; align-items:baseline;">
-  <h4><a href="/phys/2024-07-15_mhd" title="Magnetohydrodynamics">Magnetohydrodynamics</a></h4>
-  <p>15 Jul 2024</p>
-</div>
+\[\begin{equation}
+\curl \vec{A} = 0 \tag{1} \label{eqn:irroty}
+\end{equation}\]
 
-<div style="display:flex; justify-content:space-between; align-items:baseline;">
-  <h4><a href="/phys/2024-07-15_induction-eqn" title="The MHD Induction Equation">The MHD Induction Equation</a></h4>
-  <p>15 Jul 2024</p>
-</div>
+<p>Irrotational vector fields frequently appear in physical applications, e.g., potential flow, electrostatics, etc.. The reason is that they permit a simplification from needing to solve a linear system of coupled PDEs, to needing to solve only a single linear PDE because one can write $\vec{A} = -\grad \phi$ for a sufficiently smooth scalar function, $\phi$. Inserting this into the above, we would have,</p>
 
-<div style="display:flex; justify-content:space-between; align-items:baseline;">
-  <h4><a href="/phys/2024-07-8_introplasmas-spm" title="Single Particle Motion">Single Particle Motion</a></h4>
-  <p>08 Jul 2024</p>
-</div>
+\[\begin{equation}
+\curl \grad \phi = 0 \tag{2} \label{eqn:curlgradphi}
+\end{equation}\]
 
-<div style="display:flex; justify-content:space-between; align-items:baseline;">
-  <h4><a href="/phys/2024-07-8_idealmhd" title="Ideal MHD">Ideal MHD</a></h4>
-  <p>08 Jul 2024</p>
-</div>
+<p>which we can take the determinant of in order to verify that Eqn. (\ref{eqn:curlgradphi}) is a valid mathematical statement,</p>
 
+\[\begin{align}
+\curl \grad \phi &amp;= 
+\begin{vmatrix}
+\hat{x} &amp; \hat{y} &amp; \hat{z} \\
+\partial_{x} &amp; \partial_{y} &amp; \partial_{z} \\
+\partial_{x}\phi &amp; \partial_{y}\phi &amp; \partial_{z}\phi
+\end{vmatrix} \\
+&amp;= \hat{x}\left(\partial_{y}\partial_{z}\phi - \partial_{z}\partial_{y}\phi\right) - \hat{y}\left(\partial_{x}\partial_{z}\phi - \partial_{z}\partial_{x}\phi\right) + \hat{z}\left(\partial_{x}\partial_{y}\phi - \partial_{y}\partial_{x}\phi\right) \\
+&amp;= 0 
+\end{align}\]
+
+<p>Where we have used the fact that, for a sufficiently smooth $\phi$, $\partial_{i}\partial_{j}\phi = \partial_{j}\partial_{i}\phi$. This was not so demanding, but we can also do the same with index notation, and avoid having to remember how to take th determinant of a 3x3 matrix,</p>
+
+\[\begin{align}
+\curl \grad \phi &amp;= \hat{e}_{i}\epsilon_{ijk}\partial_{j}\partial_{k}\phi \\
+&amp;= \hat{x}\left(\epsilon_{xyz}\partial_{y}\partial_{z}\phi + \epsilon_{xzy}\partial_{z}\partial_{y}\phi\right) 
+    + \hat{y}\left(\epsilon_{yzx}\partial_{z}\partial_{x}\phi + \epsilon_{yxz}\partial_{x}\partial_{z}\phi\right) 
+    + \hat{z}\left(\epsilon_{zxy}\partial_{x}\partial_{y}\phi + \epsilon_{zyx}\partial_{y}\partial_{x}\phi\right) \\
+&amp;= \hat{x}\left(\partial_{y}\partial_{z}\phi - \partial_{z}\partial_{y}\phi\right) 
+    + \hat{y}\left(\partial_{z}\partial_{x}\phi - \partial_{x}\partial_{z}\phi\right) 
+    + \hat{z}\left(\partial_{x}\partial_{y}\phi - \partial_{y}\partial_{x}\phi\right) \\
+&amp;= 0
+\end{align}\]
+
+<h4 id="divergence">Divergence</h4>
+
+</div>
 
     </div>
     <footer>

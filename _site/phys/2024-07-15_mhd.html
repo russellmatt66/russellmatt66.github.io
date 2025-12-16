@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <!-- Enable responsiveness on mobile devices -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-  <title>Physics</title>
+  <title>Magnetohydrodynamics</title>
   <link rel="stylesheet" href="/css/main.css">
   <link rel="shortcut icon" type="image/png" href="/assets/killerwhaleph.png">
 </head>
@@ -191,37 +191,41 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function() {
 </header>
 
     <div class="container">
-      
-<div style="display:flex; justify-content:space-between; align-items:baseline;">
-  <h4><a href="/phys/2024-11-8_emwavedisprel" title="The Dispersion Relation for Plane Electromagnetic Waves">The Dispersion Relation for Plane Electromagnetic Waves</a></h4>
-  <p>08 Nov 2024</p>
-</div>
+      <h1>Magnetohydrodynamics</h1>
+<p class="meta" style="color:#888">15 Jul 2024</p>
+<div class="post">
+  <h4 id="a-brief-history-of-mhd">A Brief History of MHD</h4>
+<p>     Magnetohydrodynamics, MHD for short, is the study of electrically-conducting fluids. Strictly-speaking, the study dates back as far as to when people first began playing with liquid mercury, although it was Chandrasekhar’s investigations into astrophysics in the early-20th century which really began the theoretical study of the discipline.</p>
 
-<div style="display:flex; justify-content:space-between; align-items:baseline;">
-  <h4><a href="/phys/2024-08-15_fluxjacobian" title="The Flux Jacobians of Ideal Magnetohydrodynamics">The Flux Jacobians of Ideal Magnetohydrodynamics</a></h4>
-  <p>21 Aug 2024</p>
-</div>
+<h4 id="deriving-mhd">Deriving MHD</h4>
+<p>There are many flavors of MHD. At the lowest level, every one of them begins by taking moments of a kinetic equation with a suitable closure.</p>
 
-<div style="display:flex; justify-content:space-between; align-items:baseline;">
-  <h4><a href="/phys/2024-07-15_mhd" title="Magnetohydrodynamics">Magnetohydrodynamics</a></h4>
-  <p>15 Jul 2024</p>
-</div>
+<h4 id="two-fluid-mhd">Two-Fluid MHD</h4>
 
-<div style="display:flex; justify-content:space-between; align-items:baseline;">
-  <h4><a href="/phys/2024-07-15_induction-eqn" title="The MHD Induction Equation">The MHD Induction Equation</a></h4>
-  <p>15 Jul 2024</p>
-</div>
+<h4 id="single-fluid-mhd">Single-Fluid MHD</h4>
 
-<div style="display:flex; justify-content:space-between; align-items:baseline;">
-  <h4><a href="/phys/2024-07-8_introplasmas-spm" title="Single Particle Motion">Single Particle Motion</a></h4>
-  <p>08 Jul 2024</p>
-</div>
+<h4 id="ideal-mhd">Ideal MHD</h4>
 
-<div style="display:flex; justify-content:space-between; align-items:baseline;">
-  <h4><a href="/phys/2024-07-8_idealmhd" title="Ideal MHD">Ideal MHD</a></h4>
-  <p>08 Jul 2024</p>
-</div>
+<h4 id="resistive-mhd">Resistive MHD</h4>
 
+<h4 id="hall-mhd">Hall MHD</h4>
+
+<h4 id="5n-moment-multi-fluid">5N-Moment Multi-Fluid</h4>
+<p>This is the penultimate kind of MHD model. 5 variables are evolved that describe the flow of mass, momentum, and energy in each plasma species,</p>
+
+\[\vec{Q} = \colvec{\rho \\ u \\ v \\ w \\ e}\]
+
+<p>Obviously, some assumptions are simplifying things here.</p>
+
+<h4 id="13n-moment-multi-fluid">13N-Moment Multi-Fluid</h4>
+<p>This is the most general kind of MHD model. 13 variables are evolved that describe the flow of mass, momentum, energy (based on an anisotropic pressure tensor), and heat flux in each plasma species,</p>
+
+\[\vec{Q} = \colvec{\rho \\ u \\ v \\ w \\ p_{xx} \\ p_{xy} \\ p_{xz} \\ p_{yy} \\ p_{yz} \\ p_{zz} \\ q_{x} \\ q_{y} \\ q_{z}}\]
+
+<!-- References -->
+<!-- [^1]:  -->
+
+</div>
 
     </div>
     <footer>

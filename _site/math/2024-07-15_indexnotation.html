@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <!-- Enable responsiveness on mobile devices -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <title>Index Notation</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="shortcut icon" type="image/png" href="/assets/killerwhaleph.png">
+</head>
+
+  <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [ ['$','$'], ['\[','\]'] ],
+    displayMath: [ ['$$','$$'], ['\\[','\\]'] ],
+    processEscapes: true
+  },
+  TeX: {
+    equationNumbers: {autoNumber: "all" },
+    extensions: ["AMSmath.js", "AMSsymbols.js"]
+  },
+  "HTML-CSS": {
+    fonts: ["Latin-Modern"],
+    mtextFontInherit: true
+  }
+});
+
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function() {
+  var TEX = MathJax.InputJax.TeX;
+  TEX.Definitions.Add({
+    macros: {
+      ranktwotensor: ["Macro","{\\overline{\\overline{#1}}}",1],
+      rowvec: ["Macro","{\\begin{bmatrix} #1 \\end{bmatrix}}", 1],
+      colvec: ["Macro","{\\begin{bmatrix} #1 \\end{bmatrix}}", 1],
+      quantity:["Macro","{\\left\\{ #1 \\right\\}}",1],
+      qty:["Macro","{\\left\\{ #1 \\right\\}}",1],
+      pqty:["Macro","{\\left( #1 \\right)}",1],
+      bqty:["Macro","{\\left[ #1 \\right]}",1],
+      vqty:["Macro","{\\left\\vert #1 \\right\\vert}",1],
+      Bqty:["Macro","{\\left\\{ #1 \\right\\}}",1],
+      absolutevalue:["Macro","{\\left\\vert #1 \\right\\vert}",1],
+      abs:["Macro","{\\left\\vert #1 \\right\\vert}",1],
+      norm:["Macro","{\\left\\Vert #1 \\right\\Vert}",1],
+      evaluated:["Macro","{#1 \\vert}",1],
+      eval:["Macro","{#1 \\vert}",1],
+      order:["Macro","{\\mathcal{O} \\left( #1 \\right)}",1],
+      commutator:["Macro","{\\left[ #1 , #2 \\right]}",2],
+      comm:["Macro","{\\left[ #1 , #2 \\right]}",2],
+      anticommutator:["Macro","{\\left\\{ #1 , #2 \\right\\}}",2],
+      acomm:["Macro","{\\left\\{ #1 , #2 \\right\\}}",2],
+      poissonbracket:["Macro","{\\left\\{ #1 , #2 \\right\\}}",2],
+      pb:["Macro","{\\left\\{ #1 , #2 \\right\\}}",2],
+      vectorbold:["Macro","{\\boldsymbol{ #1 }}",1],
+      vb:["Macro","{\\boldsymbol{ #1 }}",1],
+      vectorarrow:["Macro","{\\vec{\\boldsymbol{ #1 }}}",1],
+      va:["Macro","{\\vec{\\boldsymbol{ #1 }}}",1],
+      vectorunit:["Macro","}}",1],
+      vu:["Macro","}}",1],
+      dotproduct:["Macro","{\\boldsymbol\\cdot}"],
+      vdot:["Macro","{\\boldsymbol\\cdot}"],
+      crossproduct:["Macro","{\\boldsymbol\\times}"],
+      cross:["Macro","{\\boldsymbol\\times}"],
+      cp:["Macro","{\\boldsymbol\\times}"],
+      gradient:["Macro","{\\boldsymbol\\nabla}"],
+      grad:["Macro","{\\boldsymbol\\nabla}"],
+      divergence:["Macro","{\\grad\\vdot}"],
+      div:["Macro","{\\grad\\vdot}"],
+      curl:["Macro","{\\grad\\cross}"],
+      laplacian:["Macro","{\\nabla^2}"],
+      tr:["Macro","{\\operatorname{tr}}"],
+      Tr:["Macro","{\\operatorname{Tr}}"],
+      rank:["Macro","{\\operatorname{rank}}"],
+      erf:["Macro","{\\operatorname{erf}}"],
+      Res:["Macro","{\\operatorname{Res}}"],
+      principalvalue:["Macro","{\\mathcal{P}}"],
+      pv:["Macro","{\\mathcal{P}}"],
+      PV:["Macro","{\\operatorname{P.V.}}"],
+      Re:["Macro","{\\operatorname{Re} \\left\\{ #1 \\right\\}}",1],
+      Im:["Macro","{\\operatorname{Im} \\left\\{ #1 \\right\\}}",1],
+      qqtext:["Macro","{\\quad\\text{ #1 }\\quad}",1],
+      qq:["Macro","{\\quad\\text{ #1 }\\quad}",1],
+      qcomma:["Macro","{\\text{,}\\quad}"],
+      qc:["Macro","{\\text{,}\\quad}"],
+      qcc:["Macro","{\\quad\\text{c.c.}\\quad}"],
+      qif:["Macro","{\\quad\\text{if}\\quad}"],
+      qthen:["Macro","{\\quad\\text{then}\\quad}"],
+      qelse:["Macro","{\\quad\\text{else}\\quad}"],
+      qotherwise:["Macro","{\\quad\\text{otherwise}\\quad}"],
+      qunless:["Macro","{\\quad\\text{unless}\\quad}"],
+      qgiven:["Macro","{\\quad\\text{given}\\quad}"],
+      qusing:["Macro","{\\quad\\text{using}\\quad}"],
+      qassume:["Macro","{\\quad\\text{assume}\\quad}"],
+      qsince:["Macro","{\\quad\\text{since}\\quad}"],
+      qlet:["Macro","{\\quad\\text{let}\\quad}"],
+      qfor:["Macro","{\\quad\\text{for}\\quad}"],
+      qall:["Macro","{\\quad\\text{all}\\quad}"],
+      qeven:["Macro","{\\quad\\text{even}\\quad}"],
+      qodd:["Macro","{\\quad\\text{odd}\\quad}"],
+      qinteger:["Macro","{\\quad\\text{integer}\\quad}"],
+      qand:["Macro","{\\quad\\text{and}\\quad}"],
+      qor:["Macro","{\\quad\\text{or}\\quad}"],
+      qas:["Macro","{\\quad\\text{as}\\quad}"],
+      qin:["Macro","{\\quad\\text{in}\\quad}"],
+      differential:["Macro","{\\text{d}}"],
+      dd:["Macro","{\\text{d}}"],
+      derivative:["Macro","{\\frac{\\text{d}{ #1 }}{\\text{d}{ #2 }}}",2],
+      dv:["Macro","{\\frac{\\text{d}{ #1 }}{\\text{d}{ #2 }}}",2],
+      partialderivative:["Macro","{\\frac{\\partial{ #1 }}{\\partial{ #2 }}}",2],
+      <!-- pdv:["Macro","{\\frac{\\partial{ #1 }}{\\partial{ #2 }}}",2], -->
+      pdv:["Macro","{\\frac{\\partial^{#2}{ #1 }}{\\partial{ #3^{#2} }}}",3],
+      variation:["Macro","{\\delta}"],
+      "var":["Macro","{\\delta}"],
+      functionalderivative:["Macro","{\\frac{\\delta{ #1 }}{\\delta{ #2 }}}",2],
+      fdv:["Macro","{\\frac{\\delta{ #1 }}{\\delta{ #2 }}}",2],
+      ket:["Macro","{\\left\\vert { #1 } \\right\\rangle}",1],
+      bra:["Macro","{\\left\\langle { #1} \\right\\vert}",1],
+      innerproduct:["Macro","{\\left\\langle {#1} \\mid { #2} \\right\\rangle}",2],
+      braket:["Macro","{\\left\\langle {#1} \\mid { #2} \\right\\rangle}",2],
+      outerproduct:["Macro","{\\left\\vert { #1 } \\right\\rangle\\left\\langle { #2} \\right\\vert}",2],
+      dyad:["Macro","{\\left\\vert { #1 } \\right\\rangle\\left\\langle { #2} \\right\\vert}",2],
+      ketbra:["Macro","{\\left\\vert { #1 } \\right\\rangle\\left\\langle { #2} \\right\\vert}",2],
+      op:["Macro","{\\left\\vert { #1 } \\right\\rangle\\left\\langle { #2} \\right\\vert}",2],
+      expectationvalue:["Macro","{\\left\\langle {#1 } \\right\\rangle}",1],
+      expval:["Macro","{\\left\\langle {#1 } \\right\\rangle}",1],
+      ev:["Macro","{\\left\\langle {#1 } \\right\\rangle}",1],
+      matrixelement:["Macro","{\\left\\langle{ #1 }\\right\\vert{ #2 }\\left\\vert{#3}\\right\\rangle}",3],
+      matrixel:["Macro","{\\left\\langle{ #1 }\\right\\vert{ #2 }\\left\\vert{#3}\\right\\rangle}",3],
+      mel:["Macro","{\\left\\langle{ #1 }\\right\\vert{ #2 }\\left\\vert{#3}\\right\\rangle}",3]
+    }
+  });
+});
+</script>
+
+<!-- <script type="text/javascript">
+  window.MathJax = {
+    tex: {
+      tags: 'ams'
+    }
+  };
+</script> -->
+<!-- <script type="text/javascript">
+  window.MathJax = {
+    tex: {
+      extensions: ["AMSmath.js", "AMSsymbols.js"],
+      packages: {'[+]': ['mhchem']}
+    },
+    loader: {
+      load: ['[tex]/mhchem']
+    }
+  };
+</script> -->
+
+<script 
+  src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_HTMLorMML' async>
+</script>
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RT0E6XZ74J"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RT0E6XZ74J');
+</script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GPU, HPC, fusion energy, and computational science articles">
+  <meta name="keywords" content="GPU,HPC,physics,fusion,fusion energy,computational science,c,cuda,python">
+
+  <body>
+    <header>
+<nav>
+  <ul>
+    <li class="navhome"><a href="/">Physics In Parallel</a></li>
+    
+    <li><a href="/phys/">Physics</a>
+    
+    <li><a href="/math/">Mathematics</a>
+    
+    <li><a href="/gpu/">GPU</a>
+    
+    <li><a href="/hpc/">HPC</a>
+    
+    <li><a href="/compsci/">CS</a>
+    
+  </ul>
+</nav>
+</header>
+
+    <div class="container">
+      <h1>Index Notation</h1>
+<p class="meta" style="color:#888">15 Jul 2024</p>
+<div class="post">
+  <h4 id="introduction">Introduction</h4>
+<p>     You can go far in understanding plasmas on the back of Magnetohydrodynamics (<a href="../phys/2024-07-15_mhd">MHD</a>), and you can go far in MHD on the back of understanding vector calculus. However, the more vector calculus you do, the more you run into a fundamental issue with the discipline. When you’re flinging nabla’s ($\nabla$), your state variables, inner products, cross products, dyadic products, etc., together, you start having to do a lot of writing, a lot of memorizing of identities in order to manipulate them, and you start losing insight into the underlying equations under the mask of all the symbols. Einstein came up with a brilliant way of addressing all three of these problems by developing a shorthand notation for expressing these kinds of equations.</p>
+
+<h4 id="index-and-einstein-notation">Index and Einstein Notation</h4>
+<p>     If you wanted to write an inner product, between two vectors, then you could do so in the following way,</p>
+
+\[\begin{equation}
+\vec{a} \cdot \vec{b} = \sum_{i} a_{i}b_{i}
+\end{equation}\]
+
+<p>     While making key contributions to the pioneering quantum theory through his explanation of the photoelectric effect, developing his field equations, and just otherwise dominating the field of physics at the turn of the century, Einstein worked with inner products frequently. Eventually, he grew tired of writing $\sum$ over and over, and just dropped it, choosing instead to communicate its presence implicitly whenever there was a repeated index. For example, using <em>index notation</em>, you would write the inner product between vectors as,</p>
+
+\[\begin{equation}
+\vec{a} \cdot \vec{b} = a_{i}b_{i}
+\end{equation}\]
+
+<p>     Before continuing, it is necessary to draw a distinction between <em>index notation</em>, and <em>Einstein notation</em>. Strictly-speaking, Einstein notation is what Einstein used when working on general relativity, and it’s what’s used to teach the subject in universities, and textbooks, around the world. In relativity, we work with 4-vectors, and higher-order tensors, which are defined on spacetime instead of the 3-vectors, and dyads, that are encountered in nonrelativistic settings. Consequently, to keep all the math straight, and the two fields separate, Einstein notation uses greek letters, instead of the english alphabet, and additionally, uses whether a greek letter is a subscript or superscript to communicate the dimension along which a contraction is happening. For example, in Einstein notation, you would write an inner product between two 4-vectors, as,</p>
+
+\[\begin{equation}
+\vec{a} \cdot \vec{b} = a_{\mu}b^{\mu}
+\end{equation}\]
+
+<p>To keep the scope of this post appropriate, that is all I will say on relativity, and Einstein notation.</p>
+
+<h4 id="levi-civita">Levi-Civita</h4>
+<p>     Index notation is a wonderful tool. Trying to do vector calculus without index notation is like trying to walk when you could be running. The great filter of mastering index notation is understanding the <a href="https://en.wikipedia.org/wiki/Levi-Civita_symbol"><strong>Levi-Civita</strong></a> tensor, $\epsilon_{ijk}$<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>. The first time I saw this symbol in undergraduate classical dynamics, I was confused, and frustrated. <em>What the hell is this</em>, I thought in consternation, <em>bring back the ODEs</em>. It wasn’t until becoming immersed in vector calculus in graduate school that I became enamored with its utility.</p>
+
+<p>     I called it a tensor, and wrote it in it’s rank-3 tensorial form above, but the Levi-Civita (LC) <em>symbol</em> can actually be defined for any number of dimensions, $D$. With a space complexity of $\mathcal{O}(D^{D})$ needed in order to write down all of its terms, trying to do so becomes very inefficient, very quickly. However, it is very easy to describe what the value of any single term of the LV symbol is based on the order of the indices. If the indices are <em>cyclic</em>, that is, from left to right they are ordered numerically in a modular fashion, then the value is 1. If they are <em>anti-cyclic</em>, meaning they are are ordered numerically in a modular fashion from right to left, then the value is -1. Anything else, and the value is 0. These are very loose definitions for cyclicity, and anti-cyclicity, so they bear illustration. Furthermore, because the context in which the LV symbol is being used here is index notation, the rank-3 form will be used.</p>
+
+<p>     For indices $i$, $j$, $k$ $\in \{ 1,2,3 \}$, there are $3^3 = 27$ different permutations that can be chosen without replacement. For example, $ijk = 123$, being one of them. Reading this example from left to right, we can see that the indices are in numerical order, so this is an example of a cyclic permutation, meaning $\epsilon_{123} = 1$. Now, consider $ijk = 321$. Reading this example from left to right, we can see that the indices are in reverse numerical order, a.k.a, numerical order when read from right to left, so this is an example of an anti-cyclic permutation, meaning $\epsilon_{321} = -1$. There is another element to the loose definition that I gave, and this is that the reading occurs in a modular fashion. For example, if $ijk = 312$, then we consider this a cyclic permutation as starting from 1, we read left to right, wrapping around to the beginning once we reach the end of the tuple, and find that it is in numerical order. Hopefully, by applying the same logic, it is evident why $ijk = 213$ is an anti-cyclic permutation. Another way of capturing these notions is with the idea of <em>even</em> and <em>odd</em> permutations.</p>
+
+<h4 id="kronecker-delta">Kronecker Delta</h4>
+<p>     By itself, the Levi-Civita symbol is a mathematical curiosity, what makes it so powerful to the practice of vector calculus is its connection to the <em>Kronecker Delta</em>. If you have studied math, physics, or engineering to an intermediate degree, then you have certainly encountered the concept of a delta function (or perhaps distribution). For example, in physics and engineering, there is the <a href="./2024-07-16_diracdelta"><em>Dirac delta</em></a>, $\delta(\vec{x} - \vec{x}_{0})$, defined in the following manner,</p>
+
+\[\delta(\vec{x} - \vec{x}_{0}) = \begin{cases}
+    1 &amp; \text{if } \vec{x} = \vec{x}_{0} \\
+    0 &amp; \text{else } 
+\end{cases}\]
+
+<p>Here, we are interested in the <em>Kronecker delta</em>, $\delta_{ij}$ (which you might recognize as just the rank-2 identity tensor shortly), defined in the following manner,</p>
+
+\[\delta_{ij} = \begin{cases}
+    1 &amp; \text{if } i = j \\
+    0 &amp; \text{else }
+\end{cases}\]
+
+<p>which yields,</p>
+
+\[\delta_{ij} = \begin{pmatrix}
+    1 &amp; 0 &amp; 0 \\
+    0 &amp; 1 &amp; 0 \\
+    0 &amp; 0 &amp; 1 
+\end{pmatrix}\]
+
+<p>     There is a powerful relationship between the LC tensor, and the Kronecker delta, which underlies many of the vector calculus identities that you will find in a formulary listing them. When you have a sum over a product of LC symbols that occurs in a very particular way, you can rewrite the product of LC symbols as a difference of a product of Kronecker deltas, like so,</p>
+
+\[\begin{equation}
+\epsilon_{ijk}\epsilon_{klm} = \delta_{il}\delta_{jm} - \delta_{im}\delta_{jl}
+\end{equation}\]
+
+<p>What makes this relationship so powerful in the practice of vector calculus, is the ability it gives us to work with expressions which are the <a href="../math/2024-07-16_gradients#the-curl">curl of a curl</a>. These sorts of expressions arise frequently when working with electromagnetism, fluid dynamics, and other domains of classical physics which deal with systems that are sometimes not irrotational. Specifically, the role that the Kronecker delta plays in this fashion is to equate pairs of indices to each other.</p>
+
+<h4 id="the-vector-cross-product">The Vector (Cross) Product</h4>
+<p>     Besides the inner product, previously described, which maps two vectors to a scalar, there are other products which can be formed from a binary operation on vectors. A scalar is a rank-0 tensor, so the natural progression is to come up with an operation that forms a vector (rank-1 tensor). You might know this as the <em>cross product</em>.</p>
+
+\[\begin{equation}
+\vec{a} \cross \vec{b} = \epsilon_{ijk}a_{j}b_{k}\hat{e}_{i}
+\end{equation}\]
+
+<p>Remember that in index notation, repeated indices indicate summation, so the above expands to,</p>
+
+\[\begin{align}
+\vec{a} \cross \vec{b} &amp;= \left(\epsilon_{123}a_{2}b_{3} + \epsilon_{132}a_{3}b_{2}\right)\hat{e}_{1} 
+                            + \left(\epsilon_{231}a_{3}b_{1} + \epsilon_{213}a_{1}b_{3}\right)\hat{e}_{2}
+                            + \left(\epsilon_{312}a_{1}b_{2} + \epsilon_{321}a_{2}b_{1}\right)\hat{e}_{3} \\
+                    &amp;= \left(a_{2}b_{3} - a_{3}b_{2}\right)\hat{e}_{1} 
+                        + \left(a_{3}b_{1} - a_{1}b_{3}\right)\hat{e}_{2}
+                        + \left(a_{1}b_{2} - a_{2}b_{1}\right)\hat{e}_{3} \\
+                    &amp;= \left(a_{y}b_{z} - a_{z}b_{y}\right)\hat{e}_{x} 
+                        + \left(a_{z}b_{x} - a_{x}b_{z}\right)\hat{e}_{y}
+                        + \left(a_{x}b_{y} - a_{y}b_{x}\right)\hat{e}_{z}
+\end{align}\]
+
+<p>as evident from the last line, it is straightforward to convert from $ijk \in \{123\}$ to $ijk \in \{xyz\}$, and see that the above is equivalent to the standard, determinant-based, formulation of the vector product (if the ‘+’ in the middle term makes you uncomfortable for that reason, then just pull a negative sign out of the difference).</p>
+
+<h4 id="deriving-vector-identities">Deriving Vector Identities</h4>
+<p>     Vector calculus is the basis for almost every field of classical physics, e.g., electromagnetism, dynamics, fluid mechanics, etc.. Acquiring an understanding of these fields that is more than just surface level frequently requires manipulating expressions that feature combinations of vector and cross products involving the state variables characterizing the physical system, e.g., $\vec{E}, \vec{B}, \vec{J}$, in electromagnetism, or $\rho, \vec{u}, p$, in fluid dynamics, and their gradients, $\nabla$. Index notation gives us the ability to directly manipulate the underlying partial derivatives, and vector components, of these expressions without becoming lost in seas of algebra. Consequently, we can derive some interesting and useful relationships. For the sake of brevity, these will be enumerated in a <a href="./2024-07-18_vectoridentities">separate post</a>.</p>
+
+<!-- References -->
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>https://en.wikipedia.org/wiki/Levi-Civita_symbol <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+</div>
+
+    </div>
+    <footer>
+  <div>
+    <hr>
+    <ul>
+      <li><a href="mailto:russellmatt66@gmail.com">russellmatt66@gmail.com</a></li>
+      <li><a href="https://github.com/russellmatt66">github.com/russellmatt66</a></li>
+    </ul>
+  </div>
+</footer>
+
+  </body>
+</html>

@@ -38,7 +38,7 @@ $$
 \end{align}
 $$
 
-Where we have used the fact that, for a sufficiently smooth $\phi$, $\partial_{i}\partial_{j}\phi = \partial_{j}\partial_{i}\phi$. This was not so demanding, but we can also do the same with index notation, and avoid having to take a determinant,
+Where we have used the fact that, for a sufficiently smooth $\phi$, $\partial_{i}\partial_{j}\phi = \partial_{j}\partial_{i}\phi$. This was not so demanding, but we can also do the same with index notation, and avoid having to remember how to take th determinant of a 3x3 matrix,
 
 $$
 \begin{align}
