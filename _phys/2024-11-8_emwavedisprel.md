@@ -16,7 +16,17 @@ $$
 v_{\phi} = \frac{\omega}{k}
 $$
 
-When a system exhibits a dispersion relation that has a $v_{\phi}$ which is dependent on $\vec{k}$ we say that it is *dispersive*.
+When a system exhibits a dispersion relation that has a $v_{\phi}$ which is dependent on $\vec{k}$ we say that it is *dispersive*. Systems which are *non-dispersive* have $v_{\phi}$ which are uniform with regard to $\vec{k}$. These systems are very useful to study, and apply, because that means that,
+
+$$
+v_{g} = \pdv{\omega}{k} = \pdv{ck}{k} = c
+$$
+
+in the case of a plane wave where the dispersion relation is naturally,
+
+$$
+\omega = c\vec{k}
+$$
 
 &nbsp;&nbsp;&nbsp;&nbsp; Ordinarily, we derive dispersion relations starting from a wave equation. For example, in electromagnetism, we can take Faraday's Law, and Ampere's Law, and derive a wave equation for the magnetic field,
 
