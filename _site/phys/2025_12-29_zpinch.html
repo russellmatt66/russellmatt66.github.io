@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <!-- Enable responsiveness on mobile devices -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-  <title>Z-Pinch Equilibrium</title>
+  <title>Z-Pinch Equilibria</title>
   <link rel="stylesheet" href="/css/main.css">
   <link rel="shortcut icon" type="image/png" href="/assets/killerwhaleph.png">
 </head>
@@ -191,10 +191,63 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function() {
 </header>
 
     <div class="container">
-      <h1>Z-Pinch Equilibrium</h1>
+      <h1>Z-Pinch Equilibria</h1>
 <p class="meta" style="color:#888">29 Dec 2025</p>
 <div class="post">
-  <p>     I’m not a historian of fusion energy, but every fusion energy scientist can sketch the history of the field, and how we got to where we are.</p>
+  <p>     I’m not a historian of fusion energy, but every fusion energy scientist can sketch the history of the field, and how we got to where we are. In the 50s, fusion energy research was declassified by the Allies. Buoyed by the success of controlling fission energy, the community initially believed fusion would be the same. This belief was founded largely on the back of the simplicity behind the Z-Pinch, which was the leading configuration for the magnetic confinement of fusion energy. The Z-Pinch is a cylindrical magnetohydrodynamic equilibrium that requires no external magnetic fields. This is a huge advantage. Without this requirement the expense and complexity of the device goes down considerably. Furthermore, cylinders are much simpler than toroids, e.g., the Tokamak or Stellarator, although they do “suffer” from end-losses (air quotes because a rocket scientist might use a different word here).</p>
+
+<p>     However, the Z-Pinch has a fatal flaw. It is plagued by natural instabilities. Consider the governing equations for a Z-Pinch equilibrium,</p>
+
+\[\begin{align}
+\dv{p}{r} = -J_{z}B_{\theta} \\
+B_{\theta} = \frac{\mu_{0}}{r}\int_{0}^{r} r'J_{z}(r')dr'
+\end{align}\]
+
+<p>Between the current density, $\vec{J}$, and magnetic induction field, $\vec{B}$, six out of the eight primitive equilibrium quantities are present</p>
+
+\[\begin{align}
+\vec{J}(r) &amp;= (0, 0, J_{z}(r)) \\
+\vec{B}(r) &amp;= (0, B_{\theta}(r), 0)
+\end{align}\]
+
+<p>The other two are of course the plasma number density, $n$, and plasma pressure, $p$. We can obtain the plasma pressure by integrating the momentum equation, and the plasma density can always be taken as uniform, or given some other form that of course influences the current density. There are evidently a large number of possible Z-Pinch equilibria. Not all equilibria are created equal. The canonical picture to illustrate this is that of a ball on a hill<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>. The ball is analogous to the plasma state, and the shape of the hill is analogous to the magnetic geometry of the problem. Z-Pinches are analogous to (b).</p>
+
+<figure>
+  <img src="/assets/phys/2025-12-29_zpinch/friedberg_stability.png" alt="Ball on hill analogy" style="width: 60%; margin: 0 auto; display: block;" />
+  <figcaption style="text-align: center; font-style: italic;">Mechanical analogies for stability</figcaption>
+</figure>
+
+<p>     Their magnetic geometry is naturally perilous. Proving this is complicated and tedious work that has been done by scientists, and noted down in textbooks, like the one the above figure is pulled from. Any perturbation to the magnetic field of an ordinary Z-Pinch will either cause the device to enter a positive feedback loop where it balloons or twists violently on a very short timescale, $\tau_{E} \sim \mathcal{O}(ns)$, as it decoheres. Fusion energy scientists soldiered on in the face of these instabilities for over three decades before they gave up on the Z-Pinch, and turned their attention to toroidal configurations where the cylindrical plasma was bent together so that the ends met. Of course, a toroid gives the electrons a closed track to race on, and requires external magnets for confinement. A Z-Pinch is better. It is just impossible to satisfy the Lawson Criterion<sup id="fnref:2" role="doc-noteref"><a href="#fn:2" class="footnote" rel="footnote">2</a></sup>,</p>
+
+\[nT\tau_{E} \geq 3*10^{21} \ [keV \ s \ m^{-3}]\]
+
+<p>if the natural instabilities plaguing the device are not curtailed. The above value of the Lawson Criterion is of course for a DT plasma assumed to be operating at $T \sim 15 \ keV$. With an energy confinement time of $\tau_{E} \approx 25 \ ns$ the requisite density we estimate for this kind of equilibria to attain the conditions necessary for fusion breakeven is,</p>
+
+\[n \geq 8*10^{27} \ [m^{-3}]\]
+
+<p>What’s the matter with this number? Well, Lawson estimated the total radiation losses in the fusion plasma as,</p>
+
+\[P_{B} \approx (1.4*10^{-34}) n^{2} T^{1/2}\]
+
+<p>which gives $P_{B} = 1.18 * 10^{20} \ [W \ m^{3}]$. A Z-Pinch typically has a volume of $V_{p} \sim 4 *10^{-5} \ [m^{3}]$ so if we divide $P_{B}$ by this then we get an estimate for the total amount of power in the radiation coming off of this breakeven Z-Pinch,</p>
+
+\[P_{B} = 3.005 *10^{24} \ [W]\]
+
+<p>That would be 3 trillion trillion Watts! To put this into perspective, the world consumes ~25,000 [TWh] of electric energy annually. If this Z-Pinch were to run for a total of $\sim 30 \ [\mu s]$ the radiation alone would exceed the annual energy consumption of the world! Obviously, this does not compute. In order for the Z-Pinch to be viable its energy confinement time, $\tau_{E}$, needs to increase substantially, but the main barrier to this are the magnetohydrodynamic instabilities (which have not been substantially addressed in this post) naturally plaguing it. Consequently, these instabilities need to be stabilized.</p>
+
+<p>How?</p>
+
+<h2 id="references">References</h2>
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>Friedberg, <em>Plasma Physics and Fusion Energy</em> <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:2" role="doc-endnote">
+      <p>Lawson, https://en.wikipedia.org/wiki/Lawson_criterion <a href="#fnref:2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
 
 </div>
 
