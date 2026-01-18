@@ -204,15 +204,15 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function() {
 
 <p>For example, with Matplotlib, if we wanted to plot a simple graph between two variables, we can do so in just a handful of lines of code,</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-<span class="kn">import</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="p">.</span><span class="n">pi</span><span class="p">,</span><span class="n">np</span><span class="p">.</span><span class="n">pi</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="p">.</span><span class="n">pi</span><span class="p">,</span><span class="n">np</span><span class="p">.</span><span class="n">pi</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="p">.</span><span class="nf">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="p">.</span><span class="nf">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 <p>An equivalent code in VTK would be many more lines than this. The essence of why is that a lot is being encapsulated when we call statements like <code class="language-plaintext highlighter-rouge">plt.plot()</code>, and <code class="language-plaintext highlighter-rouge">plt.show()</code>. The central data structure in Matplotlib is that of the <a href="https://matplotlib.org/stable/tutorials/artists.html"><code class="language-plaintext highlighter-rouge">Artist</code></a>. This is what handles the rendering pipeline. If you work with VTK for any extended period of time, then you will find yourself starting at what is called <code class="language-plaintext highlighter-rouge">boilerplate</code> in the software industry, i.e., repeated code. Here is the boilerplate for getting data from a source. Here is the boilerplate for mapping that data to an actor. Here is the boilerplate for placing that actor into a scene, meaning connecting it with a renderer, and then connecting that renderer with a window. Oh! And we can’t forget the camera or how else would be able to see anything! At some point you will grow tired of the verbosity, and just want something that handles it all for you.</p>
 

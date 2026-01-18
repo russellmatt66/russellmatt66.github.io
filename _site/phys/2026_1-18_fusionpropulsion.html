@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <!-- Enable responsiveness on mobile devices -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-  <title>Astronautics Exam Problem</title>
+  <title>High-Thrust Fusion Propulsion with Bennett Vortices</title>
   <link rel="stylesheet" href="/css/main.css">
   <link rel="shortcut icon" type="image/png" href="/assets/killerwhaleph.png">
 </head>
@@ -191,51 +191,84 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready",function() {
 </header>
 
     <div class="container">
-      <h1>Astronautics Exam Problem</h1>
-<p class="meta" style="color:#888"></p>
+      <h1>High-Thrust Fusion Propulsion with Bennett Vortices</h1>
+<p class="meta" style="color:#888">18 Jan 2026</p>
 <div class="post">
-  <p>    Inspired by a problem in Zangwill<sup id="fnref:1"><a href="#fn:1" class="footnote" rel="footnote" role="doc-noteref">1</a></sup>, I came up with an exam problem based on it. Here is the original problem:</p>
+  <p><em>Reading time ~ 5 min, Word Count ~ 250</em></p>
 
-<p>2.1 [\textbf{Measuring B}]</p>
+<p>     Propelling a fuselage with fusion energy is one of the most challenging engineering tasks that an intelligent society can be faced with. This is not just because of the enormous thermal, and mechanical stresses that must be confronted, but also because the operation of a jet engine powered by fusion reactions is “bass-ackwards” from how you’d want it if you’d like the engine to be effective for more than just in the depths of space.</p>
 
-<p>Let [\vec{F}_{1}] and [\vec{F}_{2}] be the instantaneous forces that act on a particle with charge $q$ when it moves through a magnetic field $\vec{B}(\vec{r})$ with velocities $\vec{v}_{1}$ and $\vec{v}_{2}$, respectively.</p>
+<p>     Consider the power of the exhaust jet,</p>
 
-<p>Without choosing a coordinate system, show that $\vec{B}(\vec{r})$ can be determined from the observables $\vec{v}_{1} \times \vec{F}_{1}$ and $\vec{v}_{2} \times \vec{F}_{2}$ if $\vec{v}_{1}$ and $\vec{v}_{2}$ are appropriately oriented.</p>
+\[\begin{equation}
+    P_{jet} = \frac{1}{2}\dot{m}u_{e}^{2} = \eta P_{fusion}
+\end{equation}\]
 
-<p>Here is the problem I developed:</p>
-<blockquote>
-  <p>You are an engineer for a fusion rocket company that is launching a mission to test their interstellar propulsion technology, and acquire valuable scientific data on the magnetic fields of outer space.</p>
-</blockquote>
+<p>which assumes a steady flow of exhaust, and an efficiency factor, $\eta$, that describes how  much thermal fusion power gets turned into directed kinetic energy. The thrust,</p>
 
-<blockquote>
-  <p>The system that will be performing this task consists of two autonomous probes, each equipped with an array of sensors for accurately measuring their trajectories’. Once immersed in the interstellar plasma, the probes will become charged, and begin to experience a Lorentz force.</p>
-</blockquote>
+\[\begin{equation}
+    T = \dot{m}u_{e}
+\end{equation}\]
 
-<blockquote>
-  <p>(20 pts) (a)  By measuring their velocity, and acceleration, and maintaining a specific orientation with regard to each other while moving through a given region of space, the probes can obtain a reading for the steady magnetic field there, $\vec{B}(\vec{r})$. Derive this exact expression by algebraically combining and manipulating the observables that the probes obtain: $ \vec{v}_{1},\vec{v}_{2},\vec{F}_{1},\vec{F}_{2}$.</p>
-</blockquote>
+<p>then becomes,</p>
 
-<blockquote>
-  <p>(10 pts) (b) What assumptions need to hold about the probes’ characteristics and trajectories’ for the expression you derived to be valid?</p>
-</blockquote>
+\[\begin{equation}
+    T = \frac{2\eta P_{fusion}}{u_{e}}
+\end{equation}\]
 
-<blockquote>
-  <p>(10 pts) (c) How would deviations in the probes’ observables, e.g., an error in the accelerometer, or speedometer, effect the result?</p>
-</blockquote>
+<p>which presents a fundamental problem. Namely, that the faster the fusion plasma exhaust is travelling, then the lower the thrust of the jet engine will be.</p>
 
-<blockquote>
-  <p>(10 pts) (d) Give some numbers, and ask them to calculate the steady magnetic field. Does it make sense? (is the divergence 0?)</p>
-</blockquote>
+<p>     For example, consider a 10 MW fusion plasma, $P_{fusion} = 10 \ [MW]$, with an exhaust velocity of $u_{e} = 10^{6} \ [m s^{-1}]$, and an efficiency of $\eta = 0.5$. This sounds like a very powerful plasma that would produce a lot of thrust, but you can readily see that the thrust level from this example will only be ~10 Newtons, which is about the weight of a human baby in the third trimester of a pregnancy. However, unlike a human baby who grows very fast, this value will remain steady for a long time as the specific impulse of the engine is very large,</p>
 
-<p>There’s a couple of places that I think the problem still needs work. One, obviously (d) needs numbers. Two, there’s no guarantee that the magnetic field in space will be steady. More likely, it will be quasi-steady, with the amplitude of these fluctuations varying dependent on the state of the sun, or more generally, whichever star is driving the local dynamics. Based on this reason, I think this question would serve as a good second question for an exam where the first question is about calculating the conditions of the plasma at the specific location.</p>
+\[I_{sp} = \frac{u_{e}}{g} \sim  10^{5} [s]\]
 
-<div class="footnotes" role="doc-endnotes">
-  <ol>
-    <li id="fn:1">
-      <p>Zangwill, Andrew. “The Maxwell Equations.” Modern Electrodynamics, Cambridge University Press, Cambridge, UK, 2012. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
+<p>Meaning, a fusion jet engine with high exhaust speeds would be very effective for a deep-space mission where its high efficiency and steady thrust would allow the acceleration of the craft to high speeds over long periods of time. However, for leaving the planet, or powering an atmospheric flight vehicle, this thrust just doesn’t cut it. These applications demand low exhaust speeds.</p>
+
+<p>     Getting a fusion plasma jet engine to have a low exhaust speed seems an impossible task. However, there is a way that can be found by studying a family of analytic Shear-Flow Stabilized Z-Pinch equilibria which are derived by exchanging the Bennett profile from the plasma number density to the plasma flow velocity, known as <a href="https://russellmatt66.github.io/phys/2025_12-16_bennettvortex">Bennett Vortices</a>. These vortices hinge on a smallness parameter,</p>
+
+\[\begin{equation}
+    C_{B,T}^{(n)} \simeq 10^{-22}\frac{n_{0}u_{z,0}^{2}r_{p}^{n}}{T_{p}}
+\end{equation}\]
+
+<p>to create strongly-degenerate flows where the edge speed is equal to $u_{z,0}$. Otherwise, an algebraic equation’s roots determine the possible values for the flow constant. Setting this speed to unity, and considering a “squat” pinch where,</p>
+
+\[\begin{align}
+    r_{p} = 10L = 1 \ [m]
+\end{align}\]
+
+<p>we see that, for any power of vortex, which is just the exponent of its power-law temperature,</p>
+
+\[\begin{equation}
+    T(r) = \frac{T_{p}}{r_{p}^{n}}r^{n}
+\end{equation}\]
+
+<p>there is a wide range of operating densities and temperatures available to this configuration,</p>
+
+\[C_{B,T} \simeq 10^{-22}\frac{n_{0}}{T_{p}}\]
+
+<p>Consider a DD fusion plasma operating at a temperature of 50 million degrees Kelvin, and with a plasma number density of $n_{0} = 10^{22} - 10^{24}$. The vortex parameter then falls into the range of,</p>
+
+\[C_{B,T} \sim 10^{-5} - 10^{-7} \ [m]\]
+
+<p>which is sufficiently small for the flow speed constant of a cubic, pure-flow ($\chi = 2$) vortex,</p>
+
+\[\begin{equation}
+    u_{z,0} = u_{edge} \frac{(r_{p} + C_{B,T})^{2}}{r_{p}^{2}}
+\end{equation}\]
+
+<p>to nearly be the edge flow speed. Then the thrust level of the hypothetical fusion plasma from before becomes,</p>
+
+\[T_{bv} \simeq 10^{6} \ [N]\]
+
+<p>and the thermal confinement time is, for an $n$-vortex, where again $n$ is just the exponent of a power-law temperature,</p>
+
+\[\begin{align}
+    \tau_{E}^{(n)} &amp;= \frac{3}{2}\frac{p_{0}V_{p}}{\int_{A_{L}}\vec{q}\cdot d\vec{A_{L}}} \\
+    &amp;= \frac{3}{4}p_{0}\frac{r_{p}}{|-\kappa_{\perp}\dv{T}{r}|_{r=r_{p}}} \\
+    &amp;= \frac{3}{4n\kappa_{\perp}}\frac{p_{0}r_{p}^{2}}{T_{p}}
+\end{align}\]
+
+<p>This value can be calculated analytically using Spitzer coefficients and compared to the Alfven time, and other important timescales for a Shear-Flow Stabilized Z-Pinch, like the flow-through time. However, these calculations are involved, and dinner time is swiftly approaching in my local manifold of flat spacetime on the Earth’s surface, so my own energy confinement must be looked to first :)</p>
 
 </div>
 
